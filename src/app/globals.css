@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+:root {
+  --forest: #14352f;
+  --primary: #1f6f54;
+  --primary-foreground: #f4fff8;
+  --secondary: #d8ebe1;
+  --secondary-foreground: #14352f;
+  --accent-soft: #d9f0e4;
+  --accent-soft-hover: #c5e6d5;
+  --background: #e7f2ec;
+  --foreground: #1a2e28;
+  --card: #f7fbf8;
+  --muted: #e0eee7;
+  --muted-foreground: #4d635b;
+  --border: #c5d9cf;
+  --ring: #2f8f6b;
+  --mist: #eef6f1;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(47, 143, 107, 0.18), transparent 55%),
+    radial-gradient(900px 500px at 100% 0%, rgba(212, 163, 74, 0.12), transparent 50%),
+    linear-gradient(180deg, #dceee5 0%, var(--background) 35%, #f3faf6 100%);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  min-height: 100%;
+}
+
+::selection {
+  background: rgba(31, 111, 84, 0.2);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-rise {
+  animation: rise 0.8s ease-out both;
+}
+
+.animate-rise-delay {
+  animation: rise 0.9s ease-out 0.15s both;
+}
+
+.animate-drift {
+  animation: drift 7s ease-in-out infinite;
+}
+
+.hero-sheen {
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.35),
+    rgba(255, 255, 255, 0.08)
+  );
+  background-size: 200% 200%;
+  animation: shimmer 10s linear infinite;
+}
