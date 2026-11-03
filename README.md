@@ -21,6 +21,23 @@ npm run dev
 
 Open [http://127.0.0.1:43123](http://127.0.0.1:43123).
 
+### Public URL (temporary tunnel)
+
+From a machine where the app is already running on port `43123`:
+
+```bash
+npm run build && npm run start
+cloudflared tunnel --url http://127.0.0.1:43123
+```
+
+Cloudflare prints a `https://….trycloudflare.com` link anyone can open. Quick tunnels stop when that process (or the VM) stops.
+
+### Deploy permanently (recommended)
+
+1. Push this repo to GitHub/GitLab.
+2. Import the project in [Vercel](https://vercel.com/new) (or Netlify / Cloudflare Pages with Next support).
+3. Deploy — no env vars required for local RAG. Optionally set `OPENAI_API_KEY`.
+
 ### Optional LLM upgrade
 
 Copy `.env.example` to `.env.local` and set `OPENAI_API_KEY`. Without a key, the chatbot still answers using retrieved sources (local RAG mode).
