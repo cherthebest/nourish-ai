@@ -32,11 +32,16 @@ cloudflared tunnel --url http://127.0.0.1:43123
 
 Cloudflare prints a `https://….trycloudflare.com` link anyone can open. Quick tunnels stop when that process (or the VM) stops.
 
-### Deploy permanently (recommended)
+### Deploy permanently on Vercel (auto-updates)
 
-1. Push this repo to GitHub/GitLab.
-2. Import the project in [Vercel](https://vercel.com/new) (or Netlify / Cloudflare Pages with Next support).
-3. Deploy — no env vars required for local RAG. Optionally set `OPENAI_API_KEY`.
+Repo: [github.com/cherthebest/nourish-ai](https://github.com/cherthebest/nourish-ai)
+
+1. Open [vercel.com/new](https://vercel.com/new) and sign in with **GitHub**.
+2. Import **`cherthebest/nourish-ai`**.
+3. Leave Framework Preset as **Next.js**, click **Deploy**.
+4. After the first deploy succeeds, every push to `main` automatically updates the public site.
+
+No env vars are required for the built-in RAG chatbot. Optionally add `OPENAI_API_KEY` in Vercel → Project → Settings → Environment Variables.
 
 ### Optional LLM upgrade
 
