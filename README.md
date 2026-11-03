@@ -1,5 +1,7 @@
 # NourishAI
 
+**Live site:** [https://nourish-ai-olive.vercel.app](https://nourish-ai-olive.vercel.app)
+
 Conversational nutrition assistant for real-world eating problems: weight management, blood pressure, healthy aging, mood-supportive habits, allergies, faith-based diets, and tight budgets.
 
 ## What you get
