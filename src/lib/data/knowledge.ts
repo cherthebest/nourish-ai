@@ -98,7 +98,7 @@ const baseDocs: KnowledgeDoc[] = [
     title: "Why suggestions can fail",
     category: "limits",
     tags: ["limits", "inaccurate", "language", "adherence", "appetite"],
-    content: `Unavoidable limits: users may not follow plans; appetite and stress override knowledge; suggestions can be inaccurate for rare conditions; bilingual gaps cause misunderstanding; economic and time barriers persist; agriculture and environment constrain supply. NourishAI uses retrieved nutrition knowledge and recipes but is not a doctor. Verify with qualified professionals for medical decisions.`,
+    content: `Unavoidable limits: users may not follow plans; appetite and stress override knowledge; suggestions can be inaccurate for rare conditions; bilingual gaps cause misunderstanding; economic and time barriers persist; agriculture and environment constrain supply. NourishAI uses curated nutrition knowledge and recipes but is not a doctor. Verify with qualified professionals for medical decisions.`,
   },
   {
     id: "kb-portions",
@@ -106,6 +106,41 @@ const baseDocs: KnowledgeDoc[] = [
     category: "analysis",
     tags: ["volume", "portion", "proportion", "plate"],
     content: `Volume eating uses high-water, high-fiber foods (soups, salads, vegetables) to feel full. Proportion: visualize a plate — half non-starchy vegetables, one quarter protein, one quarter whole grains or starchy veg, plus optional fruit/dairy. Restaurant portions are often 2+ servings. Measuring cups for a week calibrates eyes. For weight gain (including many vegans), increase energy-dense proportions: nuts, oils, tahini, dried fruit, grains.`,
+  },
+  {
+    id: "kb-hydration",
+    title: "Hydration and everyday drinks",
+    category: "guidance",
+    tags: ["water", "hydration", "soda", "tea", "coffee", "sugar"],
+    content: `Most adults do well aiming for regular water across the day rather than chugging once. Plain water, sparkling water with citrus, and unsweetened tea are default swaps for soda and sweet coffee drinks. Excess sugary beverages add calories without satiety and can nudge blood pressure and blood sugar the wrong way. Coffee and tea are fine for many people; watch creamers and syrups. During hot weather or longer walks, sip earlier rather than waiting until thirsty.`,
+  },
+  {
+    id: "kb-labels",
+    title: "Reading nutrition labels quickly",
+    category: "analysis",
+    tags: ["labels", "sodium", "sugar", "serving size", "ingredients"],
+    content: `Start with serving size — packages often contain more than one. Scan sodium, added sugars, and saturated fat next. A short ingredient list with recognizable foods is usually a better everyday pick than a long list of additives. “Low fat” products can still be high in sugar. Compare similar products per 100g when possible. For blood pressure goals, prioritize lower-sodium options and rinse canned foods.`,
+  },
+  {
+    id: "kb-breakfast",
+    title: "Building a steadier breakfast",
+    category: "planning",
+    tags: ["breakfast", "protein", "fiber", "routine", "time"],
+    content: `A steadier breakfast pairs protein and fiber: eggs with vegetables, yogurt with oats and fruit, tofu scramble, or leftover lentils. Skipping breakfast can work for some adults, but long gaps plus ultra-processed mid-morning snacks often backfire for energy and mood. When mornings are rushed, prepare overnight oats or hard-boiled eggs ahead. Keep sweet pastries as occasional treats, not the weekday default.`,
+  },
+  {
+    id: "kb-asia-pantry",
+    title: "Hong Kong and Asian pantry healthy staples",
+    category: "context",
+    tags: ["hong kong", "asia", "pantry", "tofu", "rice", "market", "cantonese"],
+    content: `Common accessible staples: tofu, eggs, leafy greens, bok choy, tomatoes, cucumbers, frozen edamame, brown or mixed rice, oats, canned tomatoes, lentils/chickpeas where available, fish from wet markets, and seasonal fruit. Steam, boil, stir-fry with modest oil, and bake instead of deep-frying. Congee can be made more balanced with egg, fish, or tofu plus vegetables. Watch sodium in sauces — use low-sodium soy, citrus, ginger, garlic, and chili for flavor. Hawker and takeout meals fit better when you add a vegetable side and skip sugary drinks.`,
+  },
+  {
+    id: "kb-family",
+    title: "Family meals without cooking twice",
+    category: "planning",
+    tags: ["family", "kids", "batch", "shared meals", "picky"],
+    content: `Cook one base meal and customize at the table: a mild curry or sheet-pan roast, then let adults add spice and kids choose milder toppings. Shared elements — rice, roasted vegetables, beans, chicken/tofu — reduce kitchen time. Keep fruit and yogurt visible for snacks. Avoid turning dessert into a nightly negotiation; make fruit the usual close. Modeling calm, regular meals often matters more than perfect macros for households.`,
   },
 ];
 

@@ -7,7 +7,7 @@ Conversational nutrition assistant for real-world eating problems: weight manage
 ## What you get
 
 - **Healthy recipes** tagged by consumer group, culture/diet, allergens, cost, and nutrients
-- **Ask Nourish chatbot** with **RAG** over a curated knowledge base + recipe documents (local TF–IDF retrieval; optional OpenAI for fluent generation)
+- **Ask Nourish chatbot** grounded in a curated nutrition knowledge base + recipes (retrieval under the hood; optional OpenAI for fluent generation)
 - **Food analysis** — is it a strong choice, situational, or best limited, with alternatives
 - **Meal planner** for day / week / month with budget and allergy filters
 - **BMI & body analysis** with energy estimates and cautious activity suggestions
@@ -43,11 +43,11 @@ Repo: [github.com/cherthebest/nourish-ai](https://github.com/cherthebest/nourish
 3. Leave Framework Preset as **Next.js**, click **Deploy**.
 4. After the first deploy succeeds, every push to `main` automatically updates the public site.
 
-No env vars are required for the built-in RAG chatbot. Optionally add `OPENAI_API_KEY` in Vercel → Project → Settings → Environment Variables.
+No env vars are required for the built-in chatbot. Optionally add `OPENAI_API_KEY` in Vercel → Project → Settings → Environment Variables.
 
 ### Optional LLM upgrade
 
-Copy `.env.example` to `.env.local` and set `OPENAI_API_KEY`. Without a key, the chatbot still answers using retrieved sources (local RAG mode).
+Copy `.env.example` to `.env.local` and set `OPENAI_API_KEY`. Without a key, the chatbot still answers from the built-in nutrition notes and recipes.
 
 ## Stack
 

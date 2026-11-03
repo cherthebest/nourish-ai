@@ -26,7 +26,7 @@ export const en = {
       "Weight goals, blood pressure, aging, mood, faith-based diets, allergies, tight budgets, and an empty fridge—pick a path and cook from there.",
     chatTitle: "Figure out what you should look for",
     chatSub:
-      "Our guide pulls from curated nutrition notes and recipes (RAG), then answers in plain language—including smarter swaps and cultural filters.",
+      "Our guide draws on curated nutrition notes and recipes, then answers in plain language—including smarter swaps and cultural filters.",
     chatBullet1: "Nutrient checks and “is this a good fit for me?” guidance",
     chatBullet2: "Better alternatives when takeout or risky shortcuts feel tempting",
     chatBullet3: "Tied into BMI, affordability, and meal planning tools",
@@ -73,12 +73,12 @@ export const en = {
   chat: {
     title: "Nutrition chat",
     intro:
-      "Ask about recipes, nutrients, budget, allergies, or culture. Answers are grounded with retrieval over our knowledge base (RAG). An optional OpenAI key can refine wording; local retrieval always works.",
+      "Ask about recipes, nutrients, budget, allergies, or culture. Answers are based on our nutrition notes and recipe library—practical guidance for everyday decisions.",
     panelTitle: "Ask NourishAI",
-    panelSub: "RAG over recipes & nutrition notes",
-    badge: "Local RAG ready",
+    panelSub: "Guided by nutrition notes & recipes",
+    badge: "Ready to help",
     welcome:
-      "Hi—I’m NourishAI. Share your goals, allergies, budget, culture, or health context (like blood pressure). I’ll pull recipe and nutrition knowledge with RAG and suggest practical next steps.",
+      "Hi—I’m NourishAI. Share your goals, allergies, budget, culture, or health context (like blood pressure). I’ll use our nutrition notes and recipes to suggest practical next steps.",
     placeholder: "Ask about recipes, nutrients, BMI, budget, allergies…",
     retrieving: "Pulling knowledge…",
     send: "Send",
@@ -201,7 +201,7 @@ export const en = {
   },
   footer: {
     blurb:
-      "Conversational nutrition guidance with RAG over recipes and evidence-informed notes. Educational only—not a substitute for clinical care.",
+      "Conversational nutrition guidance grounded in recipes and evidence-informed notes. Educational only—not a substitute for clinical care.",
   },
   common: {
     loading: "Loading…",

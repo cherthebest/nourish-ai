@@ -125,14 +125,11 @@ export function ChatPanel({ compact = false }: { compact?: boolean }) {
               <p className="whitespace-pre-wrap leading-relaxed">{m.content}</p>
               {m.sources && m.sources.length > 0 && (
                 <div className="mt-3 flex flex-wrap gap-1.5">
-                  {m.sources.slice(0, 5).map((s) => (
+                  {m.sources.slice(0, 4).map((s) => (
                     <Badge key={s.id} className="bg-white/80 text-[10px]">
-                      {s.title}
+                      {s.title.replace(/^Recipe:\s*/i, "")}
                     </Badge>
                   ))}
-                  {m.mode && (
-                    <Badge className="bg-[var(--forest)] text-[10px] text-white">{m.mode}</Badge>
-                  )}
                 </div>
               )}
               {m.recipeIds && m.recipeIds.length > 0 && (

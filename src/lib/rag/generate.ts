@@ -110,14 +110,14 @@ function localAnswer(query: string, chunks: RetrievedChunk[], locale: Locale): s
   if (!lines.length) {
     lines.push(
       zh
-        ? "根據我們營養知識庫的檢索結果，針對你的問題整理如下："
-        : "Here’s what our nutrition knowledge base suggests for your question, grounded in retrieved sources:",
+        ? "根據我們的營養筆記與食譜，針對你的問題整理如下："
+        : "Here’s what our nutrition notes and recipes suggest for your question:",
     );
   }
 
   if (contextBits.length) {
     lines.push("");
-    lines.push(zh ? "檢索到的指引：" : "Retrieved guidance:");
+    lines.push(zh ? "相關指引：" : "Helpful guidance:");
     for (const c of contextBits) {
       const snippet = c.doc.content.split(/(?<=\.)\s+/).slice(0, 2).join(" ");
       lines.push(`• ${c.doc.title}: ${snippet}`);
@@ -137,8 +137,8 @@ function localAnswer(query: string, chunks: RetrievedChunk[], locale: Locale): s
   lines.push("");
   lines.push(
     zh
-      ? "聲明：NourishAI 透過 RAG 提供教育性建議，可能不準確，且非醫療建議。過敏、文化與處方優先。"
-      : "Disclaimer: NourishAI offers educational suggestions via RAG over curated nutrition notes and recipes. It can be inaccurate and is not medical advice. Allergies, culture, and prescriptions come first.",
+      ? "聲明：NourishAI 提供教育性建議，可能不準確，且非醫療建議。過敏、文化與處方優先。"
+      : "Disclaimer: NourishAI offers educational suggestions based on curated nutrition notes and recipes. It can be inaccurate and is not medical advice. Allergies, culture, and prescriptions come first.",
   );
 
   return lines.join("\n");

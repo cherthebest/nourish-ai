@@ -125,8 +125,8 @@ export function analyzeFood(raw: string): FoodAnalysis {
       : `We don't have a direct match for "${query}". Describe cooking method, portion, and sauces for a sharper read — or browse recipes.`,
     nutrients: null,
     pros: healthyHints
-      ? ["Plant/protein cues suggest better micronutrient density.", "Ask the chatbot for a RAG-backed breakdown."]
-      : ["Use the chatbot to retrieve related nutrition notes."],
+      ? ["Plant/protein cues suggest better micronutrient density.", "Ask the chatbot for a clearer breakdown."]
+      : ["Ask the chatbot for related nutrition guidance."],
     cons: [
       "Without a label, sodium, oil, and sugar are unknown.",
       "Allergies and cultural rules still apply.",
