@@ -23,125 +23,152 @@ function extractRecipeIds(chunks: RetrievedChunk[]): string[] {
     .filter((id, i, arr) => arr.indexOf(id) === i);
 }
 
-function localAnswer(query: string, chunks: RetrievedChunk[], locale: Locale): string {
+function firstSentences(text: string, n = 2): string {
+  return text
+    .split(/(?<=[。.!？?])\s+/)
+    .map((s) => s.trim())
+    .filter(Boolean)
+    .slice(0, n)
+    .join(text.includes("。") ? "" : " ");
+}
+
+function pickAdvice(query: string, locale: Locale): string[] {
   const q = query.toLowerCase();
   const zh = locale === "zh-Hant";
-  const contextBits = chunks.slice(0, 4);
+  const tips: string[] = [];
+
+  if (/bmi|body mass|overweight|underweight|身體質量|過重|過輕/.test(q)) {
+    tips.push(
+      zh
+        ? "你可以先用網站裡的 BMI 工具看個大概數字。記得 BMI 只是篩檢，看不出肌肉量，別把它當成最終判決。"
+        : "You can start with the BMI tool on the site for a quick snapshot. BMI is only a screen—it doesn’t show muscle—so don’t treat it like a final verdict.",
+    );
+  }
+  if (/blood pressure|hypertension|sodium|dash|血壓|高血壓|鈉/.test(q)) {
+    tips.push(
+      zh
+        ? "若你在顧血壓，日常可先朝「少鹽、多鉀」走：豆類、綠葉菜、香蕉都友善；香草、薑蒜、柑橘比一直加鹽更好。若你有在吃藥，飲食是輔助，不要自行停藥。"
+        : "If blood pressure is on your mind, lean toward less salt and more potassium—beans, leafy greens, bananas help. Herbs, garlic, and citrus beat the salt shaker. If you’re on meds, food supports your plan—don’t stop prescriptions on your own.",
+    );
+  }
+  if (/obes|lose weight|weight loss|fat loss|calorie|減肥|瘦|體重|熱量/.test(q)) {
+    tips.push(
+      zh
+        ? "想穩穩照顧體重，優先選吃得飽的組合：蔬菜體積大、纖維多，再配蛋白質（蛋、豆、豆腐、魚）。豆子、燕麥、雞蛋通常也比較省。哪天吃多了，下一餐回來就好，不必等「下週一」。"
+        : "For steadier weight goals, build meals that actually fill you up—lots of vegetables, fiber, and a clear protein (eggs, beans, tofu, fish). Beans, oats, and eggs keep costs down. If one meal goes off track, just come back at the next one.",
+    );
+  }
+  if (/mental|mood|depress|anxi|stress|brain|情緒|壓力|憂鬱|焦慮/.test(q)) {
+    tips.push(
+      zh
+        ? "情緒緊繃時，規律吃飯本身就有幫助；魚、核桃、亞麻這類 Omega-3，加上全穀，很多人會覺得比較穩。飲食是輔助，若情緒很辛苦，還是值得找專業支持。"
+        : "When stress is high, regular meals already help. Omega-3 foods like fish, walnuts, or flax, plus whole grains, support steadier energy for many people. Food is a support—not a replacement for mental health care when you need it.",
+    );
+  }
+  if (/vegan|vegetarian|gain weight|muscle|純素|素食|增重|肌肉/.test(q)) {
+    tips.push(
+      zh
+        ? "純素也能吃得夠、甚至增重：堅果、種子、好油、芝麻醬、穀物、大豆、酪梨這些熱量密度較高。別只靠葉子菜；蛋白質記得分散在各餐。"
+        : "You can eat well on a vegan pattern—and even gain if that’s the goal—with nuts, seeds, oils, tahini, grains, soy, and avocado. Leaves alone won’t get you there; spread protein across the day.",
+    );
+  }
+  if (/halal|kosher|muslim|beef|pork|religion|allerg|清真|猶太|穆斯林|過敏|牛肉|豬肉/.test(q)) {
+    tips.push(
+      zh
+        ? "先把信仰與過敏條件放最前面。網站很多食譜已標清真、猶太潔食、純素或無堅果——安全永遠比「看起來營養」重要。"
+        : "Lead with faith and allergy needs. Plenty of recipes here are already marked halal, kosher, vegan, or nut-free—safety always beats a “superfood” that doesn’t fit you.",
+    );
+  }
+  if (/budget|cheap|afford|cost|expensive|economic|預算|便宜|平價|貴/.test(q)) {
+    tips.push(
+      zh
+        ? "預算緊也有路：扁豆、鷹嘴豆、雞蛋、燕麥、高麗菜、胡蘿蔔、冷凍蔬菜、香蕉、罐裝番茄都很務實。看食譜時可直接對「每份成本」。"
+        : "On a tighter budget, lean on lentils, chickpeas, eggs, oats, cabbage, carrots, frozen vegetables, bananas, and canned tomatoes. Check cost per serving on each recipe card.",
+    );
+  }
+  if (/meal plan|week|month|day plan|what should i eat|餐點|一週|一個月|今天吃|吃什麼/.test(q)) {
+    tips.push(
+      zh
+        ? "你可以先用這個節奏：每餐都有蛋白質和纖維；一週先批次做兩三頓晚餐，多的冷凍。想省事也可直接開「餐點規劃」產生一天或一週的草稿。"
+        : "A simple rhythm helps: protein and fiber at each meal, batch two or three dinners for the week, freeze extras. Or open Meal Plan and generate a day or week draft in one click.",
+    );
+  }
+  if (/exercise|workout|activity|walk|gym|運動|走路|健身/.test(q)) {
+    tips.push(
+      zh
+        ? "活動上，在身體狀況允許時，可先從每天走路開始，再慢慢加一點肌力。關節不適或體重較高可考慮游泳、騎車；年長一點可多練平衡。有病史先問過醫師再加強強度。"
+        : "For movement, start with walking if you’re cleared for it, then add light strength. Swimming or cycling is kinder on joints; older adults often benefit from balance work. Check with a clinician before pushing intensity if you have medical conditions.",
+    );
+  }
+  if (/hong kong|asia|cantonese|濕貨|街市|香港|粵|中式/.test(q)) {
+    tips.push(
+      zh
+        ? "在香港或華人廚房很常有的選擇：豆腐、蛋、菜心／白菜、番茄、黃瓜、魚、糙米或雜糧飯。蒸、煮、少油快炒通常比油炸友善；醬油可選低鈉，再用薑蒜辣椒提味。"
+        : "In a Hong Kong or broader Asian kitchen, tofu, eggs, greens, tomatoes, cucumber, fish, and mixed rice are easy anchors. Steam, boil, or lightly stir-fry more often than deep-fry, and lean on ginger, garlic, and chili instead of heavy sauces.",
+    );
+  }
+
+  return tips;
+}
+
+function localAnswer(query: string, chunks: RetrievedChunk[], locale: Locale): string {
+  const zh = locale === "zh-Hant";
+  const tips = pickAdvice(query, locale);
   const recipeIds = extractRecipeIds(chunks);
   const matchedRecipes = recipeIds
     .map((id) => recipes.find((r) => r.id === id))
     .filter(Boolean)
-    .map((r) => localizeRecipe(r!, locale));
+    .map((r) => localizeRecipe(r!, locale))
+    .slice(0, 2);
 
-  const lines: string[] = [];
+  const knowledgeBits = chunks
+    .filter((c) => !c.doc.id.startsWith("recipe-"))
+    .slice(0, 2)
+    .map((c) => firstSentences(c.doc.content, 2))
+    .filter(Boolean);
 
-  if (/bmi|body mass|overweight|underweight|身體質量|過重|過輕/.test(q)) {
-    lines.push(
+  const parts: string[] = [];
+
+  if (tips.length) {
+    parts.push(tips.join(zh ? "" : " "));
+  } else if (knowledgeBits.length) {
+    parts.push(
       zh
-        ? "BMI＝體重(公斤)÷身高(公尺)²。可用 NourishAI 的 BMI 工具計算。範圍：低於 18.5 過輕、18.5–24.9 一般、25–29.9 過重、30 以上為肥胖分級。BMI 看不出肌肉量——把它當篩檢，不是判決。"
-        : "BMI is weight(kg) ÷ height(m)². Use the BMI tool in NourishAI for a calculated result. Ranges: under 18.5 underweight, 18.5–24.9 typical, 25–29.9 overweight, 30+ obesity classes. BMI misses muscle mass—treat it as a screen, not a verdict.",
+        ? `就你剛提到的，我建議可以這樣想：${knowledgeBits.join("")}`
+        : `Based on what you wrote, here’s a practical take: ${knowledgeBits.join(" ")}`,
     );
-  }
-
-  if (/blood pressure|hypertension|sodium|dash|血壓|高血壓|鈉/.test(q)) {
-    lines.push(
+  } else {
+    parts.push(
       zh
-        ? "血壓管理優先：少鈉、多鉀（豆類、綠葉菜、香蕉），採 DASH 風格餐盤。多用香草與柑橘代替鹽罐。食物可輔助藥物——但不能取代處方。"
-        : "For blood pressure, prioritize lower sodium, higher potassium foods (beans, greens, bananas), and DASH-style plates. Herbs and citrus beat the salt shaker. Food supports medication—it does not replace it.",
+        ? "我明白你的問題。先從「蛋白質 + 蔬菜 + 不太鹹」的方向調整，通常最容易開始；你也可以告訴我預算、過敏或血壓／體重目標，我再幫你收窄。"
+        : "Got it. A simple place to start is protein + vegetables with less salt. Tell me your budget, allergies, or goals like blood pressure or weight, and I’ll narrow it down.",
     );
-  }
-
-  if (/obes|lose weight|weight loss|fat loss|calorie|減肥|體重|熱量/.test(q)) {
-    lines.push(
-      zh
-        ? "體重目標請優先高體積、高纖、每餐有蛋白質的餐點，比較容易吃飽。豆子、蔬菜、燕麥與雞蛋是平價核心。失手後下一餐回到節奏，比追求完美更重要。"
-        : "For weight goals, favor high-volume, high-fiber, protein-anchored meals so you stay full. Beans, vegetables, oats, and eggs are affordable anchors. Consistency beats perfection after slip-ups.",
-    );
-  }
-
-  if (/mental|mood|depress|anxi|stress|brain|情緒|壓力|憂鬱|焦慮/.test(q)) {
-    lines.push(
-      zh
-        ? "規律進食、Omega-3（魚、核桃、亞麻）、穩定碳水有助情緒。飲食是輔助——不能取代心理健康專業照護。"
-        : "Regular meals, omega-3 sources (fish, walnuts, flax), and steady carbs support mood. Diet complements—but does not replace—mental health care.",
-    );
-  }
-
-  if (/vegan|vegetarian|gain weight|muscle|純素|素食|增重|肌肉/.test(q)) {
-    lines.push(
-      zh
-        ? "純素也能增重與補充營養：堅果、種子、油脂、芝麻醬、穀物、大豆、酪梨——不是只吃葉子。全天平均分配蛋白質。"
-        : "Vegans can gain weight and build nourishment with calorie-dense plants: nuts, seeds, oils, tahini, grains, soy, avocados—not leaves alone. Pair protein across the day.",
-    );
-  }
-
-  if (/halal|kosher|muslim|beef|pork|religion|allerg|清真|猶太|穆斯林|過敏|牛肉|豬肉/.test(q)) {
-    lines.push(
-      zh
-        ? "請先依信仰與過敏篩選。許多 NourishAI 食譜已標示清真／猶太潔食／純素／無堅果。安全限制永遠優先於營養密度。"
-        : "Always filter by faith and allergy first. Many NourishAI recipes are already tagged halal/kosher/vegan/nut-free. Never prioritize a nutrient over a safety constraint.",
-    );
-  }
-
-  if (/budget|cheap|afford|cost|expensive|economic|預算|便宜|平價|貴/.test(q)) {
-    lines.push(
-      zh
-        ? "平價高手：扁豆、鷹嘴豆、雞蛋、燕麥、高麗菜、胡蘿蔔、冷凍蔬菜、香蕉、罐裝番茄。到各食譜卡比較每份成本。"
-        : "Budget heroes: lentils, chickpeas, eggs, oats, cabbage, carrots, frozen vegetables, bananas, canned tomatoes. Compare cost per serving on each recipe card.",
-    );
-  }
-
-  if (/meal plan|week|month|day plan|what should i eat|餐點|一週|一個月|今天吃/.test(q)) {
-    lines.push(
-      zh
-        ? "簡單框架：每餐蛋白質＋纖維，一週批次做 3 頓晚餐，多的冷凍。打開「餐點規劃」依你的限制產生一天／一週／一個月大綱。"
-        : "Try a simple frame: protein + fiber each meal, batch 3 dinners weekly, freeze extras. Open Meal Planner to generate a day/week/month outline from your constraints.",
-    );
-  }
-
-  if (/exercise|workout|activity|walk|gym|運動|走路|健身/.test(q)) {
-    lines.push(
-      zh
-        ? "活動提示（非處方）：在醫師許可下，可從走路與溫和肌力開始。BMI 偏高或關節疼痛→游泳／騎車；樂齡→平衡＋阻力訓練。強度需配合病史。"
-        : "Activity tip (not a prescription): start with walking and gentle strength if cleared by your clinician. Higher BMI or joint pain → swimming/cycling; aging → balance + resistance. Match intensity to medical history.",
-    );
-  }
-
-  if (!lines.length) {
-    lines.push(
-      zh
-        ? "根據我們的營養筆記與食譜，針對你的問題整理如下："
-        : "Here’s what our nutrition notes and recipes suggest for your question:",
-    );
-  }
-
-  if (contextBits.length) {
-    lines.push("");
-    lines.push(zh ? "相關指引：" : "Helpful guidance:");
-    for (const c of contextBits) {
-      const snippet = c.doc.content.split(/(?<=\.)\s+/).slice(0, 2).join(" ");
-      lines.push(`• ${c.doc.title}: ${snippet}`);
-    }
   }
 
   if (matchedRecipes.length) {
-    lines.push("");
-    lines.push(zh ? "符合主題的食譜：" : "Recipes that fit this topic:");
-    for (const r of matchedRecipes.slice(0, 3)) {
-      lines.push(
-        `• ${r.title} — $${r.costPerServing.toFixed(2)}${zh ? "/份" : "/serving"}, ${r.nutrients.calories} ${zh ? "大卡" : "kcal"}, ${zh ? "標籤" : "tags"}: ${r.tags.slice(0, 4).join(", ")}`,
-      );
+    if (zh) {
+      const names = matchedRecipes
+        .map(
+          (r) =>
+            `「${r.title}」（大約 $${r.costPerServing.toFixed(2)}/份）`,
+        )
+        .join("、");
+      parts.push(`若要立刻有得煮，可以看看${names}，點開就能看步驟與營養。`);
+    } else {
+      const names = matchedRecipes
+        .map((r) => `${r.title} (about $${r.costPerServing.toFixed(2)}/serving)`)
+        .join(" or ");
+      parts.push(`If you want something concrete to cook, try ${names}—tap through for steps and nutrition.`);
     }
   }
 
-  lines.push("");
-  lines.push(
+  parts.push(
     zh
-      ? "聲明：NourishAI 提供教育性建議，可能不準確，且非醫療建議。過敏、文化與處方優先。"
-      : "Disclaimer: NourishAI offers educational suggestions based on curated nutrition notes and recipes. It can be inaccurate and is not medical advice. Allergies, culture, and prescriptions come first.",
+      ? "以上只是一般飲食建議，不能取代醫生或營養師的判斷。"
+      : "This is general food guidance, not a medical diagnosis or a substitute for your clinician.",
   );
 
-  return lines.join("\n");
+  return parts.join(zh ? "" : " ");
 }
 
 async function llmAnswer(
@@ -162,14 +189,21 @@ async function llmAnswer(
       },
       body: JSON.stringify({
         model: process.env.OPENAI_MODEL || "gpt-4o-mini",
-        temperature: 0.4,
+        temperature: 0.5,
         messages: [
           {
             role: "system",
-            content: `You are NourishAI, a careful nutrition and healthy-recipe assistant. Answer using ONLY the retrieved context when possible. Respect allergies, religion/culture, budget, and medical caveats. Never tell users to stop prescribed medication. Keep answers practical and concise. Cite source titles inline like (Source: title). End with a one-line disclaimer.
-Respond in ${locale === "zh-Hant" ? "Traditional Chinese (繁體中文)" : "natural US English, like a mainstream American health website"}.
+            content: `You are NourishAI, a warm, practical nutrition guide for everyday people.
+Answer in natural spoken language like a helpful human coach—not a textbook, not a search report.
+Never say RAG, retrieval, knowledge base, sources, citations, or “related guidance.”
+Do not use section headers like "Helpful guidance" / "相關指引" / bullet dumps of document titles.
+Use the internal notes below only to inform your answer; weave them into plain speech.
+Respect allergies, culture/religion, budget, and medical caveats. Never tell users to stop prescribed medication.
+Keep it concise (about 2–5 short paragraphs or short paragraphs in Chinese).
+End with one gentle line that this is educational, not medical advice.
+Respond in ${locale === "zh-Hant" ? "natural Traditional Chinese (繁體中文口語，但清楚專業)" : "natural US English, like a friendly American health coach"}.
 
-RETRIEVED CONTEXT:
+INTERNAL NOTES (do not mention these labels to the user):
 ${context}`,
           },
           ...history.slice(-6),
