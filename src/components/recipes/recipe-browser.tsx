@@ -6,8 +6,12 @@ import { CONSUMER_GROUPS, filterRecipes } from "@/lib/data/recipes";
 import { RecipeCard } from "./recipe-card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useI18n } from "@/lib/i18n/provider";
+import { localizeRecipe } from "@/lib/i18n/recipe-locale";
+import { FadeIn } from "@/components/motion/apple-press";
 
 export function RecipeBrowser() {
+  const { t, locale } = useI18n();
   const searchParams = useSearchParams();
   const initialGroup = searchParams.get("group") || "all";
   const [group, setGroup] = useState(initialGroup);
@@ -22,60 +26,58 @@ export function RecipeBrowser() {
         q,
         maxCost,
         tag,
-      }),
-    [group, q, maxCost, tag],
+      }).map((r) => localizeRecipe(r, locale)),
+    [group, q, maxCost, tag, locale],
   );
 
   return (
-    <div className="space-y-8">
-      <div className="grid gap-4 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-sm md:grid-cols-4">
+    <FadeIn className="space-y-8">
+      <div className="grid gap-4 rounded-3xl border border-[var(--border)] bg-[var(--card)]/90 p-5 shadow-sm backdrop-blur-sm md:grid-cols-4">
         <div className="space-y-2 md:col-span-2">
-          <Label htmlFor="search">Search</Label>
+          <Label htmlFor="search">{t.recipes.search}</Label>
           <Input
             id="search"
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="Ingredient, cuisine, goal…"
+            placeholder={t.recipes.searchPlaceholder}
           />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="group">Consumer group</Label>
+          <Label htmlFor="group">{t.recipes.consumerGroup}</Label>
           <select
             id="group"
-            className="flex h-11 w-full rounded-xl border border-[var(--border)] bg-white px-3 text-sm"
+            className="flex h-11 w-full rounded-xl border border-[var(--border)] bg-white px-3 text-sm transition focus:outline-none focus:ring-2 focus:ring-[var(--ring)]"
             value={group}
             onChange={(e) => setGroup(e.target.value)}
           >
-            <option value="all">All groups</option>
+            <option value="all">{t.recipes.allGroups}</option>
             {CONSUMER_GROUPS.map((g) => (
               <option key={g.id} value={g.id}>
-                {g.label}
+                {t.groups[g.id].label}
               </option>
             ))}
           </select>
         </div>
         <div className="space-y-2">
-          <Label htmlFor="tag">Diet tag</Label>
+          <Label htmlFor="tag">{t.recipes.dietTag}</Label>
           <select
             id="tag"
-            className="flex h-11 w-full rounded-xl border border-[var(--border)] bg-white px-3 text-sm"
+            className="flex h-11 w-full rounded-xl border border-[var(--border)] bg-white px-3 text-sm transition focus:outline-none focus:ring-2 focus:ring-[var(--ring)]"
             value={tag}
             onChange={(e) => setTag(e.target.value)}
           >
-            <option value="all">Any</option>
-            <option value="halal">Halal</option>
-            <option value="kosher">Kosher</option>
-            <option value="vegan">Vegan</option>
-            <option value="vegetarian">Vegetarian</option>
-            <option value="budget">Budget</option>
-            <option value="quick">Quick</option>
-            <option value="gluten-free">Gluten-free</option>
-            <option value="high-protein">High protein</option>
-            <option value="low-sodium">Low sodium</option>
+            <option value="all">{t.recipes.any}</option>
+            {Object.entries(t.tags).map(([key, label]) => (
+              <option key={key} value={key}>
+                {label}
+              </option>
+            ))}
           </select>
         </div>
         <div className="space-y-2 md:col-span-4">
-          <Label htmlFor="cost">Max cost per serving: ${maxCost.toFixed(2)}</Label>
+          <Label htmlFor="cost">
+            {t.recipes.maxCost}: ${maxCost.toFixed(2)}
+          </Label>
           <input
             id="cost"
             type="range"
@@ -92,11 +94,9 @@ export function RecipeBrowser() {
       {list.length === 0 ? (
         <div className="rounded-3xl border border-dashed border-[var(--border)] bg-white/60 px-6 py-16 text-center">
           <p className="font-[family-name:var(--font-display)] text-2xl text-[var(--forest)]">
-            No recipes match
+            {t.recipes.emptyTitle}
           </p>
-          <p className="mt-2 text-sm text-[var(--muted-foreground)]">
-            Loosen the budget filter or clear search — or ask the chatbot for swaps.
-          </p>
+          <p className="mt-2 text-sm text-[var(--muted-foreground)]">{t.recipes.emptySub}</p>
         </div>
       ) : (
         <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
@@ -105,6 +105,6 @@ export function RecipeBrowser() {
           ))}
         </div>
       )}
-    </div>
+    </FadeIn>
   );
 }

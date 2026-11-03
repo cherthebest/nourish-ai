@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { answerWithRag, type ChatMessage } from "@/lib/rag/generate";
+import type { Locale } from "@/lib/i18n/types";
 
 export const runtime = "nodejs";
 
@@ -8,6 +9,7 @@ export async function POST(req: Request) {
     const body = (await req.json()) as {
       message?: string;
       history?: ChatMessage[];
+      locale?: Locale;
     };
     const message = (body.message || "").trim();
     if (!message) {
@@ -17,7 +19,8 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Message too long" }, { status: 400 });
     }
 
-    const result = await answerWithRag(message, body.history || []);
+    const locale: Locale = body.locale === "zh-Hant" ? "zh-Hant" : "en";
+    const result = await answerWithRag(message, body.history || [], locale);
     return NextResponse.json(result);
   } catch (e) {
     console.error(e);

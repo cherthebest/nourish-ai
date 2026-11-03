@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Fraunces, Manrope } from "next/font/google";
+import { Fraunces, Manrope, Noto_Sans_TC } from "next/font/google";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { I18nProvider } from "@/lib/i18n/provider";
 import "./globals.css";
 
 const display = Fraunces({
@@ -16,10 +17,16 @@ const sans = Manrope({
   weight: ["400", "500", "600", "700"],
 });
 
+const zh = Noto_Sans_TC({
+  variable: "--font-zh",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
 export const metadata: Metadata = {
-  title: "NourishAI — Healthy recipes & nutrition chatbot",
+  title: "NourishAI — Healthy recipes & nutrition chat",
   description:
-    "RAG-powered conversational nutrition assistant with recipes for weight, blood pressure, aging, mental health, meal planning, and BMI tools.",
+    "Practical nutrition guidance with healthy recipes, meal planning, food analysis, and BMI tools—built for real life.",
 };
 
 export default function RootLayout({
@@ -28,11 +35,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${display.variable} ${sans.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      className={`${display.variable} ${sans.variable} ${zh.variable} h-full antialiased`}
+    >
       <body className="flex min-h-full flex-col font-sans">
-        <SiteHeader />
-        <main className="flex-1">{children}</main>
-        <SiteFooter />
+        <I18nProvider>
+          <SiteHeader />
+          <main className="flex-1">{children}</main>
+          <SiteFooter />
+        </I18nProvider>
       </body>
     </html>
   );

@@ -16,6 +16,7 @@
   --border: #c5d9cf;
   --ring: #2f8f6b;
   --mist: #eef6f1;
+  --ease-apple: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @theme inline {
@@ -27,6 +28,7 @@
 
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
@@ -39,12 +41,25 @@ body {
     radial-gradient(900px 500px at 100% 0%, rgba(212, 163, 74, 0.12), transparent 50%),
     linear-gradient(180deg, #dceee5 0%, var(--background) 35%, #f3faf6 100%);
   color: var(--foreground);
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-sans), var(--font-zh), system-ui, sans-serif;
   min-height: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+html[lang="zh-Hant"] body {
+  font-family: var(--font-zh), var(--font-sans), system-ui, sans-serif;
 }
 
 ::selection {
   background: rgba(31, 111, 84, 0.2);
+}
+
+a,
+button,
+input,
+textarea,
+select {
+  transition-timing-function: var(--ease-apple);
 }
 
 @keyframes rise {
@@ -78,11 +93,11 @@ body {
 }
 
 .animate-rise {
-  animation: rise 0.8s ease-out both;
+  animation: rise 0.8s var(--ease-apple) both;
 }
 
 .animate-rise-delay {
-  animation: rise 0.9s ease-out 0.15s both;
+  animation: rise 0.9s var(--ease-apple) 0.15s both;
 }
 
 .animate-drift {
@@ -98,4 +113,16 @@ body {
   );
   background-size: 200% 200%;
   animation: shimmer 10s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-rise,
+  .animate-rise-delay,
+  .animate-drift,
+  .hero-sheen {
+    animation: none !important;
+  }
 }
