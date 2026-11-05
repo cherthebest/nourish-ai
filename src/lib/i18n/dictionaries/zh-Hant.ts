@@ -135,7 +135,7 @@ export const zhHant = {
     title: "食物與營養分析",
     sub:
       "查看熱量、巨量營養素、鈉、份量比例、負擔能力與更健康替代——包括外食習慣擠壓復原時，不必依賴冒險捷徑。",
-    placeholder: "例如：扁豆碗、汽水、鮭魚、披薩",
+    placeholder: "例如：叉燒飯、雲吞麵、炸雞、珍珠奶茶、火鍋",
     analyze: "分析",
     whyHelp: "為什麼可能有幫助",
     watchouts: "注意事項",

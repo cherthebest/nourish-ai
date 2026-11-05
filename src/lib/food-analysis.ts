@@ -19,6 +19,7 @@ const ALLERGEN_ZH: Record<string, string> = {
 
 export interface FoodAnalysis {
   query: string;
+  displayName: string;
   matched: Recipe | null;
   verdict: "strong choice" | "situational" | "limit often" | "unknown";
   summary: string;
@@ -36,6 +37,7 @@ export function analyzeFood(raw: string, locale: Locale = "en"): FoodAnalysis {
   if (!query) {
     return {
       query,
+      displayName: "",
       matched: null,
       verdict: "unknown",
       summary: zh ? "請輸入食物或食譜名稱。" : "Enter a food or recipe name to analyze.",
@@ -65,6 +67,7 @@ export function analyzeFood(raw: string, locale: Locale = "en"): FoodAnalysis {
 
     return {
       query,
+      displayName: zh ? food.nameZh : food.nameEn,
       matched: null,
       verdict: food.verdict,
       summary: zh ? food.summaryZh : food.summaryEn,
@@ -131,6 +134,7 @@ export function analyzeFood(raw: string, locale: Locale = "en"): FoodAnalysis {
 
     return {
       query,
+      displayName: loc.title,
       matched: loc,
       verdict:
         n.fiber >= 8 || (n.protein >= 15 && n.sodium < 400)
@@ -156,11 +160,12 @@ export function analyzeFood(raw: string, locale: Locale = "en"): FoodAnalysis {
 
   return {
     query,
+    displayName: query,
     matched: null,
     verdict: "unknown",
     summary: zh
-      ? `目前資料庫還沒有「${query}」的專屬條目。你可以換更常見名稱（例如：蘋果、雞蛋、白飯、炸雞、珍珠奶茶），或直接問對話助手。`
-      : `We don’t have a direct entry for “${query}” yet. Try a common name (apple, egg, rice, fried chicken, bubble tea) or ask the chat.`,
+      ? `目前資料庫還沒有「${query}」的專屬條目。你可以換更常見名稱（例如：叉燒飯、雲吞麵、白飯、炸雞、珍珠奶茶），或直接問對話助手。`
+      : `We don’t have a direct entry for “${query}” yet. Try a common name (char siu rice, wonton noodles, rice, fried chicken, bubble tea) or ask the chat.`,
     nutrients: null,
     pros: [
       zh ? "試著用更簡單的食物名稱再查一次。" : "Try a simpler food name.",

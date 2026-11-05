@@ -1,3 +1,5 @@
+import { CATALOG_FOODS } from "./catalog-foods";
+
 export type FoodVerdict = "strong choice" | "situational" | "limit often";
 
 export interface FoodItem {
@@ -26,7 +28,8 @@ export interface FoodItem {
   suggestRecipeIds?: string[];
 }
 
-export const FOODS: FoodItem[] = [
+/** Extra staples kept alongside the HK/everyday catalog. */
+const EXTRA_FOODS: FoodItem[] = [
   {
     id: "apple",
     aliases: ["apple", "蘋果", "苹果"],
@@ -682,12 +685,60 @@ export const FOODS: FoodItem[] = [
   },
 ];
 
+function mergeFoods(primary: FoodItem[], extra: FoodItem[]): FoodItem[] {
+  const byId = new Map<string, FoodItem>();
+  for (const f of primary) byId.set(f.id, f);
+  for (const f of extra) {
+    if (byId.has(f.id)) continue;
+    // skip if Chinese/English name already covered by catalog
+    const hit = [...byId.values()].some(
+      (p) =>
+        p.nameZh === f.nameZh ||
+        p.nameEn.toLowerCase() === f.nameEn.toLowerCase() ||
+        p.aliases.some((a) => f.aliases.map((x) => x.toLowerCase()).includes(a.toLowerCase())),
+    );
+    if (!hit) byId.set(f.id, f);
+  }
+  return [...byId.values()];
+}
+
+export const FOODS: FoodItem[] = mergeFoods(CATALOG_FOODS as FoodItem[], EXTRA_FOODS);
+
+function normalizeQuery(raw: string) {
+  return raw
+    .trim()
+    .toLowerCase()
+    .replace(/[，。！？、\s]+/g, "")
+    .replace(/台/g, "臺");
+}
+
 export function findFood(query: string): FoodItem | null {
-  const q = query.trim().toLowerCase();
-  if (!q) return null;
-  return (
-    FOODS.find((f) => f.aliases.some((a) => a.toLowerCase() === q)) ||
-    FOODS.find((f) => f.aliases.some((a) => q.includes(a.toLowerCase()) || a.toLowerCase().includes(q))) ||
-    null
-  );
+  const raw = query.trim();
+  if (!raw) return null;
+  const q = raw.toLowerCase();
+  const qn = normalizeQuery(raw);
+
+  // 1) exact alias / name match
+  const exact =
+    FOODS.find((f) => f.aliases.some((a) => a.toLowerCase() === q || normalizeQuery(a) === qn)) ||
+    FOODS.find((f) => f.nameZh === raw || f.nameEn.toLowerCase() === q);
+  if (exact) return exact;
+
+  // 2) alias contained in query or query contained in alias (prefer longer alias)
+  let best: FoodItem | null = null;
+  let bestLen = 0;
+  for (const f of FOODS) {
+    for (const a of f.aliases) {
+      const al = a.toLowerCase();
+      const an = normalizeQuery(a);
+      if (!al) continue;
+      if (q.includes(al) || al.includes(q) || (an && (qn.includes(an) || an.includes(qn)))) {
+        if (a.length > bestLen) {
+          best = f;
+          bestLen = a.length;
+        }
+      }
+    }
+  }
+  return best;
 }

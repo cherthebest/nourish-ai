@@ -1,0 +1,6860 @@
+{
+  "_meta": {
+    "name": "NourishAI food & recipe dataset",
+    "version": "1.0",
+    "created": "2026-11-05",
+    "counts": {
+      "recipes": 43,
+      "foods": 99
+    },
+    "units": "Nutrition per serving (food check: per typical Hong Kong serving stated in servingSize). Recipe costs in USD per item, matching the site's base currency; food prices are typical Hong Kong prices in HKD.",
+    "accuracy": "All nutrition values and prices are approximate estimates for demo and education. Before presenting numbers as facts, spot-check key items against the Centre for Food Safety Nutrient Information Inquiry System or USDA FoodData Central and cite the source.",
+    "verdicts": {
+      "strong": "Good choice for most people",
+      "situational": "Fine sometimes or with tweaks",
+      "limit": "Best limited / occasional"
+    },
+    "links": "foods[].healthierAlternativeRecipeIds point to recipes[].id"
+  },
+  "recipes": [
+    {
+      "id": "steamed-fish-ginger",
+      "slug": "steamed-fish-ginger",
+      "title": "Steamed fish with ginger & spring onion",
+      "titleZh": "薑蔥清蒸魚",
+      "description": "Cantonese classic: lean protein, almost no added fat.",
+      "goals": [
+        "Weight management",
+        "Healthy aging",
+        "Heart health",
+        "Everyday healthy"
+      ],
+      "dietTags": [
+        "high-protein",
+        "gluten-free option",
+        "dairy-free",
+        "halal",
+        "kosher",
+        "pork-free"
+      ],
+      "servings": 2,
+      "timeMinutes": 25,
+      "costPerServingUSD": 3.17,
+      "totalCostUSD": 6.35,
+      "nutritionPerServing": {
+        "calories": 260,
+        "proteinG": 38,
+        "carbsG": 4,
+        "fatG": 9,
+        "fiberG": 1,
+        "sodiumMg": 520,
+        "sugarG": 2
+      },
+      "allergens": [
+        "fish",
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "item": "500g whole fish or 2 fillets (grouper, sea bass, tilapia)",
+          "costUSD": 5.5
+        },
+        {
+          "item": "30g ginger, julienned",
+          "costUSD": 0.2
+        },
+        {
+          "item": "3 spring onions",
+          "costUSD": 0.3
+        },
+        {
+          "item": "1 tbsp light soy sauce (or tamari for gluten-free)",
+          "costUSD": 0.1
+        },
+        {
+          "item": "1 tsp vegetable oil",
+          "costUSD": 0.05
+        },
+        {
+          "item": "Coriander to finish",
+          "costUSD": 0.2
+        }
+      ],
+      "steps": [
+        "Score the fish and lay ginger on and under it.",
+        "Steam over boiling water 8–10 min (fillets 6–7 min) until flesh flakes.",
+        "Pour off steaming liquid, top with spring onion and coriander.",
+        "Drizzle soy sauce; pour 1 tsp hot oil over the spring onion."
+      ],
+      "whyHealthier": "Steaming keeps fat low and protein high compared with fried fish set meals.",
+      "swaps": [
+        "Use tofu for vegetarian",
+        "Use tamari for gluten-free",
+        "Halal/kosher: fish with fins and scales is generally permitted"
+      ],
+      "availability": "Fresh fish at wet markets; frozen fillets work"
+    },
+    {
+      "id": "tomato-egg-stirfry",
+      "slug": "tomato-egg-stirfry",
+      "title": "Tomato & egg stir-fry",
+      "titleZh": "番茄炒蛋",
+      "description": "Five-ingredient home staple, ready in 15 minutes.",
+      "goals": [
+        "Everyday healthy",
+        "Budget",
+        "Muscle gain"
+      ],
+      "dietTags": [
+        "vegetarian",
+        "gluten-free",
+        "dairy-free",
+        "halal",
+        "kosher",
+        "nut-free"
+      ],
+      "servings": 2,
+      "timeMinutes": 15,
+      "costPerServingUSD": 0.98,
+      "totalCostUSD": 1.97,
+      "nutritionPerServing": {
+        "calories": 230,
+        "proteinG": 14,
+        "carbsG": 10,
+        "fatG": 15,
+        "fiberG": 2,
+        "sodiumMg": 380,
+        "sugarG": 7
+      },
+      "allergens": [
+        "egg"
+      ],
+      "ingredients": [
+        {
+          "item": "4 eggs",
+          "costUSD": 1.0
+        },
+        {
+          "item": "3 ripe tomatoes",
+          "costUSD": 0.8
+        },
+        {
+          "item": "1 spring onion",
+          "costUSD": 0.1
+        },
+        {
+          "item": "2 tsp vegetable oil",
+          "costUSD": 0.05
+        },
+        {
+          "item": "1/2 tsp sugar, pinch of salt",
+          "costUSD": 0.02
+        }
+      ],
+      "steps": [
+        "Beat eggs with a pinch of salt; scramble softly in half the oil and set aside.",
+        "Stir-fry tomato wedges in remaining oil until juicy, add sugar.",
+        "Return eggs, toss 30 seconds, top with spring onion."
+      ],
+      "whyHealthier": "Cheap complete protein plus vegetables; serve with brown rice for a balanced plate.",
+      "swaps": [
+        "Add tofu cubes for more protein",
+        "Skip sugar for blood sugar goals"
+      ],
+      "availability": "Ingredients available everywhere"
+    },
+    {
+      "id": "steamed-egg-custard",
+      "slug": "steamed-egg-custard",
+      "title": "Silky steamed egg",
+      "titleZh": "蒸水蛋",
+      "description": "Soft, gentle protein, good for elderly family members.",
+      "goals": [
+        "Healthy aging",
+        "Everyday healthy",
+        "Budget"
+      ],
+      "dietTags": [
+        "vegetarian",
+        "gluten-free option",
+        "dairy-free",
+        "halal",
+        "kosher",
+        "nut-free"
+      ],
+      "servings": 2,
+      "timeMinutes": 20,
+      "costPerServingUSD": 0.47,
+      "totalCostUSD": 0.95,
+      "nutritionPerServing": {
+        "calories": 150,
+        "proteinG": 12,
+        "carbsG": 2,
+        "fatG": 10,
+        "fiberG": 0,
+        "sodiumMg": 310,
+        "sugarG": 1
+      },
+      "allergens": [
+        "egg",
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "item": "3 eggs",
+          "costUSD": 0.75
+        },
+        {
+          "item": "270ml warm water or low-salt stock",
+          "costUSD": 0.05
+        },
+        {
+          "item": "1 tsp light soy sauce",
+          "costUSD": 0.05
+        },
+        {
+          "item": "1 spring onion",
+          "costUSD": 0.1
+        }
+      ],
+      "steps": [
+        "Beat eggs with 1.5x their volume of warm water; strain.",
+        "Cover the bowl with a plate and steam on low heat 10–12 min.",
+        "Finish with soy sauce and spring onion."
+      ],
+      "whyHealthier": "Very soft texture, easy to chew and digest; low cost per gram of protein.",
+      "swaps": [
+        "Add minced chicken or shrimp",
+        "Tamari for gluten-free"
+      ],
+      "availability": "Available everywhere"
+    },
+    {
+      "id": "chicken-brown-rice-bowl",
+      "slug": "chicken-brown-rice-bowl",
+      "title": "Ginger chicken brown rice bowl",
+      "titleZh": "薑汁雞胸糙米飯",
+      "description": "Meal-prep friendly: make 4 boxes on Sunday.",
+      "goals": [
+        "Weight management",
+        "Muscle gain",
+        "Blood sugar",
+        "Everyday healthy"
+      ],
+      "dietTags": [
+        "high-protein",
+        "dairy-free",
+        "halal",
+        "kosher",
+        "pork-free"
+      ],
+      "servings": 4,
+      "timeMinutes": 35,
+      "costPerServingUSD": 1.96,
+      "totalCostUSD": 7.85,
+      "nutritionPerServing": {
+        "calories": 520,
+        "proteinG": 40,
+        "carbsG": 58,
+        "fatG": 13,
+        "fiberG": 6,
+        "sodiumMg": 480,
+        "sugarG": 4
+      },
+      "allergens": [
+        "soy",
+        "sesame"
+      ],
+      "ingredients": [
+        {
+          "item": "600g chicken breast",
+          "costUSD": 5.0
+        },
+        {
+          "item": "300g brown rice (dry)",
+          "costUSD": 0.9
+        },
+        {
+          "item": "1 head broccoli",
+          "costUSD": 1.2
+        },
+        {
+          "item": "2 carrots",
+          "costUSD": 0.4
+        },
+        {
+          "item": "2 tbsp light soy sauce",
+          "costUSD": 0.15
+        },
+        {
+          "item": "1 tbsp grated ginger",
+          "costUSD": 0.1
+        },
+        {
+          "item": "1 tsp sesame oil",
+          "costUSD": 0.1
+        }
+      ],
+      "steps": [
+        "Cook brown rice.",
+        "Marinate sliced chicken in soy, ginger and sesame oil 10 min.",
+        "Pan-sear chicken 6–8 min; steam broccoli and carrot 4 min.",
+        "Divide into 4 boxes."
+      ],
+      "whyHealthier": "Swaps white rice for brown rice for more fibre and slower blood-sugar rise.",
+      "swaps": [
+        "Tofu for vegetarian",
+        "Quinoa instead of brown rice"
+      ],
+      "availability": "Halal chicken widely sold in HK supermarkets"
+    },
+    {
+      "id": "mapo-tofu-light",
+      "slug": "mapo-tofu-light",
+      "title": "Lighter mapo tofu",
+      "titleZh": "輕盈麻婆豆腐",
+      "description": "Same Sichuan flavour with less oil and lean mince.",
+      "goals": [
+        "Everyday healthy",
+        "Budget",
+        "Heart health"
+      ],
+      "dietTags": [
+        "high-protein",
+        "dairy-free"
+      ],
+      "servings": 3,
+      "timeMinutes": 25,
+      "costPerServingUSD": 0.96,
+      "totalCostUSD": 2.87,
+      "nutritionPerServing": {
+        "calories": 280,
+        "proteinG": 20,
+        "carbsG": 10,
+        "fatG": 17,
+        "fiberG": 2,
+        "sodiumMg": 780,
+        "sugarG": 3
+      },
+      "allergens": [
+        "soy",
+        "wheat"
+      ],
+      "ingredients": [
+        {
+          "item": "1 block (400g) firm tofu",
+          "costUSD": 0.9
+        },
+        {
+          "item": "150g lean minced pork or chicken",
+          "costUSD": 1.5
+        },
+        {
+          "item": "1 tbsp doubanjiang (chilli bean paste)",
+          "costUSD": 0.2
+        },
+        {
+          "item": "1 tsp Sichuan pepper",
+          "costUSD": 0.1
+        },
+        {
+          "item": "2 garlic cloves",
+          "costUSD": 0.05
+        },
+        {
+          "item": "1 tsp cornstarch",
+          "costUSD": 0.02
+        },
+        {
+          "item": "1 spring onion",
+          "costUSD": 0.1
+        }
+      ],
+      "steps": [
+        "Cube tofu and blanch 2 min in salted water.",
+        "Brown mince in 1 tsp oil, add garlic and doubanjiang.",
+        "Add 150ml water and tofu; simmer 5 min, thicken with cornstarch.",
+        "Top with Sichuan pepper and spring onion."
+      ],
+      "whyHealthier": "Uses 1 tsp oil instead of the restaurant's chilli-oil pool; tofu adds plant protein.",
+      "swaps": [
+        "Use chicken mince for pork-free/halal",
+        "Mushrooms for vegetarian"
+      ],
+      "availability": "Doubanjiang in most Chinese grocers"
+    },
+    {
+      "id": "lean-pork-congee",
+      "slug": "lean-pork-congee",
+      "title": "Lean pork & veg congee",
+      "titleZh": "瘦肉菜粥",
+      "description": "Warm, low-fat breakfast; cut the salt vs. shop congee.",
+      "goals": [
+        "Healthy aging",
+        "Everyday healthy",
+        "Budget"
+      ],
+      "dietTags": [
+        "dairy-free",
+        "gluten-free",
+        "nut-free"
+      ],
+      "servings": 4,
+      "timeMinutes": 75,
+      "costPerServingUSD": 0.74,
+      "totalCostUSD": 2.97,
+      "nutritionPerServing": {
+        "calories": 250,
+        "proteinG": 16,
+        "carbsG": 36,
+        "fatG": 4,
+        "fiberG": 2,
+        "sodiumMg": 450,
+        "sugarG": 1
+      },
+      "allergens": [],
+      "ingredients": [
+        {
+          "item": "150g jasmine rice",
+          "costUSD": 0.3
+        },
+        {
+          "item": "200g lean pork",
+          "costUSD": 1.8
+        },
+        {
+          "item": "1 bunch lettuce or spinach",
+          "costUSD": 0.8
+        },
+        {
+          "item": "3 slices ginger",
+          "costUSD": 0.05
+        },
+        {
+          "item": "Salt and white pepper",
+          "costUSD": 0.02
+        }
+      ],
+      "steps": [
+        "Rinse rice; simmer in 2L water 60 min, stirring occasionally.",
+        "Add thinly sliced pork and ginger, cook 5 min.",
+        "Stir in chopped greens 1 min; season lightly."
+      ],
+      "whyHealthier": "Homemade congee uses about a third of the sodium of typical shop congee.",
+      "swaps": [
+        "Chicken or fish for halal",
+        "Add oats for extra fibre"
+      ],
+      "availability": "Available everywhere"
+    },
+    {
+      "id": "overnight-oats",
+      "slug": "overnight-oats",
+      "title": "Overnight oats with fruit",
+      "titleZh": "隔夜燕麥",
+      "description": "No-cook breakfast, 5 minutes the night before.",
+      "goals": [
+        "Blood sugar",
+        "Heart health",
+        "Weight management",
+        "Budget"
+      ],
+      "dietTags": [
+        "vegetarian",
+        "halal",
+        "kosher"
+      ],
+      "servings": 1,
+      "timeMinutes": 5,
+      "costPerServingUSD": 0.91,
+      "totalCostUSD": 0.91,
+      "nutritionPerServing": {
+        "calories": 340,
+        "proteinG": 13,
+        "carbsG": 55,
+        "fatG": 8,
+        "fiberG": 8,
+        "sodiumMg": 90,
+        "sugarG": 14
+      },
+      "allergens": [
+        "milk",
+        "oats may contain gluten"
+      ],
+      "ingredients": [
+        {
+          "item": "50g rolled oats",
+          "costUSD": 0.2
+        },
+        {
+          "item": "150ml low-fat milk or soy milk",
+          "costUSD": 0.25
+        },
+        {
+          "item": "80g plain yogurt",
+          "costUSD": 0.25
+        },
+        {
+          "item": "1/2 banana or handful of berries",
+          "costUSD": 0.2
+        },
+        {
+          "item": "Cinnamon",
+          "costUSD": 0.01
+        }
+      ],
+      "steps": [
+        "Mix oats, milk and yogurt in a jar.",
+        "Refrigerate overnight.",
+        "Top with fruit and cinnamon in the morning."
+      ],
+      "whyHealthier": "Oat beta-glucan supports cholesterol and steady blood sugar; replaces pastry breakfasts.",
+      "swaps": [
+        "Soy milk + soy yogurt for vegan",
+        "Certified gluten-free oats if coeliac"
+      ],
+      "availability": "Oats in all supermarkets"
+    },
+    {
+      "id": "yogurt-parfait",
+      "slug": "yogurt-parfait",
+      "title": "Greek yogurt parfait",
+      "titleZh": "希臘乳酪杯",
+      "description": "High-protein snack or breakfast.",
+      "goals": [
+        "Muscle gain",
+        "Weight management",
+        "Everyday healthy"
+      ],
+      "dietTags": [
+        "vegetarian",
+        "gluten-free",
+        "halal",
+        "kosher"
+      ],
+      "servings": 1,
+      "timeMinutes": 5,
+      "costPerServingUSD": 1.45,
+      "totalCostUSD": 1.45,
+      "nutritionPerServing": {
+        "calories": 280,
+        "proteinG": 20,
+        "carbsG": 32,
+        "fatG": 8,
+        "fiberG": 4,
+        "sodiumMg": 80,
+        "sugarG": 20
+      },
+      "allergens": [
+        "milk",
+        "tree nuts"
+      ],
+      "ingredients": [
+        {
+          "item": "170g plain Greek yogurt",
+          "costUSD": 0.9
+        },
+        {
+          "item": "80g mixed berries or diced mango",
+          "costUSD": 0.4
+        },
+        {
+          "item": "1 tbsp chopped almonds",
+          "costUSD": 0.1
+        },
+        {
+          "item": "1 tsp honey (optional)",
+          "costUSD": 0.05
+        }
+      ],
+      "steps": [
+        "Layer yogurt, fruit and nuts in a cup.",
+        "Drizzle honey if using."
+      ],
+      "whyHealthier": "Twice the protein of regular yogurt; fruit gives sweetness instead of added sugar.",
+      "swaps": [
+        "Seeds instead of nuts for nut allergy",
+        "Coconut yogurt for dairy-free"
+      ],
+      "availability": "Available everywhere"
+    },
+    {
+      "id": "baked-salmon-veg",
+      "slug": "baked-salmon-veg",
+      "title": "Baked salmon with greens",
+      "titleZh": "焗三文魚配時蔬",
+      "description": "Omega-3 rich dinner in 20 minutes.",
+      "goals": [
+        "Heart health",
+        "Healthy aging",
+        "Muscle gain"
+      ],
+      "dietTags": [
+        "high-protein",
+        "gluten-free",
+        "dairy-free",
+        "halal",
+        "kosher",
+        "pork-free"
+      ],
+      "servings": 2,
+      "timeMinutes": 20,
+      "costPerServingUSD": 5.2,
+      "totalCostUSD": 10.4,
+      "nutritionPerServing": {
+        "calories": 450,
+        "proteinG": 34,
+        "carbsG": 18,
+        "fatG": 26,
+        "fiberG": 5,
+        "sodiumMg": 240,
+        "sugarG": 5
+      },
+      "allergens": [
+        "fish"
+      ],
+      "ingredients": [
+        {
+          "item": "2 salmon fillets (300g)",
+          "costUSD": 7.5
+        },
+        {
+          "item": "1 bunch asparagus or broccolini",
+          "costUSD": 1.8
+        },
+        {
+          "item": "200g baby potatoes",
+          "costUSD": 0.6
+        },
+        {
+          "item": "1 lemon",
+          "costUSD": 0.4
+        },
+        {
+          "item": "1 tsp olive oil, garlic, pepper",
+          "costUSD": 0.1
+        }
+      ],
+      "steps": [
+        "Heat oven to 200°C. Halve potatoes and roast 10 min.",
+        "Add salmon and greens to the tray, brush with oil, garlic and pepper.",
+        "Bake 10–12 min; finish with lemon."
+      ],
+      "whyHealthier": "Salmon gives omega-3 fats linked to heart health; baking avoids frying oil.",
+      "swaps": [
+        "Mackerel or sardines for lower cost",
+        "Chicken for fish allergy"
+      ],
+      "availability": "Frozen salmon fillets are cheaper"
+    },
+    {
+      "id": "garlic-choy-sum",
+      "slug": "garlic-choy-sum",
+      "title": "Garlic choy sum",
+      "titleZh": "蒜蓉炒菜心",
+      "description": "The 1-minute vegetable side for every meal.",
+      "goals": [
+        "Everyday healthy",
+        "Weight management",
+        "Heart health",
+        "Budget"
+      ],
+      "dietTags": [
+        "vegan",
+        "gluten-free",
+        "halal",
+        "kosher",
+        "nut-free",
+        "low-sodium"
+      ],
+      "servings": 2,
+      "timeMinutes": 10,
+      "costPerServingUSD": 0.56,
+      "totalCostUSD": 1.11,
+      "nutritionPerServing": {
+        "calories": 80,
+        "proteinG": 3,
+        "carbsG": 7,
+        "fatG": 5,
+        "fiberG": 3,
+        "sodiumMg": 140,
+        "sugarG": 2
+      },
+      "allergens": [],
+      "ingredients": [
+        {
+          "item": "1 bunch choy sum or kailan (400g)",
+          "costUSD": 1.0
+        },
+        {
+          "item": "3 garlic cloves",
+          "costUSD": 0.05
+        },
+        {
+          "item": "2 tsp vegetable oil",
+          "costUSD": 0.05
+        },
+        {
+          "item": "Pinch of salt",
+          "costUSD": 0.01
+        }
+      ],
+      "steps": [
+        "Blanch greens 1 min in boiling water.",
+        "Fry garlic in oil 20 seconds, add greens, toss 1 min, season lightly."
+      ],
+      "whyHealthier": "Restaurant greens often come with oyster sauce and oil; this version is light and low-sodium.",
+      "swaps": [
+        "Any leafy green works",
+        "Skip oil and just blanch"
+      ],
+      "availability": "Wet markets sell choy sum cheaply"
+    },
+    {
+      "id": "soba-chicken-salad",
+      "slug": "soba-chicken-salad",
+      "title": "Cold soba with shredded chicken",
+      "titleZh": "蕎麥麵雞絲沙律",
+      "description": "Light summer lunch with protein and veg.",
+      "goals": [
+        "Weight management",
+        "Everyday healthy",
+        "Blood sugar"
+      ],
+      "dietTags": [
+        "high-protein",
+        "dairy-free",
+        "halal",
+        "pork-free"
+      ],
+      "servings": 2,
+      "timeMinutes": 20,
+      "costPerServingUSD": 1.65,
+      "totalCostUSD": 3.3,
+      "nutritionPerServing": {
+        "calories": 430,
+        "proteinG": 32,
+        "carbsG": 55,
+        "fatG": 8,
+        "fiberG": 5,
+        "sodiumMg": 620,
+        "sugarG": 5
+      },
+      "allergens": [
+        "wheat",
+        "soy",
+        "sesame"
+      ],
+      "ingredients": [
+        {
+          "item": "150g soba noodles",
+          "costUSD": 0.8
+        },
+        {
+          "item": "200g chicken breast",
+          "costUSD": 1.6
+        },
+        {
+          "item": "1 cucumber",
+          "costUSD": 0.4
+        },
+        {
+          "item": "1 carrot",
+          "costUSD": 0.2
+        },
+        {
+          "item": "2 tbsp soy sauce, 1 tsp rice vinegar, 1 tsp sesame oil",
+          "costUSD": 0.3
+        }
+      ],
+      "steps": [
+        "Poach chicken 12 min, cool and shred.",
+        "Cook soba, rinse in cold water.",
+        "Toss with julienned vegetables, chicken and dressing."
+      ],
+      "whyHealthier": "Buckwheat noodles have more fibre than white noodles; cold dressing replaces oily sauces.",
+      "swaps": [
+        "Tofu for vegetarian",
+        "100% buckwheat soba for gluten-free"
+      ],
+      "availability": "Japanese supermarkets in HK"
+    },
+    {
+      "id": "homemade-wonton-soup",
+      "slug": "homemade-wonton-soup",
+      "title": "Homemade shrimp wonton soup",
+      "titleZh": "自家鮮蝦雲吞湯",
+      "description": "Shop flavour with half the salt.",
+      "goals": [
+        "Everyday healthy",
+        "Healthy aging"
+      ],
+      "dietTags": [
+        "dairy-free"
+      ],
+      "servings": 4,
+      "timeMinutes": 40,
+      "costPerServingUSD": 1.75,
+      "totalCostUSD": 7.0,
+      "nutritionPerServing": {
+        "calories": 320,
+        "proteinG": 22,
+        "carbsG": 34,
+        "fatG": 9,
+        "fiberG": 2,
+        "sodiumMg": 700,
+        "sugarG": 2
+      },
+      "allergens": [
+        "shellfish",
+        "wheat",
+        "egg",
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "item": "30 wonton wrappers",
+          "costUSD": 0.9
+        },
+        {
+          "item": "200g shrimp",
+          "costUSD": 3.0
+        },
+        {
+          "item": "150g lean minced pork",
+          "costUSD": 1.5
+        },
+        {
+          "item": "1 egg white",
+          "costUSD": 0.2
+        },
+        {
+          "item": "Choy sum and spring onion",
+          "costUSD": 0.8
+        },
+        {
+          "item": "Low-sodium chicken stock",
+          "costUSD": 0.6
+        }
+      ],
+      "steps": [
+        "Mix chopped shrimp, pork, egg white and a pinch of salt.",
+        "Wrap 1 tsp filling per wrapper.",
+        "Boil wontons 4 min; serve in hot stock with greens."
+      ],
+      "whyHealthier": "Restaurant wonton noodle soup can exceed 2,000mg sodium; low-salt stock cuts that sharply.",
+      "swaps": [
+        "All-shrimp filling for pork-free",
+        "Chicken mince for halal"
+      ],
+      "availability": "Wrappers in all wet markets"
+    },
+    {
+      "id": "air-fryer-pork-chop-rice",
+      "slug": "air-fryer-pork-chop-rice",
+      "title": "Air-fryer pork chop rice (lighter 焗豬扒飯)",
+      "titleZh": "氣炸豬扒飯",
+      "description": "The cha chaan teng favourite, re-built lighter.",
+      "goals": [
+        "Weight management",
+        "Everyday healthy"
+      ],
+      "dietTags": [
+        "high-protein",
+        "nut-free"
+      ],
+      "servings": 2,
+      "timeMinutes": 35,
+      "costPerServingUSD": 2.4,
+      "totalCostUSD": 4.8,
+      "nutritionPerServing": {
+        "calories": 560,
+        "proteinG": 36,
+        "carbsG": 62,
+        "fatG": 16,
+        "fiberG": 4,
+        "sodiumMg": 620,
+        "sugarG": 8
+      },
+      "allergens": [
+        "wheat",
+        "milk",
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "item": "2 lean pork loin chops (300g)",
+          "costUSD": 3.0
+        },
+        {
+          "item": "1 cup cooked rice per person",
+          "costUSD": 0.3
+        },
+        {
+          "item": "3 tomatoes + 1 onion",
+          "costUSD": 0.9
+        },
+        {
+          "item": "1 tbsp ketchup",
+          "costUSD": 0.1
+        },
+        {
+          "item": "30g low-fat mozzarella",
+          "costUSD": 0.4
+        },
+        {
+          "item": "Garlic, soy sauce, pepper",
+          "costUSD": 0.1
+        }
+      ],
+      "steps": [
+        "Marinate chops in garlic, soy and pepper 15 min.",
+        "Air-fry 180°C 12 min, turning once.",
+        "Simmer tomato, onion and ketchup into a sauce.",
+        "Layer rice, chop, sauce and a little cheese; grill 5 min."
+      ],
+      "whyHealthier": "About 40% fewer calories than the shop version by air-frying and using less cheese and sauce.",
+      "swaps": [
+        "Chicken thigh for pork-free/halal",
+        "Skip cheese for dairy-free"
+      ],
+      "availability": "Ingredients available everywhere"
+    },
+    {
+      "id": "chicken-broccoli-stirfry",
+      "slug": "chicken-broccoli-stirfry",
+      "title": "Chicken & broccoli stir-fry",
+      "titleZh": "西蘭花炒雞柳",
+      "description": "High-protein, takeaway-style, 15 minutes.",
+      "goals": [
+        "Muscle gain",
+        "Weight management",
+        "Everyday healthy"
+      ],
+      "dietTags": [
+        "high-protein",
+        "dairy-free",
+        "halal",
+        "pork-free"
+      ],
+      "servings": 2,
+      "timeMinutes": 15,
+      "costPerServingUSD": 2.25,
+      "totalCostUSD": 4.5,
+      "nutritionPerServing": {
+        "calories": 330,
+        "proteinG": 38,
+        "carbsG": 14,
+        "fatG": 13,
+        "fiberG": 5,
+        "sodiumMg": 560,
+        "sugarG": 4
+      },
+      "allergens": [
+        "soy",
+        "wheat"
+      ],
+      "ingredients": [
+        {
+          "item": "300g chicken breast",
+          "costUSD": 2.5
+        },
+        {
+          "item": "1 head broccoli",
+          "costUSD": 1.2
+        },
+        {
+          "item": "1 red pepper",
+          "costUSD": 0.6
+        },
+        {
+          "item": "2 garlic cloves",
+          "costUSD": 0.05
+        },
+        {
+          "item": "1 tbsp oyster sauce (or mushroom sauce)",
+          "costUSD": 0.1
+        },
+        {
+          "item": "2 tsp oil, 1 tsp cornstarch",
+          "costUSD": 0.05
+        }
+      ],
+      "steps": [
+        "Slice chicken; coat in cornstarch and a splash of water.",
+        "Blanch broccoli 1 min.",
+        "Stir-fry chicken 4 min, add garlic, vegetables and sauce, toss 2 min."
+      ],
+      "whyHealthier": "Lean protein with fibre; much less oil than restaurant stir-fries.",
+      "swaps": [
+        "Tofu or prawns as alternatives",
+        "Mushroom sauce for vegetarian"
+      ],
+      "availability": "Available everywhere"
+    },
+    {
+      "id": "red-lentil-curry",
+      "slug": "red-lentil-curry",
+      "title": "Red lentil coconut curry",
+      "titleZh": "紅扁豆咖喱",
+      "description": "Budget vegan curry, freezes well.",
+      "goals": [
+        "Heart health",
+        "Blood sugar",
+        "Budget",
+        "Everyday healthy"
+      ],
+      "dietTags": [
+        "vegan",
+        "gluten-free",
+        "halal",
+        "kosher",
+        "nut-free"
+      ],
+      "servings": 4,
+      "timeMinutes": 35,
+      "costPerServingUSD": 0.88,
+      "totalCostUSD": 3.5,
+      "nutritionPerServing": {
+        "calories": 360,
+        "proteinG": 16,
+        "carbsG": 48,
+        "fatG": 12,
+        "fiberG": 12,
+        "sodiumMg": 340,
+        "sugarG": 6
+      },
+      "allergens": [],
+      "ingredients": [
+        {
+          "item": "250g red lentils",
+          "costUSD": 0.9
+        },
+        {
+          "item": "1 can light coconut milk",
+          "costUSD": 1.0
+        },
+        {
+          "item": "1 can chopped tomatoes",
+          "costUSD": 0.6
+        },
+        {
+          "item": "1 onion, 3 garlic cloves, ginger",
+          "costUSD": 0.4
+        },
+        {
+          "item": "2 tbsp curry powder",
+          "costUSD": 0.2
+        },
+        {
+          "item": "Spinach handful",
+          "costUSD": 0.4
+        }
+      ],
+      "steps": [
+        "Soften onion, garlic and ginger with curry powder.",
+        "Add lentils, tomatoes, coconut milk and 500ml water.",
+        "Simmer 20 min, stir in spinach."
+      ],
+      "whyHealthier": "Lentils give plant protein and lots of fibre for steady blood sugar.",
+      "swaps": [
+        "Add chicken for more protein",
+        "Serve with brown rice or wholemeal roti"
+      ],
+      "availability": "Lentils in South Asian and big supermarkets"
+    },
+    {
+      "id": "chickpea-salad",
+      "slug": "chickpea-salad",
+      "title": "Mediterranean chickpea salad",
+      "titleZh": "鷹嘴豆沙律",
+      "description": "No-cook lunch box, keeps 3 days.",
+      "goals": [
+        "Heart health",
+        "Weight management",
+        "Blood sugar"
+      ],
+      "dietTags": [
+        "vegetarian",
+        "gluten-free",
+        "halal",
+        "kosher"
+      ],
+      "servings": 3,
+      "timeMinutes": 15,
+      "costPerServingUSD": 1.3,
+      "totalCostUSD": 3.9,
+      "nutritionPerServing": {
+        "calories": 320,
+        "proteinG": 13,
+        "carbsG": 36,
+        "fatG": 14,
+        "fiberG": 10,
+        "sodiumMg": 380,
+        "sugarG": 6
+      },
+      "allergens": [
+        "milk"
+      ],
+      "ingredients": [
+        {
+          "item": "2 cans chickpeas, drained",
+          "costUSD": 1.6
+        },
+        {
+          "item": "1 cucumber",
+          "costUSD": 0.4
+        },
+        {
+          "item": "2 tomatoes",
+          "costUSD": 0.5
+        },
+        {
+          "item": "1/2 red onion",
+          "costUSD": 0.1
+        },
+        {
+          "item": "50g feta",
+          "costUSD": 0.8
+        },
+        {
+          "item": "1 lemon + 1 tbsp olive oil",
+          "costUSD": 0.5
+        }
+      ],
+      "steps": [
+        "Chop vegetables.",
+        "Toss with chickpeas, crumbled feta, lemon juice and olive oil."
+      ],
+      "whyHealthier": "High fibre and plant protein keep you full; olive oil supports heart health.",
+      "swaps": [
+        "Skip feta for vegan",
+        "Add tuna for more protein"
+      ],
+      "availability": "Canned chickpeas widely sold"
+    },
+    {
+      "id": "clear-beef-noodle-soup",
+      "slug": "clear-beef-noodle-soup",
+      "title": "Clear-broth lean beef noodle soup",
+      "titleZh": "清湯牛肉麵",
+      "description": "Lighter version of 牛腩麵 using lean beef.",
+      "goals": [
+        "Muscle gain",
+        "Everyday healthy"
+      ],
+      "dietTags": [
+        "high-protein",
+        "dairy-free",
+        "halal option",
+        "pork-free"
+      ],
+      "servings": 2,
+      "timeMinutes": 30,
+      "costPerServingUSD": 2.6,
+      "totalCostUSD": 5.2,
+      "nutritionPerServing": {
+        "calories": 480,
+        "proteinG": 34,
+        "carbsG": 58,
+        "fatG": 10,
+        "fiberG": 3,
+        "sodiumMg": 900,
+        "sugarG": 3
+      },
+      "allergens": [
+        "wheat",
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "item": "250g lean beef shin or sirloin, thinly sliced",
+          "costUSD": 3.0
+        },
+        {
+          "item": "160g dried noodles",
+          "costUSD": 0.5
+        },
+        {
+          "item": "1L low-sodium beef stock",
+          "costUSD": 0.9
+        },
+        {
+          "item": "Bok choy",
+          "costUSD": 0.6
+        },
+        {
+          "item": "Ginger, star anise, spring onion",
+          "costUSD": 0.2
+        }
+      ],
+      "steps": [
+        "Simmer stock with ginger and star anise 15 min.",
+        "Cook noodles separately.",
+        "Blanch beef slices in the hot stock 30 seconds.",
+        "Assemble with bok choy and spring onion."
+      ],
+      "whyHealthier": "Lean cuts and skimmed clear broth avoid the fatty brisket and very salty soup base.",
+      "swaps": [
+        "Halal beef for halal",
+        "Chicken for beef-free"
+      ],
+      "availability": "Halal beef at Wan Chai/Tsim Sha Tsui halal butchers"
+    },
+    {
+      "id": "tuna-wholewheat-sandwich",
+      "slug": "tuna-wholewheat-sandwich",
+      "title": "Tuna & veg wholemeal sandwich",
+      "titleZh": "吞拿魚全麥三文治",
+      "description": "Better than the convenience-store egg mayo.",
+      "goals": [
+        "Weight management",
+        "Everyday healthy",
+        "Budget"
+      ],
+      "dietTags": [
+        "high-protein",
+        "halal",
+        "kosher",
+        "pork-free"
+      ],
+      "servings": 1,
+      "timeMinutes": 10,
+      "costPerServingUSD": 1.5,
+      "totalCostUSD": 1.5,
+      "nutritionPerServing": {
+        "calories": 360,
+        "proteinG": 28,
+        "carbsG": 38,
+        "fatG": 10,
+        "fiberG": 6,
+        "sodiumMg": 620,
+        "sugarG": 5
+      },
+      "allergens": [
+        "fish",
+        "wheat",
+        "egg",
+        "milk"
+      ],
+      "ingredients": [
+        {
+          "item": "2 slices wholemeal bread",
+          "costUSD": 0.3
+        },
+        {
+          "item": "1 small can tuna in water",
+          "costUSD": 0.8
+        },
+        {
+          "item": "1 tbsp light mayo or Greek yogurt",
+          "costUSD": 0.1
+        },
+        {
+          "item": "Lettuce, tomato, cucumber",
+          "costUSD": 0.3
+        }
+      ],
+      "steps": [
+        "Mix drained tuna with yogurt or light mayo and pepper.",
+        "Layer with vegetables on bread."
+      ],
+      "whyHealthier": "Tuna in water and wholemeal bread give protein and fibre with little fat.",
+      "swaps": [
+        "Chicken breast for fish allergy",
+        "Gluten-free bread if needed"
+      ],
+      "availability": "Available everywhere"
+    },
+    {
+      "id": "brown-rice-egg-fried-rice",
+      "slug": "brown-rice-egg-fried-rice",
+      "title": "Light egg & veg fried rice",
+      "titleZh": "少油蛋炒糙米飯",
+      "description": "Uses leftover rice, half the oil of takeaway.",
+      "goals": [
+        "Everyday healthy",
+        "Budget"
+      ],
+      "dietTags": [
+        "vegetarian",
+        "dairy-free",
+        "halal",
+        "kosher"
+      ],
+      "servings": 2,
+      "timeMinutes": 15,
+      "costPerServingUSD": 0.88,
+      "totalCostUSD": 1.75,
+      "nutritionPerServing": {
+        "calories": 430,
+        "proteinG": 16,
+        "carbsG": 62,
+        "fatG": 13,
+        "fiberG": 5,
+        "sodiumMg": 520,
+        "sugarG": 3
+      },
+      "allergens": [
+        "egg",
+        "soy",
+        "wheat"
+      ],
+      "ingredients": [
+        {
+          "item": "2 cups cooked brown rice (day-old)",
+          "costUSD": 0.4
+        },
+        {
+          "item": "3 eggs",
+          "costUSD": 0.75
+        },
+        {
+          "item": "1 cup frozen peas & carrots",
+          "costUSD": 0.4
+        },
+        {
+          "item": "2 spring onions",
+          "costUSD": 0.1
+        },
+        {
+          "item": "1 tbsp light soy sauce, 2 tsp oil",
+          "costUSD": 0.1
+        }
+      ],
+      "steps": [
+        "Scramble eggs in 1 tsp oil, set aside.",
+        "Fry rice and vegetables in 1 tsp oil until hot.",
+        "Return eggs, add soy sauce and spring onion."
+      ],
+      "whyHealthier": "Takeaway Yangzhou fried rice often has 800+ kcal; this uses brown rice and minimal oil.",
+      "swaps": [
+        "Add shrimp or chicken",
+        "Tamari for gluten-free"
+      ],
+      "availability": "Available everywhere"
+    },
+    {
+      "id": "miso-tofu-soup",
+      "slug": "miso-tofu-soup",
+      "title": "Miso soup with tofu & wakame",
+      "titleZh": "麵豉豆腐湯",
+      "description": "5-minute starter that fills you up before the main dish.",
+      "goals": [
+        "Weight management",
+        "Everyday healthy",
+        "Healthy aging"
+      ],
+      "dietTags": [
+        "vegan",
+        "dairy-free",
+        "halal",
+        "kosher"
+      ],
+      "servings": 2,
+      "timeMinutes": 10,
+      "costPerServingUSD": 0.45,
+      "totalCostUSD": 0.9,
+      "nutritionPerServing": {
+        "calories": 90,
+        "proteinG": 7,
+        "carbsG": 7,
+        "fatG": 4,
+        "fiberG": 2,
+        "sodiumMg": 650,
+        "sugarG": 2
+      },
+      "allergens": [
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "item": "2 tbsp miso paste",
+          "costUSD": 0.3
+        },
+        {
+          "item": "150g silken tofu",
+          "costUSD": 0.4
+        },
+        {
+          "item": "1 tbsp dried wakame",
+          "costUSD": 0.15
+        },
+        {
+          "item": "1 spring onion",
+          "costUSD": 0.05
+        }
+      ],
+      "steps": [
+        "Heat 500ml water; soak wakame 2 min in it.",
+        "Add cubed tofu, then turn off heat and dissolve miso.",
+        "Top with spring onion."
+      ],
+      "whyHealthier": "Starting a meal with soup can reduce how much you eat afterwards.",
+      "swaps": [
+        "Use less miso for low-sodium",
+        "Add mushrooms"
+      ],
+      "availability": "Japanese supermarkets"
+    },
+    {
+      "id": "steamed-chicken-shiitake",
+      "slug": "steamed-chicken-shiitake",
+      "title": "Steamed chicken with shiitake",
+      "titleZh": "冬菇蒸雞",
+      "description": "Cantonese home dish; tender and low in fat.",
+      "goals": [
+        "Healthy aging",
+        "Everyday healthy",
+        "Muscle gain"
+      ],
+      "dietTags": [
+        "high-protein",
+        "dairy-free",
+        "gluten-free option",
+        "halal",
+        "pork-free"
+      ],
+      "servings": 3,
+      "timeMinutes": 35,
+      "costPerServingUSD": 1.58,
+      "totalCostUSD": 4.75,
+      "nutritionPerServing": {
+        "calories": 290,
+        "proteinG": 32,
+        "carbsG": 8,
+        "fatG": 14,
+        "fiberG": 2,
+        "sodiumMg": 520,
+        "sugarG": 2
+      },
+      "allergens": [
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "item": "500g boneless chicken thigh, skin removed",
+          "costUSD": 3.6
+        },
+        {
+          "item": "6 dried shiitake, soaked",
+          "costUSD": 0.8
+        },
+        {
+          "item": "3 slices ginger",
+          "costUSD": 0.05
+        },
+        {
+          "item": "1 tbsp light soy sauce, 1 tsp cornstarch",
+          "costUSD": 0.1
+        },
+        {
+          "item": "Goji berries (optional)",
+          "costUSD": 0.2
+        }
+      ],
+      "steps": [
+        "Cut chicken into pieces; marinate with soy, cornstarch and ginger.",
+        "Mix with sliced shiitake on a plate.",
+        "Steam 15–18 min until cooked through."
+      ],
+      "whyHealthier": "Removing skin and steaming keeps fat low while staying juicy.",
+      "swaps": [
+        "Tofu for vegetarian",
+        "Tamari for gluten-free"
+      ],
+      "availability": "Dried mushrooms in every HK grocer"
+    },
+    {
+      "id": "shrimp-zucchini-pasta",
+      "slug": "shrimp-zucchini-pasta",
+      "title": "Garlic shrimp wholewheat pasta",
+      "titleZh": "蒜蓉大蝦全麥意粉",
+      "description": "Restaurant-style pasta at home, lighter sauce.",
+      "goals": [
+        "Everyday healthy",
+        "Muscle gain"
+      ],
+      "dietTags": [
+        "high-protein",
+        "dairy-free",
+        "pork-free",
+        "halal"
+      ],
+      "servings": 2,
+      "timeMinutes": 20,
+      "costPerServingUSD": 2.85,
+      "totalCostUSD": 5.7,
+      "nutritionPerServing": {
+        "calories": 520,
+        "proteinG": 32,
+        "carbsG": 62,
+        "fatG": 14,
+        "fiberG": 9,
+        "sodiumMg": 420,
+        "sugarG": 5
+      },
+      "allergens": [
+        "shellfish",
+        "wheat"
+      ],
+      "ingredients": [
+        {
+          "item": "160g wholewheat spaghetti",
+          "costUSD": 0.6
+        },
+        {
+          "item": "250g shrimp",
+          "costUSD": 3.5
+        },
+        {
+          "item": "1 zucchini",
+          "costUSD": 0.6
+        },
+        {
+          "item": "10 cherry tomatoes",
+          "costUSD": 0.7
+        },
+        {
+          "item": "3 garlic cloves, chilli flakes",
+          "costUSD": 0.1
+        },
+        {
+          "item": "1 tbsp olive oil",
+          "costUSD": 0.2
+        }
+      ],
+      "steps": [
+        "Cook pasta, keep a cup of pasta water.",
+        "Sauté garlic and chilli in oil, add shrimp 2 min.",
+        "Add zucchini and tomatoes, then pasta and a splash of pasta water."
+      ],
+      "whyHealthier": "Olive-oil sauce instead of cream cuts saturated fat sharply versus carbonara.",
+      "swaps": [
+        "Chicken for shellfish allergy",
+        "Gluten-free pasta"
+      ],
+      "availability": "Frozen shrimp works"
+    },
+    {
+      "id": "fish-rice-noodle-soup",
+      "slug": "fish-rice-noodle-soup",
+      "title": "Fish slice rice noodle soup",
+      "titleZh": "魚片米粉湯",
+      "description": "Light, gluten-free noodle bowl.",
+      "goals": [
+        "Weight management",
+        "Everyday healthy",
+        "Healthy aging"
+      ],
+      "dietTags": [
+        "gluten-free",
+        "dairy-free",
+        "halal",
+        "kosher",
+        "pork-free"
+      ],
+      "servings": 2,
+      "timeMinutes": 20,
+      "costPerServingUSD": 2.08,
+      "totalCostUSD": 4.15,
+      "nutritionPerServing": {
+        "calories": 380,
+        "proteinG": 26,
+        "carbsG": 52,
+        "fatG": 6,
+        "fiberG": 3,
+        "sodiumMg": 640,
+        "sugarG": 2
+      },
+      "allergens": [
+        "fish"
+      ],
+      "ingredients": [
+        {
+          "item": "150g rice vermicelli",
+          "costUSD": 0.4
+        },
+        {
+          "item": "250g white fish fillet, sliced",
+          "costUSD": 2.5
+        },
+        {
+          "item": "1L low-sodium fish or chicken stock",
+          "costUSD": 0.6
+        },
+        {
+          "item": "Lettuce, tomato",
+          "costUSD": 0.6
+        },
+        {
+          "item": "Ginger, white pepper",
+          "costUSD": 0.05
+        }
+      ],
+      "steps": [
+        "Soak or boil vermicelli.",
+        "Bring stock to a simmer with ginger and tomato.",
+        "Add fish slices 2 min, then lettuce.",
+        "Pour over noodles; season with white pepper."
+      ],
+      "whyHealthier": "Clear soup and lean fish instead of oily or very salty soup bases.",
+      "swaps": [
+        "Tofu for vegetarian"
+      ],
+      "availability": "Available everywhere"
+    },
+    {
+      "id": "poached-chicken-rice-light",
+      "slug": "poached-chicken-rice-light",
+      "title": "Lighter Hainanese chicken rice",
+      "titleZh": "輕盈海南雞飯",
+      "description": "Poached breast, rice cooked in stock instead of chicken fat.",
+      "goals": [
+        "Everyday healthy",
+        "Muscle gain"
+      ],
+      "dietTags": [
+        "high-protein",
+        "dairy-free",
+        "gluten-free option",
+        "halal",
+        "pork-free"
+      ],
+      "servings": 4,
+      "timeMinutes": 50,
+      "costPerServingUSD": 1.8,
+      "totalCostUSD": 7.2,
+      "nutritionPerServing": {
+        "calories": 520,
+        "proteinG": 38,
+        "carbsG": 62,
+        "fatG": 11,
+        "fiberG": 2,
+        "sodiumMg": 560,
+        "sugarG": 2
+      },
+      "allergens": [
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "item": "600g chicken breast or skinless thigh",
+          "costUSD": 5.0
+        },
+        {
+          "item": "300g jasmine rice",
+          "costUSD": 0.6
+        },
+        {
+          "item": "Low-sodium chicken stock",
+          "costUSD": 0.6
+        },
+        {
+          "item": "Ginger, garlic, pandan (optional)",
+          "costUSD": 0.3
+        },
+        {
+          "item": "Cucumber",
+          "costUSD": 0.4
+        },
+        {
+          "item": "Ginger-spring onion dip, chilli",
+          "costUSD": 0.3
+        }
+      ],
+      "steps": [
+        "Poach chicken in barely simmering water with ginger 15–20 min, then ice bath.",
+        "Cook rice in stock with garlic and ginger (no chicken fat).",
+        "Slice chicken; serve with cucumber and dips."
+      ],
+      "whyHealthier": "Shop versions cook rice in chicken fat and serve skin-on; this keeps the flavour with less fat.",
+      "swaps": [
+        "Tofu for vegetarian",
+        "Tamari in dips for gluten-free"
+      ],
+      "availability": "Available everywhere"
+    },
+    {
+      "id": "home-bibimbap",
+      "slug": "home-bibimbap",
+      "title": "Home bibimbap",
+      "titleZh": "韓式拌飯",
+      "description": "Colourful veg bowl with egg; easy to vary.",
+      "goals": [
+        "Everyday healthy",
+        "Blood sugar",
+        "Heart health"
+      ],
+      "dietTags": [
+        "vegetarian",
+        "dairy-free",
+        "halal",
+        "kosher"
+      ],
+      "servings": 2,
+      "timeMinutes": 30,
+      "costPerServingUSD": 1.45,
+      "totalCostUSD": 2.9,
+      "nutritionPerServing": {
+        "calories": 540,
+        "proteinG": 20,
+        "carbsG": 78,
+        "fatG": 16,
+        "fiberG": 8,
+        "sodiumMg": 600,
+        "sugarG": 9
+      },
+      "allergens": [
+        "egg",
+        "soy",
+        "sesame",
+        "wheat"
+      ],
+      "ingredients": [
+        {
+          "item": "2 cups cooked brown or mixed-grain rice",
+          "costUSD": 0.4
+        },
+        {
+          "item": "Spinach, bean sprouts, carrot, zucchini",
+          "costUSD": 1.6
+        },
+        {
+          "item": "2 eggs",
+          "costUSD": 0.5
+        },
+        {
+          "item": "1 tbsp gochujang",
+          "costUSD": 0.3
+        },
+        {
+          "item": "1 tsp sesame oil, sesame seeds",
+          "costUSD": 0.1
+        }
+      ],
+      "steps": [
+        "Blanch or quickly sauté each vegetable separately; season lightly.",
+        "Fry eggs sunny-side up.",
+        "Arrange vegetables on rice, top with egg and gochujang; mix to eat."
+      ],
+      "whyHealthier": "Half the bowl is vegetables; mixed-grain rice adds fibre.",
+      "swaps": [
+        "Add lean beef or tofu",
+        "Use less gochujang for low-sodium"
+      ],
+      "availability": "Korean grocers in Mong Kok, Tsim Sha Tsui"
+    },
+    {
+      "id": "rice-paper-rolls",
+      "slug": "rice-paper-rolls",
+      "title": "Vietnamese rice paper rolls",
+      "titleZh": "越南米紙卷",
+      "description": "Fresh, no-cook, great for parties.",
+      "goals": [
+        "Weight management",
+        "Everyday healthy"
+      ],
+      "dietTags": [
+        "gluten-free",
+        "dairy-free",
+        "halal",
+        "pork-free"
+      ],
+      "servings": 3,
+      "timeMinutes": 25,
+      "costPerServingUSD": 1.53,
+      "totalCostUSD": 4.6,
+      "nutritionPerServing": {
+        "calories": 260,
+        "proteinG": 16,
+        "carbsG": 38,
+        "fatG": 5,
+        "fiberG": 4,
+        "sodiumMg": 420,
+        "sugarG": 6
+      },
+      "allergens": [
+        "shellfish",
+        "peanut (dip)",
+        "fish (fish sauce)"
+      ],
+      "ingredients": [
+        {
+          "item": "12 rice paper sheets",
+          "costUSD": 0.6
+        },
+        {
+          "item": "200g cooked shrimp or chicken",
+          "costUSD": 2.5
+        },
+        {
+          "item": "Rice vermicelli 80g",
+          "costUSD": 0.2
+        },
+        {
+          "item": "Lettuce, mint, cucumber, carrot",
+          "costUSD": 1.0
+        },
+        {
+          "item": "Dip: lime, fish sauce, chilli, a little sugar",
+          "costUSD": 0.3
+        }
+      ],
+      "steps": [
+        "Dip one rice paper in warm water 5 seconds.",
+        "Fill with noodles, vegetables, herbs and protein; roll tightly.",
+        "Serve with lime-chilli dip (avoid peanut dip if allergic)."
+      ],
+      "whyHealthier": "Fresh vegetables and lean protein, no frying, unlike spring rolls.",
+      "swaps": [
+        "Tofu for vegetarian",
+        "Lime-chilli dip instead of peanut sauce for nut allergy"
+      ],
+      "availability": "Vietnamese shops and big supermarkets"
+    },
+    {
+      "id": "banana-oat-pancakes",
+      "slug": "banana-oat-pancakes",
+      "title": "3-ingredient banana oat pancakes",
+      "titleZh": "香蕉燕麥班戟",
+      "description": "No flour, no added sugar weekend breakfast.",
+      "goals": [
+        "Blood sugar",
+        "Everyday healthy",
+        "Budget"
+      ],
+      "dietTags": [
+        "vegetarian",
+        "dairy-free",
+        "halal",
+        "kosher"
+      ],
+      "servings": 2,
+      "timeMinutes": 15,
+      "costPerServingUSD": 0.57,
+      "totalCostUSD": 1.15,
+      "nutritionPerServing": {
+        "calories": 290,
+        "proteinG": 12,
+        "carbsG": 40,
+        "fatG": 9,
+        "fiberG": 5,
+        "sodiumMg": 90,
+        "sugarG": 12
+      },
+      "allergens": [
+        "egg",
+        "oats may contain gluten"
+      ],
+      "ingredients": [
+        {
+          "item": "2 ripe bananas",
+          "costUSD": 0.4
+        },
+        {
+          "item": "2 eggs",
+          "costUSD": 0.5
+        },
+        {
+          "item": "60g rolled oats",
+          "costUSD": 0.2
+        },
+        {
+          "item": "Cinnamon, 1 tsp oil",
+          "costUSD": 0.05
+        }
+      ],
+      "steps": [
+        "Blend everything into a batter.",
+        "Cook small pancakes in a lightly oiled pan 2 min per side."
+      ],
+      "whyHealthier": "Banana sweetens instead of syrup; oats add fibre.",
+      "swaps": [
+        "Top with yogurt for protein",
+        "Certified gluten-free oats"
+      ],
+      "availability": "Available everywhere"
+    },
+    {
+      "id": "steamed-sweet-potato",
+      "slug": "steamed-sweet-potato",
+      "title": "Steamed sweet potato & corn snack",
+      "titleZh": "蒸番薯粟米",
+      "description": "The cheapest healthy snack in any HK market.",
+      "goals": [
+        "Weight management",
+        "Blood sugar",
+        "Budget",
+        "Healthy aging"
+      ],
+      "dietTags": [
+        "vegan",
+        "gluten-free",
+        "halal",
+        "kosher",
+        "nut-free",
+        "low-sodium"
+      ],
+      "servings": 2,
+      "timeMinutes": 25,
+      "costPerServingUSD": 0.5,
+      "totalCostUSD": 1.0,
+      "nutritionPerServing": {
+        "calories": 180,
+        "proteinG": 4,
+        "carbsG": 40,
+        "fatG": 1,
+        "fiberG": 6,
+        "sodiumMg": 40,
+        "sugarG": 10
+      },
+      "allergens": [],
+      "ingredients": [
+        {
+          "item": "2 medium sweet potatoes",
+          "costUSD": 0.6
+        },
+        {
+          "item": "1 corn on the cob",
+          "costUSD": 0.4
+        }
+      ],
+      "steps": [
+        "Scrub sweet potatoes and cut corn in half.",
+        "Steam 20–25 min until soft."
+      ],
+      "whyHealthier": "Fibre-rich carbs that keep you full, instead of chips or pastries.",
+      "swaps": [
+        "Add a boiled egg for protein"
+      ],
+      "availability": "Wet markets year-round"
+    },
+    {
+      "id": "less-sugar-lemon-tea",
+      "slug": "less-sugar-lemon-tea",
+      "title": "Less-sugar iced lemon tea",
+      "titleZh": "少甜凍檸茶",
+      "description": "DIY version of 凍檸茶 with a quarter of the sugar.",
+      "goals": [
+        "Weight management",
+        "Blood sugar"
+      ],
+      "dietTags": [
+        "vegan",
+        "gluten-free",
+        "halal",
+        "kosher"
+      ],
+      "servings": 1,
+      "timeMinutes": 5,
+      "costPerServingUSD": 0.27,
+      "totalCostUSD": 0.27,
+      "nutritionPerServing": {
+        "calories": 30,
+        "proteinG": 0,
+        "carbsG": 8,
+        "fatG": 0,
+        "fiberG": 0,
+        "sodiumMg": 5,
+        "sugarG": 7
+      },
+      "allergens": [],
+      "ingredients": [
+        {
+          "item": "1 black tea bag",
+          "costUSD": 0.1
+        },
+        {
+          "item": "3 lemon slices",
+          "costUSD": 0.15
+        },
+        {
+          "item": "1 tsp sugar or zero-cal sweetener (optional)",
+          "costUSD": 0.02
+        },
+        {
+          "item": "Ice",
+          "costUSD": 0.0
+        }
+      ],
+      "steps": [
+        "Brew strong tea in 200ml hot water, cool.",
+        "Pour over ice and lemon; press lemon; add sweetener if needed."
+      ],
+      "whyHealthier": "A shop 凍檸茶 can have 30g+ of sugar; this has about 7g or none.",
+      "swaps": [
+        "Use green tea",
+        "Sparkling water version"
+      ],
+      "availability": "Available everywhere"
+    },
+    {
+      "id": "mango-yogurt-smoothie",
+      "slug": "mango-yogurt-smoothie",
+      "title": "Mango yogurt smoothie",
+      "titleZh": "芒果乳酪奶昔",
+      "description": "Fruit-based drink swap for bubble tea.",
+      "goals": [
+        "Everyday healthy",
+        "Muscle gain"
+      ],
+      "dietTags": [
+        "vegetarian",
+        "gluten-free",
+        "halal",
+        "kosher"
+      ],
+      "servings": 1,
+      "timeMinutes": 5,
+      "costPerServingUSD": 1.2,
+      "totalCostUSD": 1.2,
+      "nutritionPerServing": {
+        "calories": 250,
+        "proteinG": 14,
+        "carbsG": 40,
+        "fatG": 4,
+        "fiberG": 3,
+        "sodiumMg": 90,
+        "sugarG": 34
+      },
+      "allergens": [
+        "milk"
+      ],
+      "ingredients": [
+        {
+          "item": "1/2 mango",
+          "costUSD": 0.6
+        },
+        {
+          "item": "150g plain yogurt",
+          "costUSD": 0.45
+        },
+        {
+          "item": "100ml low-fat milk",
+          "costUSD": 0.15
+        },
+        {
+          "item": "Ice",
+          "costUSD": 0.0
+        }
+      ],
+      "steps": [
+        "Blend all ingredients until smooth."
+      ],
+      "whyHealthier": "Natural fruit sugar plus protein, instead of a syrup-and-cream bubble tea.",
+      "swaps": [
+        "Soy milk and soy yogurt for dairy-free"
+      ],
+      "availability": "Available everywhere"
+    },
+    {
+      "id": "edamame-snack",
+      "slug": "edamame-snack",
+      "title": "Salted edamame",
+      "titleZh": "鹽水毛豆",
+      "description": "High-protein snack in 5 minutes.",
+      "goals": [
+        "Muscle gain",
+        "Weight management",
+        "Blood sugar"
+      ],
+      "dietTags": [
+        "vegan",
+        "gluten-free",
+        "halal",
+        "kosher",
+        "nut-free"
+      ],
+      "servings": 2,
+      "timeMinutes": 5,
+      "costPerServingUSD": 0.7,
+      "totalCostUSD": 1.41,
+      "nutritionPerServing": {
+        "calories": 190,
+        "proteinG": 17,
+        "carbsG": 14,
+        "fatG": 8,
+        "fiberG": 8,
+        "sodiumMg": 250,
+        "sugarG": 3
+      },
+      "allergens": [
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "item": "400g frozen edamame in pods",
+          "costUSD": 1.4
+        },
+        {
+          "item": "Pinch of sea salt",
+          "costUSD": 0.01
+        }
+      ],
+      "steps": [
+        "Boil edamame 4 min.",
+        "Drain and sprinkle lightly with salt."
+      ],
+      "whyHealthier": "Plant protein and fibre, replaces fried snacks.",
+      "swaps": [
+        "Add chilli flakes or garlic"
+      ],
+      "availability": "Frozen section of any supermarket"
+    },
+    {
+      "id": "borscht-light",
+      "slug": "borscht-light",
+      "title": "Lighter HK-style borscht",
+      "titleZh": "輕盈羅宋湯",
+      "description": "Cha chaan teng soup made at home with lean beef.",
+      "goals": [
+        "Healthy aging",
+        "Everyday healthy",
+        "Budget"
+      ],
+      "dietTags": [
+        "dairy-free",
+        "gluten-free",
+        "nut-free"
+      ],
+      "servings": 6,
+      "timeMinutes": 90,
+      "costPerServingUSD": 0.96,
+      "totalCostUSD": 5.75,
+      "nutritionPerServing": {
+        "calories": 170,
+        "proteinG": 12,
+        "carbsG": 18,
+        "fatG": 5,
+        "fiberG": 4,
+        "sodiumMg": 420,
+        "sugarG": 8
+      },
+      "allergens": [],
+      "ingredients": [
+        {
+          "item": "300g lean beef shin",
+          "costUSD": 3.0
+        },
+        {
+          "item": "1/2 cabbage",
+          "costUSD": 0.6
+        },
+        {
+          "item": "4 tomatoes, 2 carrots, 2 potatoes, 1 onion",
+          "costUSD": 1.8
+        },
+        {
+          "item": "2 tbsp tomato paste",
+          "costUSD": 0.3
+        },
+        {
+          "item": "Bay leaf, pepper",
+          "costUSD": 0.05
+        }
+      ],
+      "steps": [
+        "Brown beef pieces; add 2.5L water and simmer 45 min.",
+        "Add vegetables and tomato paste; simmer 30 min more.",
+        "Season lightly."
+      ],
+      "whyHealthier": "Mostly vegetables, cheap per bowl, and much lower in salt and oil than shop soup.",
+      "swaps": [
+        "Chicken for beef-free"
+      ],
+      "availability": "Available everywhere"
+    },
+    {
+      "id": "winter-melon-soup",
+      "slug": "winter-melon-soup",
+      "title": "Winter melon & mushroom soup",
+      "titleZh": "冬瓜冬菇湯",
+      "description": "Light Cantonese soup for hot days.",
+      "goals": [
+        "Weight management",
+        "Healthy aging",
+        "Everyday healthy"
+      ],
+      "dietTags": [
+        "vegan",
+        "gluten-free",
+        "halal",
+        "kosher",
+        "nut-free",
+        "low-sodium"
+      ],
+      "servings": 4,
+      "timeMinutes": 40,
+      "costPerServingUSD": 0.47,
+      "totalCostUSD": 1.86,
+      "nutritionPerServing": {
+        "calories": 60,
+        "proteinG": 2,
+        "carbsG": 10,
+        "fatG": 1,
+        "fiberG": 2,
+        "sodiumMg": 180,
+        "sugarG": 4
+      },
+      "allergens": [],
+      "ingredients": [
+        {
+          "item": "600g winter melon",
+          "costUSD": 0.8
+        },
+        {
+          "item": "6 dried shiitake",
+          "costUSD": 0.8
+        },
+        {
+          "item": "2 slices ginger",
+          "costUSD": 0.05
+        },
+        {
+          "item": "1 carrot",
+          "costUSD": 0.2
+        },
+        {
+          "item": "Pinch of salt",
+          "costUSD": 0.01
+        }
+      ],
+      "steps": [
+        "Soak mushrooms; cube melon and carrot.",
+        "Simmer everything in 1.5L water 30 min.",
+        "Season lightly."
+      ],
+      "whyHealthier": "Very low calorie and hydrating; a soup course helps portion control.",
+      "swaps": [
+        "Add lean pork or chicken"
+      ],
+      "availability": "Wet markets"
+    },
+    {
+      "id": "chicken-tikka-skewers",
+      "slug": "chicken-tikka-skewers",
+      "title": "Yogurt chicken tikka skewers",
+      "titleZh": "乳酪烤雞串",
+      "description": "Grilled, spice-marinated, halal-friendly.",
+      "goals": [
+        "Muscle gain",
+        "Weight management",
+        "Everyday healthy"
+      ],
+      "dietTags": [
+        "high-protein",
+        "gluten-free",
+        "halal",
+        "pork-free"
+      ],
+      "servings": 3,
+      "timeMinutes": 40,
+      "costPerServingUSD": 2.25,
+      "totalCostUSD": 6.75,
+      "nutritionPerServing": {
+        "calories": 300,
+        "proteinG": 40,
+        "carbsG": 8,
+        "fatG": 11,
+        "fiberG": 2,
+        "sodiumMg": 480,
+        "sugarG": 4
+      },
+      "allergens": [
+        "milk"
+      ],
+      "ingredients": [
+        {
+          "item": "600g chicken breast",
+          "costUSD": 5.0
+        },
+        {
+          "item": "150g plain yogurt",
+          "costUSD": 0.45
+        },
+        {
+          "item": "2 tbsp tikka spice mix",
+          "costUSD": 0.3
+        },
+        {
+          "item": "1 lemon",
+          "costUSD": 0.4
+        },
+        {
+          "item": "1 onion, 1 pepper for skewers",
+          "costUSD": 0.6
+        }
+      ],
+      "steps": [
+        "Marinate chicken cubes in yogurt, spices and lemon at least 30 min.",
+        "Thread with onion and pepper.",
+        "Grill or air-fry 200°C 12–14 min."
+      ],
+      "whyHealthier": "Yogurt marinade tenderises without oil; grilling instead of creamy curry sauce.",
+      "swaps": [
+        "Coconut yogurt for dairy-free",
+        "Paneer for vegetarian"
+      ],
+      "availability": "Spices in South Asian grocers (Chungking Mansions area)"
+    },
+    {
+      "id": "grilled-mackerel",
+      "slug": "grilled-mackerel",
+      "title": "Grilled salted mackerel set",
+      "titleZh": "鹽燒鯖魚定食",
+      "description": "Japanese-style, omega-3 rich and cheap.",
+      "goals": [
+        "Heart health",
+        "Healthy aging",
+        "Muscle gain"
+      ],
+      "dietTags": [
+        "high-protein",
+        "gluten-free",
+        "dairy-free",
+        "halal",
+        "kosher",
+        "pork-free"
+      ],
+      "servings": 1,
+      "timeMinutes": 20,
+      "costPerServingUSD": 2.6,
+      "totalCostUSD": 2.6,
+      "nutritionPerServing": {
+        "calories": 520,
+        "proteinG": 30,
+        "carbsG": 48,
+        "fatG": 22,
+        "fiberG": 4,
+        "sodiumMg": 780,
+        "sugarG": 2
+      },
+      "allergens": [
+        "fish"
+      ],
+      "ingredients": [
+        {
+          "item": "1 mackerel fillet (150g)",
+          "costUSD": 1.8
+        },
+        {
+          "item": "150g cooked rice",
+          "costUSD": 0.2
+        },
+        {
+          "item": "Miso soup or greens",
+          "costUSD": 0.4
+        },
+        {
+          "item": "Grated daikon, lemon",
+          "costUSD": 0.2
+        }
+      ],
+      "steps": [
+        "Pat fish dry, salt very lightly, grill skin-side up 8–10 min.",
+        "Serve with rice, greens and grated daikon."
+      ],
+      "whyHealthier": "Mackerel is one of the cheapest sources of omega-3 fats.",
+      "swaps": [
+        "Sardines or salmon",
+        "Chicken for fish allergy"
+      ],
+      "availability": "Japanese supermarkets, frozen section"
+    },
+    {
+      "id": "quinoa-veg-bowl",
+      "slug": "quinoa-veg-bowl",
+      "title": "Quinoa roasted veg bowl",
+      "titleZh": "藜麥烤蔬菜碗",
+      "description": "Plant-based meal-prep bowl.",
+      "goals": [
+        "Heart health",
+        "Blood sugar",
+        "Weight management"
+      ],
+      "dietTags": [
+        "vegan",
+        "gluten-free",
+        "halal",
+        "kosher"
+      ],
+      "servings": 3,
+      "timeMinutes": 40,
+      "costPerServingUSD": 1.43,
+      "totalCostUSD": 4.3,
+      "nutritionPerServing": {
+        "calories": 430,
+        "proteinG": 15,
+        "carbsG": 58,
+        "fatG": 16,
+        "fiberG": 11,
+        "sodiumMg": 280,
+        "sugarG": 8
+      },
+      "allergens": [
+        "sesame"
+      ],
+      "ingredients": [
+        {
+          "item": "180g quinoa",
+          "costUSD": 1.2
+        },
+        {
+          "item": "1 sweet potato",
+          "costUSD": 0.4
+        },
+        {
+          "item": "1 head broccoli",
+          "costUSD": 1.2
+        },
+        {
+          "item": "1 can chickpeas",
+          "costUSD": 0.8
+        },
+        {
+          "item": "1 tbsp olive oil",
+          "costUSD": 0.2
+        },
+        {
+          "item": "Tahini-lemon dressing",
+          "costUSD": 0.5
+        }
+      ],
+      "steps": [
+        "Cook quinoa.",
+        "Roast cubed sweet potato, broccoli and chickpeas with oil at 200°C 25 min.",
+        "Assemble bowls; drizzle dressing."
+      ],
+      "whyHealthier": "Complete plant protein plus lots of fibre.",
+      "swaps": [
+        "Add salmon or chicken",
+        "Lemon-olive oil dressing if sesame allergy"
+      ],
+      "availability": "Quinoa in larger supermarkets"
+    },
+    {
+      "id": "home-poke-bowl",
+      "slug": "home-poke-bowl",
+      "title": "Home salmon poke bowl",
+      "titleZh": "自家三文魚波奇碗",
+      "description": "Café bowl at half the price.",
+      "goals": [
+        "Heart health",
+        "Muscle gain",
+        "Everyday healthy"
+      ],
+      "dietTags": [
+        "high-protein",
+        "dairy-free",
+        "halal",
+        "pork-free"
+      ],
+      "servings": 2,
+      "timeMinutes": 20,
+      "costPerServingUSD": 4.15,
+      "totalCostUSD": 8.3,
+      "nutritionPerServing": {
+        "calories": 560,
+        "proteinG": 32,
+        "carbsG": 60,
+        "fatG": 20,
+        "fiberG": 6,
+        "sodiumMg": 640,
+        "sugarG": 6
+      },
+      "allergens": [
+        "fish",
+        "soy",
+        "sesame"
+      ],
+      "ingredients": [
+        {
+          "item": "250g sashimi-grade salmon",
+          "costUSD": 5.5
+        },
+        {
+          "item": "2 cups cooked brown rice",
+          "costUSD": 0.4
+        },
+        {
+          "item": "1 avocado",
+          "costUSD": 1.2
+        },
+        {
+          "item": "Cucumber, edamame, seaweed",
+          "costUSD": 1.0
+        },
+        {
+          "item": "1 tbsp soy sauce, sesame seeds",
+          "costUSD": 0.2
+        }
+      ],
+      "steps": [
+        "Cube salmon, toss with soy sauce and sesame.",
+        "Arrange on rice with vegetables and avocado."
+      ],
+      "whyHealthier": "Raw fish, vegetables and brown rice; no fried toppings or mayo sauces.",
+      "swaps": [
+        "Cooked tofu or chicken if avoiding raw fish (pregnancy)"
+      ],
+      "availability": "Sashimi-grade salmon in Japanese supermarkets"
+    },
+    {
+      "id": "veggie-omelette",
+      "slug": "veggie-omelette",
+      "title": "Veggie omelette",
+      "titleZh": "雜菜奄列",
+      "description": "Breakfast or lunch in 10 minutes.",
+      "goals": [
+        "Muscle gain",
+        "Weight management",
+        "Blood sugar"
+      ],
+      "dietTags": [
+        "vegetarian",
+        "gluten-free",
+        "halal",
+        "kosher",
+        "nut-free"
+      ],
+      "servings": 1,
+      "timeMinutes": 10,
+      "costPerServingUSD": 1.39,
+      "totalCostUSD": 1.39,
+      "nutritionPerServing": {
+        "calories": 260,
+        "proteinG": 19,
+        "carbsG": 6,
+        "fatG": 18,
+        "fiberG": 2,
+        "sodiumMg": 330,
+        "sugarG": 3
+      },
+      "allergens": [
+        "egg",
+        "milk"
+      ],
+      "ingredients": [
+        {
+          "item": "3 eggs (or 1 egg + 3 whites)",
+          "costUSD": 0.75
+        },
+        {
+          "item": "Mushrooms, spinach, tomato",
+          "costUSD": 0.6
+        },
+        {
+          "item": "1 tbsp low-fat milk",
+          "costUSD": 0.02
+        },
+        {
+          "item": "1 tsp oil",
+          "costUSD": 0.02
+        }
+      ],
+      "steps": [
+        "Sauté vegetables 2 min.",
+        "Pour in beaten eggs and milk; cook until set, fold."
+      ],
+      "whyHealthier": "Protein-rich and vegetable-packed versus a sausage-and-toast breakfast.",
+      "swaps": [
+        "Add whole-grain toast",
+        "Skip milk for dairy-free"
+      ],
+      "availability": "Available everywhere"
+    },
+    {
+      "id": "light-mango-pomelo-sago",
+      "slug": "light-mango-pomelo-sago",
+      "title": "Lighter mango pomelo sago",
+      "titleZh": "低糖楊枝甘露",
+      "description": "HK dessert with half the sugar and light milk.",
+      "goals": [
+        "Everyday healthy"
+      ],
+      "dietTags": [
+        "vegetarian",
+        "gluten-free",
+        "halal",
+        "kosher"
+      ],
+      "servings": 4,
+      "timeMinutes": 25,
+      "costPerServingUSD": 0.72,
+      "totalCostUSD": 2.9,
+      "nutritionPerServing": {
+        "calories": 180,
+        "proteinG": 3,
+        "carbsG": 36,
+        "fatG": 3,
+        "fiberG": 2,
+        "sodiumMg": 40,
+        "sugarG": 26
+      },
+      "allergens": [
+        "milk"
+      ],
+      "ingredients": [
+        {
+          "item": "2 ripe mangoes",
+          "costUSD": 1.8
+        },
+        {
+          "item": "1/4 pomelo",
+          "costUSD": 0.6
+        },
+        {
+          "item": "40g sago",
+          "costUSD": 0.1
+        },
+        {
+          "item": "200ml low-fat milk + 50ml evaporated milk",
+          "costUSD": 0.4
+        }
+      ],
+      "steps": [
+        "Boil sago 10 min, rinse in cold water.",
+        "Blend 1 mango with milks; dice the other.",
+        "Combine with sago and pomelo; chill."
+      ],
+      "whyHealthier": "No added sugar or coconut cream; ripe mango gives the sweetness.",
+      "swaps": [
+        "Coconut milk (light) for dairy-free"
+      ],
+      "availability": "Mango season April–August"
+    },
+    {
+      "id": "lentil-veg-soup",
+      "slug": "lentil-veg-soup",
+      "title": "Lentil & vegetable soup",
+      "titleZh": "扁豆雜菜湯",
+      "description": "One-pot, freezer-friendly, very cheap.",
+      "goals": [
+        "Heart health",
+        "Blood sugar",
+        "Budget",
+        "Healthy aging"
+      ],
+      "dietTags": [
+        "vegan",
+        "gluten-free",
+        "halal",
+        "kosher",
+        "nut-free"
+      ],
+      "servings": 6,
+      "timeMinutes": 45,
+      "costPerServingUSD": 0.48,
+      "totalCostUSD": 2.9,
+      "nutritionPerServing": {
+        "calories": 220,
+        "proteinG": 12,
+        "carbsG": 36,
+        "fatG": 3,
+        "fiberG": 11,
+        "sodiumMg": 380,
+        "sugarG": 6
+      },
+      "allergens": [],
+      "ingredients": [
+        {
+          "item": "300g green or brown lentils",
+          "costUSD": 1.0
+        },
+        {
+          "item": "1 onion, 2 carrots, 2 celery sticks",
+          "costUSD": 0.8
+        },
+        {
+          "item": "1 can tomatoes",
+          "costUSD": 0.6
+        },
+        {
+          "item": "Garlic, cumin, bay leaf",
+          "costUSD": 0.1
+        },
+        {
+          "item": "Spinach handful",
+          "costUSD": 0.4
+        }
+      ],
+      "steps": [
+        "Sauté onion, carrot and celery 5 min.",
+        "Add lentils, tomatoes, spices and 2L water; simmer 30 min.",
+        "Stir in spinach."
+      ],
+      "whyHealthier": "Fibre and plant protein at very low cost per bowl.",
+      "swaps": [
+        "Add chicken for more protein"
+      ],
+      "availability": "Lentils in larger supermarkets"
+    },
+    {
+      "id": "tofu-pak-choi-noodles",
+      "slug": "tofu-pak-choi-noodles",
+      "title": "Tofu & pak choi udon",
+      "titleZh": "豆腐白菜烏冬",
+      "description": "Comfort noodles with plant protein.",
+      "goals": [
+        "Everyday healthy",
+        "Budget"
+      ],
+      "dietTags": [
+        "vegan",
+        "dairy-free",
+        "halal",
+        "kosher"
+      ],
+      "servings": 2,
+      "timeMinutes": 15,
+      "costPerServingUSD": 1.2,
+      "totalCostUSD": 2.4,
+      "nutritionPerServing": {
+        "calories": 450,
+        "proteinG": 20,
+        "carbsG": 66,
+        "fatG": 10,
+        "fiberG": 5,
+        "sodiumMg": 700,
+        "sugarG": 4
+      },
+      "allergens": [
+        "soy",
+        "wheat"
+      ],
+      "ingredients": [
+        {
+          "item": "2 packs udon",
+          "costUSD": 0.8
+        },
+        {
+          "item": "200g firm tofu",
+          "costUSD": 0.45
+        },
+        {
+          "item": "2 pak choi",
+          "costUSD": 0.6
+        },
+        {
+          "item": "Low-sodium vegetable stock",
+          "costUSD": 0.4
+        },
+        {
+          "item": "1 tbsp soy sauce, ginger, spring onion",
+          "costUSD": 0.15
+        }
+      ],
+      "steps": [
+        "Pan-fry tofu cubes until golden in 1 tsp oil.",
+        "Heat stock with ginger; add udon and pak choi 3 min.",
+        "Top with tofu, soy sauce and spring onion."
+      ],
+      "whyHealthier": "Swap for instant noodles: real vegetables and protein, much less sodium.",
+      "swaps": [
+        "Egg or chicken for more protein",
+        "Rice noodles for gluten-free"
+      ],
+      "availability": "Available everywhere"
+    },
+    {
+      "id": "baked-chicken-wings-light",
+      "slug": "baked-chicken-wings-light",
+      "title": "Oven-baked honey garlic wings",
+      "titleZh": "焗蜜糖蒜香雞翼",
+      "description": "Party food without deep-frying.",
+      "goals": [
+        "Everyday healthy"
+      ],
+      "dietTags": [
+        "high-protein",
+        "dairy-free",
+        "gluten-free option",
+        "halal",
+        "pork-free"
+      ],
+      "servings": 3,
+      "timeMinutes": 45,
+      "costPerServingUSD": 1.33,
+      "totalCostUSD": 4.0,
+      "nutritionPerServing": {
+        "calories": 380,
+        "proteinG": 30,
+        "carbsG": 12,
+        "fatG": 23,
+        "fiberG": 0,
+        "sodiumMg": 520,
+        "sugarG": 10
+      },
+      "allergens": [
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "item": "800g chicken wings",
+          "costUSD": 3.6
+        },
+        {
+          "item": "1 tbsp honey",
+          "costUSD": 0.15
+        },
+        {
+          "item": "2 tbsp soy sauce",
+          "costUSD": 0.15
+        },
+        {
+          "item": "4 garlic cloves",
+          "costUSD": 0.1
+        }
+      ],
+      "steps": [
+        "Pat wings dry; bake on a rack at 220°C 35 min, turning once.",
+        "Toss with warmed honey, soy and garlic; bake 5 min more."
+      ],
+      "whyHealthier": "Baking renders fat off the wings instead of adding frying oil.",
+      "swaps": [
+        "Drumsticks are cheaper",
+        "Tamari for gluten-free"
+      ],
+      "availability": "Available everywhere"
+    },
+    {
+      "id": "black-bean-beef-peppers",
+      "slug": "black-bean-beef-peppers",
+      "title": "Black bean lean beef & peppers",
+      "titleZh": "豉椒炒牛肉",
+      "description": "Classic dai pai dong taste, lean cut.",
+      "goals": [
+        "Muscle gain",
+        "Everyday healthy"
+      ],
+      "dietTags": [
+        "high-protein",
+        "dairy-free",
+        "halal option",
+        "pork-free"
+      ],
+      "servings": 2,
+      "timeMinutes": 20,
+      "costPerServingUSD": 2.73,
+      "totalCostUSD": 5.45,
+      "nutritionPerServing": {
+        "calories": 340,
+        "proteinG": 32,
+        "carbsG": 14,
+        "fatG": 17,
+        "fiberG": 3,
+        "sodiumMg": 780,
+        "sugarG": 5
+      },
+      "allergens": [
+        "soy",
+        "wheat"
+      ],
+      "ingredients": [
+        {
+          "item": "300g lean beef (flank), sliced",
+          "costUSD": 3.8
+        },
+        {
+          "item": "2 bell peppers",
+          "costUSD": 1.2
+        },
+        {
+          "item": "1 onion",
+          "costUSD": 0.2
+        },
+        {
+          "item": "1 tbsp fermented black beans, garlic",
+          "costUSD": 0.2
+        },
+        {
+          "item": "2 tsp oil, 1 tsp cornstarch",
+          "costUSD": 0.05
+        }
+      ],
+      "steps": [
+        "Coat beef in cornstarch and a little soy.",
+        "Sear beef 1–2 min, remove.",
+        "Stir-fry onion, peppers, garlic and black beans 2 min; return beef."
+      ],
+      "whyHealthier": "Lean beef gives iron and protein; vegetables make up half the dish.",
+      "swaps": [
+        "Halal beef for halal",
+        "Chicken for beef-free"
+      ],
+      "availability": "Available everywhere"
+    }
+  ],
+  "foods": [
+    {
+      "id": "char-siu-rice",
+      "name": "Char siu rice",
+      "nameZh": "叉燒飯",
+      "category": "HK canteen",
+      "servingSize": "1 plate (~450g)",
+      "nutrition": {
+        "calories": 700,
+        "proteinG": 30,
+        "carbsG": 95,
+        "fatG": 22,
+        "fiberG": 2,
+        "sodiumMg": 1400,
+        "sugarG": 15
+      },
+      "priceHKD": {
+        "min": 42,
+        "max": 60
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Filling and tasty, but the sweet glaze, fatty pork and big rice portion add up.",
+      "whyItCanHelp": [
+        "Good protein from the pork"
+      ],
+      "watchOuts": [
+        "Sugary, salty glaze",
+        "Often few or no vegetables"
+      ],
+      "tip": "Ask for less sauce (少汁) and add a plate of greens without oyster sauce.",
+      "allergens": [
+        "soy",
+        "wheat"
+      ],
+      "dietNotes": [
+        "contains pork"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "chicken-brown-rice-bowl",
+        "steamed-chicken-shiitake",
+        "garlic-choy-sum"
+      ]
+    },
+    {
+      "id": "roast-goose-rice",
+      "name": "Roast goose rice",
+      "nameZh": "燒鵝飯",
+      "category": "HK canteen",
+      "servingSize": "1 plate (~450g)",
+      "nutrition": {
+        "calories": 750,
+        "proteinG": 32,
+        "carbsG": 90,
+        "fatG": 30,
+        "fiberG": 1,
+        "sodiumMg": 1500,
+        "sugarG": 8
+      },
+      "priceHKD": {
+        "min": 55,
+        "max": 80
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Rich and fatty; the skin carries most of the fat.",
+      "whyItCanHelp": [
+        "Protein and iron"
+      ],
+      "watchOuts": [
+        "High saturated fat from skin",
+        "High sodium"
+      ],
+      "tip": "Remove the skin and share; add a vegetable side.",
+      "allergens": [
+        "soy"
+      ],
+      "dietNotes": [
+        "pork-free"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "steamed-chicken-shiitake",
+        "poached-chicken-rice-light"
+      ]
+    },
+    {
+      "id": "roast-pork-rice",
+      "name": "Crispy roast pork rice",
+      "nameZh": "燒肉飯",
+      "category": "HK canteen",
+      "servingSize": "1 plate (~450g)",
+      "nutrition": {
+        "calories": 800,
+        "proteinG": 28,
+        "carbsG": 90,
+        "fatG": 36,
+        "fiberG": 1,
+        "sodiumMg": 1600,
+        "sugarG": 4
+      },
+      "priceHKD": {
+        "min": 42,
+        "max": 60
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Crispy skin means a lot of fat and salt.",
+      "whyItCanHelp": [
+        "Protein"
+      ],
+      "watchOuts": [
+        "High saturated fat",
+        "High sodium"
+      ],
+      "tip": "Pick a lean meat combo or half portion.",
+      "allergens": [],
+      "dietNotes": [
+        "contains pork"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "steamed-chicken-shiitake",
+        "chicken-brown-rice-bowl"
+      ]
+    },
+    {
+      "id": "wonton-noodle-soup",
+      "name": "Wonton noodle soup",
+      "nameZh": "鮮蝦雲吞麵",
+      "category": "HK canteen",
+      "servingSize": "1 bowl",
+      "nutrition": {
+        "calories": 450,
+        "proteinG": 22,
+        "carbsG": 55,
+        "fatG": 14,
+        "fiberG": 2,
+        "sodiumMg": 2000,
+        "sugarG": 3
+      },
+      "priceHKD": {
+        "min": 38,
+        "max": 55
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "Reasonable calories and protein, but the soup is very salty.",
+      "whyItCanHelp": [
+        "Shrimp protein",
+        "Moderate calories"
+      ],
+      "watchOuts": [
+        "Soup base very high in sodium",
+        "Few vegetables"
+      ],
+      "tip": "Don't drink all the soup and add a side of greens.",
+      "allergens": [
+        "shellfish",
+        "wheat",
+        "egg",
+        "soy"
+      ],
+      "dietNotes": [],
+      "healthierAlternativeRecipeIds": [
+        "homemade-wonton-soup",
+        "fish-rice-noodle-soup"
+      ]
+    },
+    {
+      "id": "beef-brisket-noodles",
+      "name": "Beef brisket noodle soup",
+      "nameZh": "牛腩麵",
+      "category": "HK canteen",
+      "servingSize": "1 bowl",
+      "nutrition": {
+        "calories": 550,
+        "proteinG": 28,
+        "carbsG": 58,
+        "fatG": 22,
+        "fiberG": 2,
+        "sodiumMg": 2100,
+        "sugarG": 3
+      },
+      "priceHKD": {
+        "min": 42,
+        "max": 60
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Brisket is fatty and the braising liquid is salty.",
+      "whyItCanHelp": [
+        "Protein and iron"
+      ],
+      "watchOuts": [
+        "Fatty cut",
+        "Very high sodium"
+      ],
+      "tip": "Choose lean beef slices (牛肉) instead and leave the soup.",
+      "allergens": [
+        "wheat",
+        "soy"
+      ],
+      "dietNotes": [
+        "contains beef"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "clear-beef-noodle-soup"
+      ]
+    },
+    {
+      "id": "baked-pork-chop-rice",
+      "name": "Baked pork chop rice",
+      "nameZh": "焗豬扒飯",
+      "category": "HK canteen",
+      "servingSize": "1 plate (~550g)",
+      "nutrition": {
+        "calories": 950,
+        "proteinG": 38,
+        "carbsG": 110,
+        "fatG": 38,
+        "fiberG": 3,
+        "sodiumMg": 1800,
+        "sugarG": 14
+      },
+      "priceHKD": {
+        "min": 55,
+        "max": 75
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Fried pork chop plus cheese and sweet tomato sauce on a large rice base.",
+      "whyItCanHelp": [
+        "High protein"
+      ],
+      "watchOuts": [
+        "Fried and cheese-topped",
+        "Large rice portion",
+        "High sodium"
+      ],
+      "tip": "Ask for less rice and less cheese, or share.",
+      "allergens": [
+        "wheat",
+        "milk",
+        "egg",
+        "soy"
+      ],
+      "dietNotes": [
+        "contains pork"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "air-fryer-pork-chop-rice",
+        "chicken-broccoli-stirfry"
+      ]
+    },
+    {
+      "id": "ham-macaroni-soup",
+      "name": "Ham & macaroni in soup",
+      "nameZh": "火腿通粉",
+      "category": "HK breakfast",
+      "servingSize": "1 bowl",
+      "nutrition": {
+        "calories": 400,
+        "proteinG": 14,
+        "carbsG": 55,
+        "fatG": 12,
+        "fiberG": 2,
+        "sodiumMg": 1500,
+        "sugarG": 3
+      },
+      "priceHKD": {
+        "min": 28,
+        "max": 40
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "Light-ish breakfast but low in fibre, with processed ham and salty soup.",
+      "whyItCanHelp": [
+        "Easy, warm and filling"
+      ],
+      "watchOuts": [
+        "Processed meat",
+        "Salty broth"
+      ],
+      "tip": "Swap ham for egg or chicken and skip the soup.",
+      "allergens": [
+        "wheat"
+      ],
+      "dietNotes": [
+        "contains pork"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "overnight-oats",
+        "veggie-omelette"
+      ]
+    },
+    {
+      "id": "set-breakfast",
+      "name": "Cha chaan teng set breakfast (常餐)",
+      "nameZh": "常餐",
+      "category": "HK breakfast",
+      "servingSize": "noodles + egg + sausage + toast + drink",
+      "nutrition": {
+        "calories": 850,
+        "proteinG": 28,
+        "carbsG": 90,
+        "fatG": 40,
+        "fiberG": 2,
+        "sodiumMg": 2200,
+        "sugarG": 25
+      },
+      "priceHKD": {
+        "min": 45,
+        "max": 60
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "A lot of food for one breakfast: processed meat, buttered toast and a sweet drink.",
+      "whyItCanHelp": [
+        "Protein from egg"
+      ],
+      "watchOuts": [
+        "Processed sausage/luncheon meat",
+        "Butter toast",
+        "Sugary milk tea"
+      ],
+      "tip": "Keep the egg and noodles, skip the sausage and butter, and order the drink less sweet (少甜).",
+      "allergens": [
+        "wheat",
+        "egg",
+        "milk",
+        "soy"
+      ],
+      "dietNotes": [
+        "contains pork"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "veggie-omelette",
+        "overnight-oats"
+      ]
+    },
+    {
+      "id": "luncheon-meat-egg-noodles",
+      "name": "Instant noodles with luncheon meat & egg",
+      "nameZh": "餐蛋麵",
+      "category": "HK breakfast",
+      "servingSize": "1 bowl",
+      "nutrition": {
+        "calories": 600,
+        "proteinG": 20,
+        "carbsG": 55,
+        "fatG": 33,
+        "fiberG": 2,
+        "sodiumMg": 2300,
+        "sugarG": 3
+      },
+      "priceHKD": {
+        "min": 30,
+        "max": 42
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Fried instant noodles and luncheon meat make this salty and fatty.",
+      "whyItCanHelp": [
+        "Egg protein"
+      ],
+      "watchOuts": [
+        "Very high sodium",
+        "Processed meat",
+        "Fried noodles"
+      ],
+      "tip": "Swap to plain rice noodles (米粉) with egg and greens.",
+      "allergens": [
+        "wheat",
+        "egg",
+        "soy"
+      ],
+      "dietNotes": [
+        "contains pork"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "tofu-pak-choi-noodles",
+        "fish-rice-noodle-soup"
+      ]
+    },
+    {
+      "id": "pineapple-bun-butter",
+      "name": "Pineapple bun with butter",
+      "nameZh": "菠蘿油",
+      "category": "HK bakery",
+      "servingSize": "1 bun",
+      "nutrition": {
+        "calories": 420,
+        "proteinG": 7,
+        "carbsG": 45,
+        "fatG": 23,
+        "fiberG": 1,
+        "sodiumMg": 300,
+        "sugarG": 15
+      },
+      "priceHKD": {
+        "min": 12,
+        "max": 20
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "A treat: sweet crust plus a thick slab of butter.",
+      "whyItCanHelp": [
+        "Satisfying occasional treat"
+      ],
+      "watchOuts": [
+        "Saturated fat",
+        "Added sugar",
+        "Low protein"
+      ],
+      "tip": "Order without butter or share one.",
+      "allergens": [
+        "wheat",
+        "milk",
+        "egg"
+      ],
+      "dietNotes": [
+        "vegetarian"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "banana-oat-pancakes",
+        "yogurt-parfait"
+      ]
+    },
+    {
+      "id": "egg-tart",
+      "name": "Egg tart",
+      "nameZh": "蛋撻",
+      "category": "HK bakery",
+      "servingSize": "1 tart",
+      "nutrition": {
+        "calories": 220,
+        "proteinG": 4,
+        "carbsG": 24,
+        "fatG": 12,
+        "fiberG": 0,
+        "sodiumMg": 140,
+        "sugarG": 12
+      },
+      "priceHKD": {
+        "min": 8,
+        "max": 14
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Small but buttery pastry with sugary custard.",
+      "whyItCanHelp": [
+        "Small portion"
+      ],
+      "watchOuts": [
+        "Pastry fat",
+        "Added sugar"
+      ],
+      "tip": "Have one, not three, and pair with plain tea.",
+      "allergens": [
+        "wheat",
+        "egg",
+        "milk"
+      ],
+      "dietNotes": [
+        "vegetarian"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "yogurt-parfait",
+        "light-mango-pomelo-sago"
+      ]
+    },
+    {
+      "id": "french-toast",
+      "name": "HK French toast",
+      "nameZh": "西多士",
+      "category": "HK canteen",
+      "servingSize": "1 serving",
+      "nutrition": {
+        "calories": 600,
+        "proteinG": 15,
+        "carbsG": 60,
+        "fatG": 35,
+        "fiberG": 1,
+        "sodiumMg": 500,
+        "sugarG": 20
+      },
+      "priceHKD": {
+        "min": 28,
+        "max": 40
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Deep-fried bread with peanut butter, butter and syrup.",
+      "whyItCanHelp": [
+        "None beyond enjoyment"
+      ],
+      "watchOuts": [
+        "Deep-fried",
+        "Syrup and butter",
+        "Peanut allergy risk"
+      ],
+      "tip": "Share it, skip the syrup.",
+      "allergens": [
+        "wheat",
+        "egg",
+        "milk",
+        "peanut"
+      ],
+      "dietNotes": [
+        "vegetarian"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "banana-oat-pancakes"
+      ]
+    },
+    {
+      "id": "hk-milk-tea",
+      "name": "HK milk tea (hot)",
+      "nameZh": "港式奶茶",
+      "category": "Drinks",
+      "servingSize": "1 cup (250ml)",
+      "nutrition": {
+        "calories": 120,
+        "proteinG": 3,
+        "carbsG": 15,
+        "fatG": 5,
+        "fiberG": 0,
+        "sodiumMg": 60,
+        "sugarG": 14
+      },
+      "priceHKD": {
+        "min": 18,
+        "max": 26
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "Fine occasionally; condensed or evaporated milk and sugar add up daily.",
+      "whyItCanHelp": [
+        "Some calcium"
+      ],
+      "watchOuts": [
+        "Added sugar",
+        "Caffeine"
+      ],
+      "tip": "Order 少甜 (less sweet) or 走甜 (no sugar).",
+      "allergens": [
+        "milk"
+      ],
+      "dietNotes": [
+        "vegetarian"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "less-sugar-lemon-tea"
+      ]
+    },
+    {
+      "id": "iced-lemon-tea",
+      "name": "Iced lemon tea",
+      "nameZh": "凍檸茶",
+      "category": "Drinks",
+      "servingSize": "1 glass (350ml)",
+      "nutrition": {
+        "calories": 150,
+        "proteinG": 0,
+        "carbsG": 38,
+        "fatG": 0,
+        "fiberG": 0,
+        "sodiumMg": 10,
+        "sugarG": 36
+      },
+      "priceHKD": {
+        "min": 18,
+        "max": 26
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Mostly sugar syrup; one glass can reach most of a day's added-sugar limit.",
+      "whyItCanHelp": [
+        "Hydrating"
+      ],
+      "watchOuts": [
+        "High added sugar"
+      ],
+      "tip": "Order 走甜 or 少甜 and press the lemon for flavour.",
+      "allergens": [],
+      "dietNotes": [
+        "vegan"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "less-sugar-lemon-tea"
+      ]
+    },
+    {
+      "id": "yuenyeung",
+      "name": "Yuenyeung (coffee + milk tea)",
+      "nameZh": "鴛鴦",
+      "category": "Drinks",
+      "servingSize": "1 cup (250ml)",
+      "nutrition": {
+        "calories": 140,
+        "proteinG": 3,
+        "carbsG": 18,
+        "fatG": 5,
+        "fiberG": 0,
+        "sodiumMg": 60,
+        "sugarG": 16
+      },
+      "priceHKD": {
+        "min": 18,
+        "max": 26
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "Like milk tea, with extra caffeine.",
+      "whyItCanHelp": [
+        "Some calcium"
+      ],
+      "watchOuts": [
+        "Added sugar",
+        "High caffeine"
+      ],
+      "tip": "Less sweet, and not after 3pm if you sleep badly.",
+      "allergens": [
+        "milk"
+      ],
+      "dietNotes": [
+        "vegetarian"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "less-sugar-lemon-tea"
+      ]
+    },
+    {
+      "id": "congee-century-egg-pork",
+      "name": "Century egg & lean pork congee",
+      "nameZh": "皮蛋瘦肉粥",
+      "category": "HK canteen",
+      "servingSize": "1 bowl",
+      "nutrition": {
+        "calories": 300,
+        "proteinG": 15,
+        "carbsG": 40,
+        "fatG": 8,
+        "fiberG": 1,
+        "sodiumMg": 1300,
+        "sugarG": 1
+      },
+      "priceHKD": {
+        "min": 30,
+        "max": 45
+      },
+      "verdict": "strong",
+      "verdictLabel": "Good choice",
+      "summary": "Light, warm and moderate in calories; just watch the salt.",
+      "whyItCanHelp": [
+        "Easy to digest",
+        "Lean protein"
+      ],
+      "watchOuts": [
+        "Shop congee is salty"
+      ],
+      "tip": "Skip the fried dough stick (油炸鬼) or share it.",
+      "allergens": [
+        "egg"
+      ],
+      "dietNotes": [
+        "contains pork"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "lean-pork-congee"
+      ]
+    },
+    {
+      "id": "plain-cheung-fun",
+      "name": "Rice noodle rolls",
+      "nameZh": "齋腸粉",
+      "category": "Street food",
+      "servingSize": "1 portion",
+      "nutrition": {
+        "calories": 300,
+        "proteinG": 6,
+        "carbsG": 55,
+        "fatG": 6,
+        "fiberG": 1,
+        "sodiumMg": 800,
+        "sugarG": 8
+      },
+      "priceHKD": {
+        "min": 15,
+        "max": 25
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "Light but mostly refined carbs with sweet soy and sesame sauces.",
+      "whyItCanHelp": [
+        "Low fat"
+      ],
+      "watchOuts": [
+        "Low protein",
+        "Sugary sauces"
+      ],
+      "tip": "Ask for less sauce and add a soy milk or egg for protein.",
+      "allergens": [
+        "soy",
+        "sesame"
+      ],
+      "dietNotes": [
+        "vegetarian"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "rice-paper-rolls",
+        "fish-rice-noodle-soup"
+      ]
+    },
+    {
+      "id": "two-dish-rice",
+      "name": "Two-dish rice box",
+      "nameZh": "兩餸飯",
+      "category": "HK canteen",
+      "servingSize": "1 box",
+      "nutrition": {
+        "calories": 650,
+        "proteinG": 30,
+        "carbsG": 85,
+        "fatG": 20,
+        "fiberG": 4,
+        "sodiumMg": 1200,
+        "sugarG": 8
+      },
+      "priceHKD": {
+        "min": 38,
+        "max": 50
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "Can be balanced or heavy depending on the two dishes you pick.",
+      "whyItCanHelp": [
+        "Choice of vegetables",
+        "Good value"
+      ],
+      "watchOuts": [
+        "Fried or saucy dishes add oil and salt",
+        "Big rice portion"
+      ],
+      "tip": "Pick one green vegetable + one steamed protein (steamed egg, fish, tofu), and ask for less rice.",
+      "allergens": [
+        "soy"
+      ],
+      "dietNotes": [],
+      "healthierAlternativeRecipeIds": [
+        "steamed-egg-custard",
+        "garlic-choy-sum",
+        "steamed-fish-ginger"
+      ]
+    },
+    {
+      "id": "steamed-fish-set",
+      "name": "Steamed fish rice set",
+      "nameZh": "蒸魚飯",
+      "category": "HK canteen",
+      "servingSize": "1 set",
+      "nutrition": {
+        "calories": 550,
+        "proteinG": 35,
+        "carbsG": 70,
+        "fatG": 12,
+        "fiberG": 2,
+        "sodiumMg": 900,
+        "sugarG": 3
+      },
+      "priceHKD": {
+        "min": 55,
+        "max": 75
+      },
+      "verdict": "strong",
+      "verdictLabel": "Good choice",
+      "summary": "Lean protein and little added fat; one of the better canteen picks.",
+      "whyItCanHelp": [
+        "High protein, low fat"
+      ],
+      "watchOuts": [
+        "Soy sauce adds sodium"
+      ],
+      "tip": "Use only part of the soy sauce.",
+      "allergens": [
+        "fish",
+        "soy"
+      ],
+      "dietNotes": [
+        "halal",
+        "pork-free"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "steamed-fish-ginger",
+        "grilled-mackerel"
+      ]
+    },
+    {
+      "id": "yangzhou-fried-rice",
+      "name": "Yangzhou fried rice",
+      "nameZh": "揚州炒飯",
+      "category": "Chinese restaurant",
+      "servingSize": "1 plate",
+      "nutrition": {
+        "calories": 800,
+        "proteinG": 25,
+        "carbsG": 100,
+        "fatG": 30,
+        "fiberG": 2,
+        "sodiumMg": 1500,
+        "sugarG": 3
+      },
+      "priceHKD": {
+        "min": 55,
+        "max": 85
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Lots of oil absorbed into the rice; easy to overeat.",
+      "whyItCanHelp": [
+        "Some protein from egg and shrimp"
+      ],
+      "watchOuts": [
+        "High oil",
+        "High sodium"
+      ],
+      "tip": "Share it and order a vegetable dish.",
+      "allergens": [
+        "egg",
+        "shellfish",
+        "soy"
+      ],
+      "dietNotes": [
+        "contains pork"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "brown-rice-egg-fried-rice"
+      ]
+    },
+    {
+      "id": "beef-chow-fun",
+      "name": "Dry-fried beef ho fun",
+      "nameZh": "乾炒牛河",
+      "category": "Chinese restaurant",
+      "servingSize": "1 plate",
+      "nutrition": {
+        "calories": 900,
+        "proteinG": 30,
+        "carbsG": 100,
+        "fatG": 40,
+        "fiberG": 2,
+        "sodiumMg": 1700,
+        "sugarG": 6
+      },
+      "priceHKD": {
+        "min": 58,
+        "max": 85
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Classic but very oily; noodles soak up the wok oil.",
+      "whyItCanHelp": [
+        "Protein and iron"
+      ],
+      "watchOuts": [
+        "Very high oil",
+        "High sodium"
+      ],
+      "tip": "Share it and ask for less oil (少油).",
+      "allergens": [
+        "soy",
+        "wheat"
+      ],
+      "dietNotes": [
+        "contains beef"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "black-bean-beef-peppers",
+        "clear-beef-noodle-soup"
+      ]
+    },
+    {
+      "id": "sweet-sour-pork-rice",
+      "name": "Sweet & sour pork rice",
+      "nameZh": "咕嚕肉飯",
+      "category": "Chinese restaurant",
+      "servingSize": "1 plate",
+      "nutrition": {
+        "calories": 950,
+        "proteinG": 28,
+        "carbsG": 120,
+        "fatG": 38,
+        "fiberG": 2,
+        "sodiumMg": 1300,
+        "sugarG": 35
+      },
+      "priceHKD": {
+        "min": 50,
+        "max": 70
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Battered, deep-fried pork in a sugary sauce.",
+      "whyItCanHelp": [
+        "Some vegetables (pepper, pineapple)"
+      ],
+      "watchOuts": [
+        "Deep-fried",
+        "High sugar"
+      ],
+      "tip": "Pick a steamed or stir-fried dish instead.",
+      "allergens": [
+        "wheat",
+        "egg",
+        "soy"
+      ],
+      "dietNotes": [
+        "contains pork"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "chicken-broccoli-stirfry",
+        "steamed-chicken-shiitake"
+      ]
+    },
+    {
+      "id": "hainanese-chicken-rice",
+      "name": "Hainanese chicken rice",
+      "nameZh": "海南雞飯",
+      "category": "Southeast Asian",
+      "servingSize": "1 plate",
+      "nutrition": {
+        "calories": 650,
+        "proteinG": 32,
+        "carbsG": 80,
+        "fatG": 22,
+        "fiberG": 1,
+        "sodiumMg": 1300,
+        "sugarG": 2
+      },
+      "priceHKD": {
+        "min": 50,
+        "max": 75
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "Poached chicken is lean, but the rice is cooked in chicken fat.",
+      "whyItCanHelp": [
+        "Good protein"
+      ],
+      "watchOuts": [
+        "Oily rice",
+        "Chicken skin"
+      ],
+      "tip": "Remove skin; ask for plain rice if available.",
+      "allergens": [
+        "soy"
+      ],
+      "dietNotes": [
+        "pork-free"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "poached-chicken-rice-light"
+      ]
+    },
+    {
+      "id": "satay-beef-noodles",
+      "name": "Satay beef noodles",
+      "nameZh": "沙爹牛肉麵",
+      "category": "HK breakfast",
+      "servingSize": "1 bowl",
+      "nutrition": {
+        "calories": 650,
+        "proteinG": 26,
+        "carbsG": 60,
+        "fatG": 32,
+        "fiberG": 3,
+        "sodiumMg": 2200,
+        "sugarG": 6
+      },
+      "priceHKD": {
+        "min": 32,
+        "max": 45
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Peanut-based satay sauce plus instant noodles: fatty and salty.",
+      "whyItCanHelp": [
+        "Protein"
+      ],
+      "watchOuts": [
+        "Peanut allergy risk",
+        "High sodium",
+        "Fried noodles"
+      ],
+      "tip": "Ask for rice vermicelli and less sauce.",
+      "allergens": [
+        "peanut",
+        "wheat",
+        "soy"
+      ],
+      "dietNotes": [
+        "contains beef"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "clear-beef-noodle-soup"
+      ]
+    },
+    {
+      "id": "cart-noodles",
+      "name": "Cart noodles",
+      "nameZh": "車仔麵",
+      "category": "Street food",
+      "servingSize": "1 bowl, 3 toppings",
+      "nutrition": {
+        "calories": 650,
+        "proteinG": 24,
+        "carbsG": 70,
+        "fatG": 28,
+        "fiberG": 3,
+        "sodiumMg": 2500,
+        "sugarG": 5
+      },
+      "priceHKD": {
+        "min": 40,
+        "max": 60
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Depends on toppings, but the broth and processed toppings are very salty.",
+      "whyItCanHelp": [
+        "Can add vegetables"
+      ],
+      "watchOuts": [
+        "Very high sodium",
+        "Processed fish balls/sausages"
+      ],
+      "tip": "Pick radish, greens and pig skin-free toppings; rice noodles; leave the soup.",
+      "allergens": [
+        "wheat",
+        "fish",
+        "soy"
+      ],
+      "dietNotes": [],
+      "healthierAlternativeRecipeIds": [
+        "tofu-pak-choi-noodles"
+      ]
+    },
+    {
+      "id": "fish-slice-rice-noodles",
+      "name": "Fish slice rice noodle soup",
+      "nameZh": "魚片米粉",
+      "category": "HK canteen",
+      "servingSize": "1 bowl",
+      "nutrition": {
+        "calories": 380,
+        "proteinG": 25,
+        "carbsG": 55,
+        "fatG": 6,
+        "fiberG": 2,
+        "sodiumMg": 1600,
+        "sugarG": 2
+      },
+      "priceHKD": {
+        "min": 38,
+        "max": 50
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "Lean fish and light noodles; mainly a salt issue.",
+      "whyItCanHelp": [
+        "Lean protein",
+        "Lower fat"
+      ],
+      "watchOuts": [
+        "Salty soup"
+      ],
+      "tip": "Leave most of the soup.",
+      "allergens": [
+        "fish"
+      ],
+      "dietNotes": [
+        "pork-free"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "fish-rice-noodle-soup"
+      ]
+    },
+    {
+      "id": "har-gow",
+      "name": "Shrimp dumplings",
+      "nameZh": "蝦餃",
+      "category": "Dim sum",
+      "servingSize": "4 pieces",
+      "nutrition": {
+        "calories": 180,
+        "proteinG": 10,
+        "carbsG": 22,
+        "fatG": 5,
+        "fiberG": 1,
+        "sodiumMg": 500,
+        "sugarG": 1
+      },
+      "priceHKD": {
+        "min": 32,
+        "max": 48
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "One of the lighter dim sum items; steamed, not fried.",
+      "whyItCanHelp": [
+        "Lean shrimp protein"
+      ],
+      "watchOuts": [
+        "Refined starch wrapper",
+        "Some sodium"
+      ],
+      "tip": "Pair with steamed greens.",
+      "allergens": [
+        "shellfish",
+        "wheat"
+      ],
+      "dietNotes": [
+        "pork-free"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "homemade-wonton-soup"
+      ]
+    },
+    {
+      "id": "siu-mai",
+      "name": "Pork & shrimp siu mai",
+      "nameZh": "燒賣",
+      "category": "Dim sum",
+      "servingSize": "4 pieces",
+      "nutrition": {
+        "calories": 200,
+        "proteinG": 10,
+        "carbsG": 12,
+        "fatG": 12,
+        "fiberG": 0,
+        "sodiumMg": 600,
+        "sugarG": 2
+      },
+      "priceHKD": {
+        "min": 32,
+        "max": 48
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "Steamed but contains fatty pork mince.",
+      "whyItCanHelp": [
+        "Protein"
+      ],
+      "watchOuts": [
+        "Fatty mince",
+        "Sodium"
+      ],
+      "tip": "Balance with vegetable dishes.",
+      "allergens": [
+        "shellfish",
+        "wheat",
+        "egg"
+      ],
+      "dietNotes": [
+        "contains pork"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "homemade-wonton-soup"
+      ]
+    },
+    {
+      "id": "char-siu-bao",
+      "name": "Char siu bao",
+      "nameZh": "叉燒包",
+      "category": "Dim sum",
+      "servingSize": "2 buns",
+      "nutrition": {
+        "calories": 360,
+        "proteinG": 12,
+        "carbsG": 55,
+        "fatG": 10,
+        "fiberG": 1,
+        "sodiumMg": 700,
+        "sugarG": 18
+      },
+      "priceHKD": {
+        "min": 30,
+        "max": 45
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "Fluffy white bun with sweet pork filling; mostly refined carbs.",
+      "whyItCanHelp": [
+        "Satisfying"
+      ],
+      "watchOuts": [
+        "Sugary filling",
+        "Refined flour"
+      ],
+      "tip": "Have one and add a protein or vegetable dish.",
+      "allergens": [
+        "wheat",
+        "soy"
+      ],
+      "dietNotes": [
+        "contains pork"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "steamed-chicken-shiitake"
+      ]
+    },
+    {
+      "id": "lo-mai-gai",
+      "name": "Glutinous rice in lotus leaf",
+      "nameZh": "糯米雞",
+      "category": "Dim sum",
+      "servingSize": "1 parcel",
+      "nutrition": {
+        "calories": 500,
+        "proteinG": 18,
+        "carbsG": 60,
+        "fatG": 20,
+        "fiberG": 2,
+        "sodiumMg": 1000,
+        "sugarG": 4
+      },
+      "priceHKD": {
+        "min": 30,
+        "max": 45
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Dense and oily glutinous rice; it's a full meal on its own.",
+      "whyItCanHelp": [
+        "Filling"
+      ],
+      "watchOuts": [
+        "High in oil",
+        "Fast-digesting sticky rice spikes blood sugar"
+      ],
+      "tip": "Share one between two.",
+      "allergens": [
+        "soy"
+      ],
+      "dietNotes": [
+        "contains pork"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "chicken-brown-rice-bowl"
+      ]
+    },
+    {
+      "id": "spring-rolls",
+      "name": "Spring rolls",
+      "nameZh": "春卷",
+      "category": "Dim sum",
+      "servingSize": "3 rolls",
+      "nutrition": {
+        "calories": 300,
+        "proteinG": 6,
+        "carbsG": 24,
+        "fatG": 20,
+        "fiberG": 2,
+        "sodiumMg": 450,
+        "sugarG": 2
+      },
+      "priceHKD": {
+        "min": 30,
+        "max": 42
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Deep-fried; most calories come from oil.",
+      "whyItCanHelp": [
+        "Some vegetables"
+      ],
+      "watchOuts": [
+        "Deep-fried"
+      ],
+      "tip": "Swap to fresh rice paper rolls.",
+      "allergens": [
+        "wheat",
+        "shellfish"
+      ],
+      "dietNotes": [],
+      "healthierAlternativeRecipeIds": [
+        "rice-paper-rolls"
+      ]
+    },
+    {
+      "id": "turnip-cake",
+      "name": "Pan-fried turnip cake",
+      "nameZh": "蘿蔔糕",
+      "category": "Dim sum",
+      "servingSize": "2 slices",
+      "nutrition": {
+        "calories": 250,
+        "proteinG": 5,
+        "carbsG": 30,
+        "fatG": 12,
+        "fiberG": 2,
+        "sodiumMg": 700,
+        "sugarG": 2
+      },
+      "priceHKD": {
+        "min": 28,
+        "max": 40
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "Pan-fried, with some cured meat; fine in small amounts.",
+      "whyItCanHelp": [
+        "Contains radish"
+      ],
+      "watchOuts": [
+        "Oil from pan-frying",
+        "Cured sausage"
+      ],
+      "tip": "Share it.",
+      "allergens": [
+        "shellfish"
+      ],
+      "dietNotes": [
+        "contains pork"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "steamed-egg-custard"
+      ]
+    },
+    {
+      "id": "steamed-greens-oyster",
+      "name": "Steamed greens with oyster sauce",
+      "nameZh": "蠔油菜心",
+      "category": "Dim sum",
+      "servingSize": "1 plate",
+      "nutrition": {
+        "calories": 120,
+        "proteinG": 4,
+        "carbsG": 10,
+        "fatG": 7,
+        "fiberG": 3,
+        "sodiumMg": 700,
+        "sugarG": 4
+      },
+      "priceHKD": {
+        "min": 25,
+        "max": 40
+      },
+      "verdict": "strong",
+      "verdictLabel": "Good choice",
+      "summary": "Order this every time; ask for sauce on the side.",
+      "whyItCanHelp": [
+        "Fibre, vitamins"
+      ],
+      "watchOuts": [
+        "Oyster sauce sodium"
+      ],
+      "tip": "Sauce on the side (醬汁另上).",
+      "allergens": [
+        "shellfish",
+        "soy"
+      ],
+      "dietNotes": [
+        "vegetarian if no oyster sauce"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "garlic-choy-sum"
+      ]
+    },
+    {
+      "id": "custard-buns",
+      "name": "Custard lava buns",
+      "nameZh": "流沙包",
+      "category": "Dim sum",
+      "servingSize": "3 buns",
+      "nutrition": {
+        "calories": 390,
+        "proteinG": 8,
+        "carbsG": 48,
+        "fatG": 18,
+        "fiberG": 1,
+        "sodiumMg": 250,
+        "sugarG": 20
+      },
+      "priceHKD": {
+        "min": 32,
+        "max": 45
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Dessert, not a meal: buttery, sugary filling.",
+      "whyItCanHelp": [
+        "Treat"
+      ],
+      "watchOuts": [
+        "Sugar and saturated fat"
+      ],
+      "tip": "Share among the table.",
+      "allergens": [
+        "wheat",
+        "egg",
+        "milk"
+      ],
+      "dietNotes": [
+        "vegetarian"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "light-mango-pomelo-sago"
+      ]
+    },
+    {
+      "id": "curry-fish-balls",
+      "name": "Curry fish balls",
+      "nameZh": "咖喱魚蛋",
+      "category": "Street food",
+      "servingSize": "1 skewer (6 balls)",
+      "nutrition": {
+        "calories": 200,
+        "proteinG": 10,
+        "carbsG": 15,
+        "fatG": 10,
+        "fiberG": 0,
+        "sodiumMg": 900,
+        "sugarG": 3
+      },
+      "priceHKD": {
+        "min": 12,
+        "max": 18
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Processed fish paste in a salty curry sauce.",
+      "whyItCanHelp": [
+        "Some protein"
+      ],
+      "watchOuts": [
+        "Processed, salty",
+        "Fried before stewing"
+      ],
+      "tip": "Have one skewer, not a cup of three.",
+      "allergens": [
+        "fish",
+        "wheat"
+      ],
+      "dietNotes": [
+        "pork-free"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "edamame-snack"
+      ]
+    },
+    {
+      "id": "egg-waffle",
+      "name": "Egg waffle",
+      "nameZh": "雞蛋仔",
+      "category": "Street food",
+      "servingSize": "1 sheet",
+      "nutrition": {
+        "calories": 500,
+        "proteinG": 10,
+        "carbsG": 80,
+        "fatG": 15,
+        "fiberG": 1,
+        "sodiumMg": 400,
+        "sugarG": 30
+      },
+      "priceHKD": {
+        "min": 22,
+        "max": 35
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Sweet batter; one sheet is a meal's worth of calories.",
+      "whyItCanHelp": [
+        "Fun to share"
+      ],
+      "watchOuts": [
+        "Sugar and refined flour"
+      ],
+      "tip": "Split one with friends.",
+      "allergens": [
+        "wheat",
+        "egg",
+        "milk"
+      ],
+      "dietNotes": [
+        "vegetarian"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "banana-oat-pancakes"
+      ]
+    },
+    {
+      "id": "stinky-tofu",
+      "name": "Fried stinky tofu",
+      "nameZh": "臭豆腐",
+      "category": "Street food",
+      "servingSize": "4 pieces",
+      "nutrition": {
+        "calories": 300,
+        "proteinG": 15,
+        "carbsG": 10,
+        "fatG": 22,
+        "fiberG": 2,
+        "sodiumMg": 700,
+        "sugarG": 4
+      },
+      "priceHKD": {
+        "min": 18,
+        "max": 25
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Tofu is good, but deep-frying adds a lot of oil.",
+      "whyItCanHelp": [
+        "Plant protein"
+      ],
+      "watchOuts": [
+        "Deep-fried",
+        "Sweet-salty sauces"
+      ],
+      "tip": "Eat occasionally; choose steamed tofu at home.",
+      "allergens": [
+        "soy"
+      ],
+      "dietNotes": [
+        "vegan"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "mapo-tofu-light",
+        "edamame-snack"
+      ]
+    },
+    {
+      "id": "siu-mai-street",
+      "name": "Fish siu mai (street)",
+      "nameZh": "魚肉燒賣",
+      "category": "Street food",
+      "servingSize": "1 skewer (6)",
+      "nutrition": {
+        "calories": 180,
+        "proteinG": 8,
+        "carbsG": 14,
+        "fatG": 10,
+        "fiberG": 0,
+        "sodiumMg": 700,
+        "sugarG": 3
+      },
+      "priceHKD": {
+        "min": 12,
+        "max": 18
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "Small portion, processed fish paste.",
+      "whyItCanHelp": [
+        "Some protein"
+      ],
+      "watchOuts": [
+        "Processed, salty"
+      ],
+      "tip": "Fine as a small snack; skip sweet sauce.",
+      "allergens": [
+        "fish",
+        "wheat",
+        "soy"
+      ],
+      "dietNotes": [
+        "pork-free"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "edamame-snack"
+      ]
+    },
+    {
+      "id": "bubble-tea",
+      "name": "Bubble milk tea (regular sugar)",
+      "nameZh": "珍珠奶茶",
+      "category": "Drinks",
+      "servingSize": "1 cup (500ml)",
+      "nutrition": {
+        "calories": 450,
+        "proteinG": 3,
+        "carbsG": 80,
+        "fatG": 12,
+        "fiberG": 1,
+        "sodiumMg": 100,
+        "sugarG": 50
+      },
+      "priceHKD": {
+        "min": 25,
+        "max": 40
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Sugar syrup, creamer and tapioca pearls; close to a meal in calories.",
+      "whyItCanHelp": [
+        "Enjoyable treat"
+      ],
+      "watchOuts": [
+        "Very high added sugar",
+        "Creamer fats"
+      ],
+      "tip": "Order 30% sugar, fresh milk and no pearls, or small size.",
+      "allergens": [
+        "milk"
+      ],
+      "dietNotes": [
+        "vegetarian"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "mango-yogurt-smoothie",
+        "less-sugar-lemon-tea"
+      ]
+    },
+    {
+      "id": "mango-pomelo-sago",
+      "name": "Mango pomelo sago",
+      "nameZh": "楊枝甘露",
+      "category": "Dessert",
+      "servingSize": "1 bowl",
+      "nutrition": {
+        "calories": 300,
+        "proteinG": 4,
+        "carbsG": 50,
+        "fatG": 10,
+        "fiberG": 2,
+        "sodiumMg": 60,
+        "sugarG": 40
+      },
+      "priceHKD": {
+        "min": 35,
+        "max": 55
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Fruit plus sugar syrup and coconut cream.",
+      "whyItCanHelp": [
+        "Fresh fruit"
+      ],
+      "watchOuts": [
+        "Added sugar",
+        "Coconut cream"
+      ],
+      "tip": "Make the lighter version at home.",
+      "allergens": [
+        "milk"
+      ],
+      "dietNotes": [
+        "vegetarian"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "light-mango-pomelo-sago"
+      ]
+    },
+    {
+      "id": "ice-cream",
+      "name": "Ice cream",
+      "nameZh": "雪糕",
+      "category": "Dessert",
+      "servingSize": "2 scoops",
+      "nutrition": {
+        "calories": 270,
+        "proteinG": 5,
+        "carbsG": 32,
+        "fatG": 14,
+        "fiberG": 1,
+        "sodiumMg": 100,
+        "sugarG": 28
+      },
+      "priceHKD": {
+        "min": 25,
+        "max": 45
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Fine occasionally; high in sugar and saturated fat.",
+      "whyItCanHelp": [
+        "Some calcium"
+      ],
+      "watchOuts": [
+        "Sugar",
+        "Saturated fat"
+      ],
+      "tip": "One scoop, in a cup not a waffle cone.",
+      "allergens": [
+        "milk",
+        "egg"
+      ],
+      "dietNotes": [
+        "vegetarian"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "yogurt-parfait"
+      ]
+    },
+    {
+      "id": "potato-chips",
+      "name": "Potato chips",
+      "nameZh": "薯片",
+      "category": "Convenience store",
+      "servingSize": "1 small bag (45g)",
+      "nutrition": {
+        "calories": 240,
+        "proteinG": 3,
+        "carbsG": 24,
+        "fatG": 15,
+        "fiberG": 2,
+        "sodiumMg": 250,
+        "sugarG": 0
+      },
+      "priceHKD": {
+        "min": 10,
+        "max": 15
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Easy to eat a lot without feeling full.",
+      "whyItCanHelp": [
+        "None notable"
+      ],
+      "watchOuts": [
+        "Fried",
+        "Salty",
+        "Low fibre/protein"
+      ],
+      "tip": "Portion into a bowl; try edamame or nuts instead.",
+      "allergens": [],
+      "dietNotes": [
+        "vegan"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "edamame-snack"
+      ]
+    },
+    {
+      "id": "chocolate-bar",
+      "name": "Chocolate bar",
+      "nameZh": "朱古力",
+      "category": "Convenience store",
+      "servingSize": "1 bar (50g)",
+      "nutrition": {
+        "calories": 250,
+        "proteinG": 3,
+        "carbsG": 30,
+        "fatG": 13,
+        "fiberG": 1,
+        "sodiumMg": 40,
+        "sugarG": 26
+      },
+      "priceHKD": {
+        "min": 10,
+        "max": 15
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Sugar and fat; fine as a small treat.",
+      "whyItCanHelp": [
+        "Quick energy"
+      ],
+      "watchOuts": [
+        "Added sugar"
+      ],
+      "tip": "Choose a few squares of 70% dark chocolate.",
+      "allergens": [
+        "milk",
+        "soy",
+        "may contain nuts"
+      ],
+      "dietNotes": [
+        "vegetarian"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "yogurt-parfait"
+      ]
+    },
+    {
+      "id": "onigiri-tuna",
+      "name": "Tuna mayo rice ball",
+      "nameZh": "吞拿魚飯糰",
+      "category": "Convenience store",
+      "servingSize": "1 piece",
+      "nutrition": {
+        "calories": 200,
+        "proteinG": 5,
+        "carbsG": 38,
+        "fatG": 4,
+        "fiberG": 1,
+        "sodiumMg": 450,
+        "sugarG": 2
+      },
+      "priceHKD": {
+        "min": 12,
+        "max": 16
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "Light and portable but mostly white rice.",
+      "whyItCanHelp": [
+        "Portion-controlled",
+        "Some protein"
+      ],
+      "watchOuts": [
+        "Low protein and fibre"
+      ],
+      "tip": "Pair with a boiled egg or unsweetened soy milk.",
+      "allergens": [
+        "fish",
+        "egg",
+        "soy"
+      ],
+      "dietNotes": [
+        "pork-free"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "tuna-wholewheat-sandwich"
+      ]
+    },
+    {
+      "id": "egg-mayo-sandwich",
+      "name": "Egg mayo sandwich",
+      "nameZh": "蛋沙律三文治",
+      "category": "Convenience store",
+      "servingSize": "1 pack",
+      "nutrition": {
+        "calories": 350,
+        "proteinG": 12,
+        "carbsG": 30,
+        "fatG": 20,
+        "fiberG": 2,
+        "sodiumMg": 550,
+        "sugarG": 4
+      },
+      "priceHKD": {
+        "min": 16,
+        "max": 25
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "Convenient; the mayo adds a lot of fat.",
+      "whyItCanHelp": [
+        "Egg protein"
+      ],
+      "watchOuts": [
+        "Mayonnaise fat",
+        "White bread"
+      ],
+      "tip": "Pick a wholemeal or chicken option; add fruit.",
+      "allergens": [
+        "egg",
+        "wheat",
+        "milk"
+      ],
+      "dietNotes": [
+        "vegetarian"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "tuna-wholewheat-sandwich"
+      ]
+    },
+    {
+      "id": "cup-noodles",
+      "name": "Cup noodles",
+      "nameZh": "杯麵",
+      "category": "Convenience store",
+      "servingSize": "1 cup",
+      "nutrition": {
+        "calories": 300,
+        "proteinG": 6,
+        "carbsG": 40,
+        "fatG": 13,
+        "fiberG": 2,
+        "sodiumMg": 1800,
+        "sugarG": 3
+      },
+      "priceHKD": {
+        "min": 8,
+        "max": 15
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Fried noodles and seasoning pack; very high salt, little nutrition.",
+      "whyItCanHelp": [
+        "Cheap and quick"
+      ],
+      "watchOuts": [
+        "Very high sodium",
+        "Fried",
+        "Almost no protein or vegetables"
+      ],
+      "tip": "Use half the seasoning; add an egg and greens.",
+      "allergens": [
+        "wheat",
+        "soy"
+      ],
+      "dietNotes": [],
+      "healthierAlternativeRecipeIds": [
+        "tofu-pak-choi-noodles"
+      ]
+    },
+    {
+      "id": "sweet-soy-milk",
+      "name": "Boxed soy milk (sweetened)",
+      "nameZh": "盒裝豆漿（甜）",
+      "category": "Convenience store",
+      "servingSize": "250ml",
+      "nutrition": {
+        "calories": 130,
+        "proteinG": 7,
+        "carbsG": 16,
+        "fatG": 4,
+        "fiberG": 1,
+        "sodiumMg": 40,
+        "sugarG": 13
+      },
+      "priceHKD": {
+        "min": 6,
+        "max": 10
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "Decent protein but often sweetened.",
+      "whyItCanHelp": [
+        "Plant protein"
+      ],
+      "watchOuts": [
+        "Added sugar"
+      ],
+      "tip": "Choose the unsweetened or 'less sugar' box.",
+      "allergens": [
+        "soy"
+      ],
+      "dietNotes": [
+        "vegan"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "mango-yogurt-smoothie"
+      ]
+    },
+    {
+      "id": "unsweetened-soy-milk",
+      "name": "Unsweetened soy milk",
+      "nameZh": "無糖豆漿",
+      "category": "Convenience store",
+      "servingSize": "250ml",
+      "nutrition": {
+        "calories": 80,
+        "proteinG": 8,
+        "carbsG": 3,
+        "fatG": 4,
+        "fiberG": 1,
+        "sodiumMg": 40,
+        "sugarG": 1
+      },
+      "priceHKD": {
+        "min": 7,
+        "max": 11
+      },
+      "verdict": "strong",
+      "verdictLabel": "Good choice",
+      "summary": "Good plant protein with no added sugar.",
+      "whyItCanHelp": [
+        "Protein",
+        "Calcium if fortified"
+      ],
+      "watchOuts": [],
+      "tip": "A good pair for rice balls or bread.",
+      "allergens": [
+        "soy"
+      ],
+      "dietNotes": [
+        "vegan"
+      ],
+      "healthierAlternativeRecipeIds": []
+    },
+    {
+      "id": "boiled-egg",
+      "name": "Boiled egg",
+      "nameZh": "烚蛋",
+      "category": "Convenience store",
+      "servingSize": "1 large egg",
+      "nutrition": {
+        "calories": 75,
+        "proteinG": 6,
+        "carbsG": 1,
+        "fatG": 5,
+        "fiberG": 0,
+        "sodiumMg": 70,
+        "sugarG": 0
+      },
+      "priceHKD": {
+        "min": 5,
+        "max": 10
+      },
+      "verdict": "strong",
+      "verdictLabel": "Good choice",
+      "summary": "Cheap, portable complete protein.",
+      "whyItCanHelp": [
+        "High-quality protein",
+        "Keeps you full"
+      ],
+      "watchOuts": [],
+      "tip": "Add one to noodle or rice meals.",
+      "allergens": [
+        "egg"
+      ],
+      "dietNotes": [
+        "vegetarian",
+        "halal"
+      ],
+      "healthierAlternativeRecipeIds": []
+    },
+    {
+      "id": "tea-egg",
+      "name": "Tea egg",
+      "nameZh": "茶葉蛋",
+      "category": "Convenience store",
+      "servingSize": "1 egg",
+      "nutrition": {
+        "calories": 80,
+        "proteinG": 6,
+        "carbsG": 1,
+        "fatG": 5,
+        "fiberG": 0,
+        "sodiumMg": 350,
+        "sugarG": 1
+      },
+      "priceHKD": {
+        "min": 6,
+        "max": 10
+      },
+      "verdict": "strong",
+      "verdictLabel": "Good choice",
+      "summary": "Same as a boiled egg, a bit saltier.",
+      "whyItCanHelp": [
+        "Protein"
+      ],
+      "watchOuts": [
+        "Some added salt"
+      ],
+      "tip": "Good snack swap for chips.",
+      "allergens": [
+        "egg",
+        "soy"
+      ],
+      "dietNotes": [
+        "vegetarian"
+      ],
+      "healthierAlternativeRecipeIds": []
+    },
+    {
+      "id": "plain-greek-yogurt",
+      "name": "Plain Greek yogurt",
+      "nameZh": "原味希臘乳酪",
+      "category": "Convenience store",
+      "servingSize": "150g",
+      "nutrition": {
+        "calories": 130,
+        "proteinG": 15,
+        "carbsG": 6,
+        "fatG": 5,
+        "fiberG": 0,
+        "sodiumMg": 60,
+        "sugarG": 5
+      },
+      "priceHKD": {
+        "min": 15,
+        "max": 25
+      },
+      "verdict": "strong",
+      "verdictLabel": "Good choice",
+      "summary": "High protein with little sugar.",
+      "whyItCanHelp": [
+        "Protein",
+        "Calcium",
+        "Probiotics"
+      ],
+      "watchOuts": [],
+      "tip": "Add fruit instead of buying flavoured cups.",
+      "allergens": [
+        "milk"
+      ],
+      "dietNotes": [
+        "vegetarian",
+        "halal"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "yogurt-parfait"
+      ]
+    },
+    {
+      "id": "flavoured-yogurt",
+      "name": "Flavoured yogurt cup",
+      "nameZh": "果味乳酪",
+      "category": "Convenience store",
+      "servingSize": "1 cup (150g)",
+      "nutrition": {
+        "calories": 150,
+        "proteinG": 5,
+        "carbsG": 24,
+        "fatG": 3,
+        "fiberG": 0,
+        "sodiumMg": 70,
+        "sugarG": 20
+      },
+      "priceHKD": {
+        "min": 10,
+        "max": 16
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "Yogurt is healthy but these often have a lot of added sugar.",
+      "whyItCanHelp": [
+        "Calcium"
+      ],
+      "watchOuts": [
+        "Added sugar"
+      ],
+      "tip": "Pick plain or Greek and add fruit.",
+      "allergens": [
+        "milk"
+      ],
+      "dietNotes": [
+        "vegetarian"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "yogurt-parfait"
+      ]
+    },
+    {
+      "id": "mixed-nuts",
+      "name": "Unsalted mixed nuts",
+      "nameZh": "無鹽果仁",
+      "category": "Convenience store",
+      "servingSize": "30g handful",
+      "nutrition": {
+        "calories": 180,
+        "proteinG": 5,
+        "carbsG": 6,
+        "fatG": 16,
+        "fiberG": 3,
+        "sodiumMg": 5,
+        "sugarG": 1
+      },
+      "priceHKD": {
+        "min": 10,
+        "max": 15
+      },
+      "verdict": "strong",
+      "verdictLabel": "Good choice",
+      "summary": "Healthy fats and fibre; just keep it to a handful.",
+      "whyItCanHelp": [
+        "Heart-healthy fats",
+        "Fibre"
+      ],
+      "watchOuts": [
+        "Calorie-dense",
+        "Allergy risk"
+      ],
+      "tip": "Pre-portion 30g.",
+      "allergens": [
+        "tree nuts",
+        "peanut (if mixed)"
+      ],
+      "dietNotes": [
+        "vegan"
+      ],
+      "healthierAlternativeRecipeIds": []
+    },
+    {
+      "id": "banana",
+      "name": "Banana",
+      "nameZh": "香蕉",
+      "category": "Fruit",
+      "servingSize": "1 medium",
+      "nutrition": {
+        "calories": 105,
+        "proteinG": 1,
+        "carbsG": 27,
+        "fatG": 0,
+        "fiberG": 3,
+        "sodiumMg": 1,
+        "sugarG": 14
+      },
+      "priceHKD": {
+        "min": 3,
+        "max": 6
+      },
+      "verdict": "strong",
+      "verdictLabel": "Good choice",
+      "summary": "Cheap, portable energy with potassium.",
+      "whyItCanHelp": [
+        "Fibre",
+        "Potassium"
+      ],
+      "watchOuts": [],
+      "tip": "Great pre-exercise snack.",
+      "allergens": [],
+      "dietNotes": [
+        "vegan"
+      ],
+      "healthierAlternativeRecipeIds": []
+    },
+    {
+      "id": "apple",
+      "name": "Apple",
+      "nameZh": "蘋果",
+      "category": "Fruit",
+      "servingSize": "1 medium",
+      "nutrition": {
+        "calories": 95,
+        "proteinG": 0,
+        "carbsG": 25,
+        "fatG": 0,
+        "fiberG": 4,
+        "sodiumMg": 2,
+        "sugarG": 19
+      },
+      "priceHKD": {
+        "min": 4,
+        "max": 8
+      },
+      "verdict": "strong",
+      "verdictLabel": "Good choice",
+      "summary": "Fibre-rich, low-calorie snack.",
+      "whyItCanHelp": [
+        "Fibre",
+        "Vitamin C"
+      ],
+      "watchOuts": [],
+      "tip": "Eat the skin for the fibre.",
+      "allergens": [],
+      "dietNotes": [
+        "vegan"
+      ],
+      "healthierAlternativeRecipeIds": []
+    },
+    {
+      "id": "orange",
+      "name": "Orange",
+      "nameZh": "橙",
+      "category": "Fruit",
+      "servingSize": "1 medium",
+      "nutrition": {
+        "calories": 62,
+        "proteinG": 1,
+        "carbsG": 15,
+        "fatG": 0,
+        "fiberG": 3,
+        "sodiumMg": 0,
+        "sugarG": 12
+      },
+      "priceHKD": {
+        "min": 3,
+        "max": 6
+      },
+      "verdict": "strong",
+      "verdictLabel": "Good choice",
+      "summary": "Whole fruit beats juice: fibre and vitamin C.",
+      "whyItCanHelp": [
+        "Vitamin C",
+        "Fibre"
+      ],
+      "watchOuts": [],
+      "tip": "Choose whole fruit over juice.",
+      "allergens": [],
+      "dietNotes": [
+        "vegan"
+      ],
+      "healthierAlternativeRecipeIds": []
+    },
+    {
+      "id": "orange-juice",
+      "name": "Orange juice (boxed)",
+      "nameZh": "橙汁",
+      "category": "Drinks",
+      "servingSize": "250ml",
+      "nutrition": {
+        "calories": 110,
+        "proteinG": 2,
+        "carbsG": 26,
+        "fatG": 0,
+        "fiberG": 0,
+        "sodiumMg": 5,
+        "sugarG": 22
+      },
+      "priceHKD": {
+        "min": 8,
+        "max": 14
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "Has vitamin C but the sugar of a soft drink and no fibre.",
+      "whyItCanHelp": [
+        "Vitamin C"
+      ],
+      "watchOuts": [
+        "High natural sugar, no fibre"
+      ],
+      "tip": "Eat an orange instead.",
+      "allergens": [],
+      "dietNotes": [
+        "vegan"
+      ],
+      "healthierAlternativeRecipeIds": []
+    },
+    {
+      "id": "cola",
+      "name": "Cola",
+      "nameZh": "可樂",
+      "category": "Drinks",
+      "servingSize": "1 can (330ml)",
+      "nutrition": {
+        "calories": 140,
+        "proteinG": 0,
+        "carbsG": 35,
+        "fatG": 0,
+        "fiberG": 0,
+        "sodiumMg": 15,
+        "sugarG": 35
+      },
+      "priceHKD": {
+        "min": 7,
+        "max": 12
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "About 9 teaspoons of sugar and nothing else.",
+      "whyItCanHelp": [
+        "None"
+      ],
+      "watchOuts": [
+        "High added sugar"
+      ],
+      "tip": "Try zero-sugar or sparkling water with lemon.",
+      "allergens": [],
+      "dietNotes": [
+        "vegan"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "less-sugar-lemon-tea"
+      ]
+    },
+    {
+      "id": "sports-drink",
+      "name": "Sports drink",
+      "nameZh": "運動飲品",
+      "category": "Drinks",
+      "servingSize": "500ml",
+      "nutrition": {
+        "calories": 130,
+        "proteinG": 0,
+        "carbsG": 32,
+        "fatG": 0,
+        "fiberG": 0,
+        "sodiumMg": 250,
+        "sugarG": 30
+      },
+      "priceHKD": {
+        "min": 10,
+        "max": 15
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "Useful after long sweaty exercise; otherwise just sugary water.",
+      "whyItCanHelp": [
+        "Electrolytes for long workouts"
+      ],
+      "watchOuts": [
+        "Added sugar"
+      ],
+      "tip": "Water is enough for under an hour of exercise.",
+      "allergens": [],
+      "dietNotes": [
+        "vegan"
+      ],
+      "healthierAlternativeRecipeIds": []
+    },
+    {
+      "id": "energy-drink",
+      "name": "Energy drink",
+      "nameZh": "能量飲品",
+      "category": "Drinks",
+      "servingSize": "250ml",
+      "nutrition": {
+        "calories": 110,
+        "proteinG": 0,
+        "carbsG": 28,
+        "fatG": 0,
+        "fiberG": 0,
+        "sodiumMg": 100,
+        "sugarG": 27
+      },
+      "priceHKD": {
+        "min": 12,
+        "max": 20
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Sugar plus high caffeine.",
+      "whyItCanHelp": [
+        "Short alertness boost"
+      ],
+      "watchOuts": [
+        "High caffeine",
+        "Added sugar"
+      ],
+      "tip": "Limit to one, never with alcohol.",
+      "allergens": [],
+      "dietNotes": [
+        "vegan"
+      ],
+      "healthierAlternativeRecipeIds": []
+    },
+    {
+      "id": "beer",
+      "name": "Beer",
+      "nameZh": "啤酒",
+      "category": "Drinks",
+      "servingSize": "330ml",
+      "nutrition": {
+        "calories": 150,
+        "proteinG": 1,
+        "carbsG": 13,
+        "fatG": 0,
+        "fiberG": 0,
+        "sodiumMg": 10,
+        "sugarG": 0
+      },
+      "priceHKD": {
+        "min": 12,
+        "max": 40
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Empty calories and alcohol.",
+      "whyItCanHelp": [
+        "None nutritionally"
+      ],
+      "watchOuts": [
+        "Alcohol",
+        "Calories"
+      ],
+      "tip": "Alternate with water.",
+      "allergens": [
+        "wheat/barley"
+      ],
+      "dietNotes": [
+        "vegan"
+      ],
+      "healthierAlternativeRecipeIds": []
+    },
+    {
+      "id": "water-unsweetened-tea",
+      "name": "Water or unsweetened tea",
+      "nameZh": "水／無糖茶",
+      "category": "Drinks",
+      "servingSize": "1 bottle",
+      "nutrition": {
+        "calories": 0,
+        "proteinG": 0,
+        "carbsG": 0,
+        "fatG": 0,
+        "fiberG": 0,
+        "sodiumMg": 0,
+        "sugarG": 0
+      },
+      "priceHKD": {
+        "min": 0,
+        "max": 10
+      },
+      "verdict": "strong",
+      "verdictLabel": "Good choice",
+      "summary": "The best everyday drink.",
+      "whyItCanHelp": [
+        "Zero sugar",
+        "Hydration"
+      ],
+      "watchOuts": [],
+      "tip": "Carry a refillable bottle.",
+      "allergens": [],
+      "dietNotes": [
+        "vegan"
+      ],
+      "healthierAlternativeRecipeIds": []
+    },
+    {
+      "id": "low-fat-milk",
+      "name": "Low-fat milk",
+      "nameZh": "低脂奶",
+      "category": "Drinks",
+      "servingSize": "250ml",
+      "nutrition": {
+        "calories": 110,
+        "proteinG": 8,
+        "carbsG": 12,
+        "fatG": 3,
+        "fiberG": 0,
+        "sodiumMg": 110,
+        "sugarG": 12
+      },
+      "priceHKD": {
+        "min": 6,
+        "max": 10
+      },
+      "verdict": "strong",
+      "verdictLabel": "Good choice",
+      "summary": "Protein and calcium; sugar here is natural lactose.",
+      "whyItCanHelp": [
+        "Calcium",
+        "Protein"
+      ],
+      "watchOuts": [],
+      "tip": "Good with oats or as a snack.",
+      "allergens": [
+        "milk"
+      ],
+      "dietNotes": [
+        "vegetarian"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "overnight-oats"
+      ]
+    },
+    {
+      "id": "fried-chicken",
+      "name": "Fried chicken",
+      "nameZh": "炸雞",
+      "category": "Fast food",
+      "servingSize": "2 pieces",
+      "nutrition": {
+        "calories": 500,
+        "proteinG": 35,
+        "carbsG": 18,
+        "fatG": 32,
+        "fiberG": 1,
+        "sodiumMg": 1200,
+        "sugarG": 0
+      },
+      "priceHKD": {
+        "min": 30,
+        "max": 60
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Tasty but usually high in oil, calories and sodium.",
+      "whyItCanHelp": [
+        "Protein"
+      ],
+      "watchOuts": [
+        "Deep-fried",
+        "High sodium",
+        "Often paired with sugary drinks"
+      ],
+      "tip": "Share an order and start with a salad or broth soup.",
+      "allergens": [
+        "wheat",
+        "egg",
+        "milk"
+      ],
+      "dietNotes": [
+        "contains chicken"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "baked-chicken-wings-light",
+        "chicken-tikka-skewers"
+      ]
+    },
+    {
+      "id": "burger-fries-combo",
+      "name": "Burger, fries & soft drink combo",
+      "nameZh": "漢堡套餐",
+      "category": "Fast food",
+      "servingSize": "1 combo",
+      "nutrition": {
+        "calories": 1100,
+        "proteinG": 30,
+        "carbsG": 140,
+        "fatG": 45,
+        "fiberG": 6,
+        "sodiumMg": 1500,
+        "sugarG": 45
+      },
+      "priceHKD": {
+        "min": 45,
+        "max": 70
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "A day's worth of salt and lots of sugar in one meal.",
+      "whyItCanHelp": [
+        "Protein"
+      ],
+      "watchOuts": [
+        "High calories",
+        "Fried fries",
+        "Sugary drink"
+      ],
+      "tip": "Swap fries for salad/corn and drink water or zero-sugar.",
+      "allergens": [
+        "wheat",
+        "milk",
+        "sesame",
+        "egg"
+      ],
+      "dietNotes": [
+        "contains beef"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "chicken-broccoli-stirfry"
+      ]
+    },
+    {
+      "id": "pepperoni-pizza",
+      "name": "Pepperoni pizza",
+      "nameZh": "意大利辣肉腸薄餅",
+      "category": "Fast food",
+      "servingSize": "2 slices",
+      "nutrition": {
+        "calories": 600,
+        "proteinG": 24,
+        "carbsG": 68,
+        "fatG": 26,
+        "fiberG": 4,
+        "sodiumMg": 1500,
+        "sugarG": 8
+      },
+      "priceHKD": {
+        "min": 50,
+        "max": 80
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Processed meat and cheese on refined dough.",
+      "whyItCanHelp": [
+        "Some protein and calcium"
+      ],
+      "watchOuts": [
+        "Processed meat",
+        "High sodium"
+      ],
+      "tip": "Choose vegetable toppings and thin crust; add salad.",
+      "allergens": [
+        "wheat",
+        "milk"
+      ],
+      "dietNotes": [
+        "contains pork"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "shrimp-zucchini-pasta"
+      ]
+    },
+    {
+      "id": "chicken-caesar-salad",
+      "name": "Chicken Caesar salad",
+      "nameZh": "雞肉凱撒沙律",
+      "category": "Western",
+      "servingSize": "1 bowl",
+      "nutrition": {
+        "calories": 450,
+        "proteinG": 30,
+        "carbsG": 15,
+        "fatG": 30,
+        "fiberG": 3,
+        "sodiumMg": 900,
+        "sugarG": 3
+      },
+      "priceHKD": {
+        "min": 70,
+        "max": 110
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "Salads aren't automatically light: the creamy dressing and croutons add up.",
+      "whyItCanHelp": [
+        "Protein",
+        "Some greens"
+      ],
+      "watchOuts": [
+        "Creamy dressing",
+        "Croutons"
+      ],
+      "tip": "Dressing on the side; use half.",
+      "allergens": [
+        "milk",
+        "egg",
+        "wheat",
+        "fish"
+      ],
+      "dietNotes": [],
+      "healthierAlternativeRecipeIds": [
+        "chickpea-salad",
+        "quinoa-veg-bowl"
+      ]
+    },
+    {
+      "id": "katsu-curry-rice",
+      "name": "Pork katsu curry rice",
+      "nameZh": "吉列豬扒咖喱飯",
+      "category": "Japanese",
+      "servingSize": "1 plate",
+      "nutrition": {
+        "calories": 950,
+        "proteinG": 32,
+        "carbsG": 115,
+        "fatG": 40,
+        "fiberG": 5,
+        "sodiumMg": 1800,
+        "sugarG": 10
+      },
+      "priceHKD": {
+        "min": 60,
+        "max": 90
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Fried cutlet plus a thick, salty curry roux.",
+      "whyItCanHelp": [
+        "Protein"
+      ],
+      "watchOuts": [
+        "Deep-fried",
+        "High sodium"
+      ],
+      "tip": "Choose grilled chicken curry and less rice.",
+      "allergens": [
+        "wheat",
+        "egg",
+        "milk",
+        "soy"
+      ],
+      "dietNotes": [
+        "contains pork"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "chicken-tikka-skewers",
+        "red-lentil-curry"
+      ]
+    },
+    {
+      "id": "tonkotsu-ramen",
+      "name": "Tonkotsu ramen",
+      "nameZh": "豚骨拉麵",
+      "category": "Japanese",
+      "servingSize": "1 bowl",
+      "nutrition": {
+        "calories": 800,
+        "proteinG": 30,
+        "carbsG": 80,
+        "fatG": 38,
+        "fiberG": 3,
+        "sodiumMg": 3000,
+        "sugarG": 4
+      },
+      "priceHKD": {
+        "min": 85,
+        "max": 130
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Rich pork broth with very high sodium; often over a day's limit.",
+      "whyItCanHelp": [
+        "Protein"
+      ],
+      "watchOuts": [
+        "Extremely salty broth",
+        "Fatty pork"
+      ],
+      "tip": "Leave most of the broth.",
+      "allergens": [
+        "wheat",
+        "egg",
+        "soy",
+        "sesame"
+      ],
+      "dietNotes": [
+        "contains pork"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "tofu-pak-choi-noodles",
+        "clear-beef-noodle-soup"
+      ]
+    },
+    {
+      "id": "salmon-sushi-set",
+      "name": "Sushi set",
+      "nameZh": "壽司套餐",
+      "category": "Japanese",
+      "servingSize": "8 pieces",
+      "nutrition": {
+        "calories": 400,
+        "proteinG": 18,
+        "carbsG": 70,
+        "fatG": 6,
+        "fiberG": 1,
+        "sodiumMg": 1100,
+        "sugarG": 10
+      },
+      "priceHKD": {
+        "min": 60,
+        "max": 120
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "Fairly light; mostly white rice with some fish.",
+      "whyItCanHelp": [
+        "Lean fish",
+        "Low fat"
+      ],
+      "watchOuts": [
+        "Refined rice",
+        "Soy sauce sodium"
+      ],
+      "tip": "Add sashimi or edamame for more protein.",
+      "allergens": [
+        "fish",
+        "soy",
+        "shellfish"
+      ],
+      "dietNotes": [
+        "pork-free"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "home-poke-bowl"
+      ]
+    },
+    {
+      "id": "salmon-sashimi",
+      "name": "Salmon sashimi",
+      "nameZh": "三文魚刺身",
+      "category": "Japanese",
+      "servingSize": "6 slices (~100g)",
+      "nutrition": {
+        "calories": 200,
+        "proteinG": 20,
+        "carbsG": 0,
+        "fatG": 13,
+        "fiberG": 0,
+        "sodiumMg": 50,
+        "sugarG": 0
+      },
+      "priceHKD": {
+        "min": 60,
+        "max": 100
+      },
+      "verdict": "strong",
+      "verdictLabel": "Good choice",
+      "summary": "Pure protein and omega-3 fats.",
+      "whyItCanHelp": [
+        "Omega-3",
+        "High protein"
+      ],
+      "watchOuts": [
+        "Raw fish: avoid in pregnancy"
+      ],
+      "tip": "Go easy on the soy sauce.",
+      "allergens": [
+        "fish"
+      ],
+      "dietNotes": [
+        "halal",
+        "pork-free"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "baked-salmon-veg"
+      ]
+    },
+    {
+      "id": "poke-bowl",
+      "name": "Salmon poke bowl",
+      "nameZh": "三文魚波奇碗",
+      "category": "Café",
+      "servingSize": "1 bowl",
+      "nutrition": {
+        "calories": 600,
+        "proteinG": 32,
+        "carbsG": 65,
+        "fatG": 22,
+        "fiberG": 6,
+        "sodiumMg": 1000,
+        "sugarG": 8
+      },
+      "priceHKD": {
+        "min": 90,
+        "max": 130
+      },
+      "verdict": "strong",
+      "verdictLabel": "Good choice",
+      "summary": "Balanced if you skip the mayo sauces and fried toppings.",
+      "whyItCanHelp": [
+        "Protein, omega-3, vegetables"
+      ],
+      "watchOuts": [
+        "Creamy sauces",
+        "Fried onion toppings"
+      ],
+      "tip": "Brown rice or half rice-half greens; light sauce.",
+      "allergens": [
+        "fish",
+        "soy",
+        "sesame"
+      ],
+      "dietNotes": [],
+      "healthierAlternativeRecipeIds": [
+        "home-poke-bowl"
+      ]
+    },
+    {
+      "id": "pho",
+      "name": "Vietnamese beef pho",
+      "nameZh": "越南牛肉河",
+      "category": "Southeast Asian",
+      "servingSize": "1 bowl",
+      "nutrition": {
+        "calories": 450,
+        "proteinG": 28,
+        "carbsG": 60,
+        "fatG": 8,
+        "fiberG": 2,
+        "sodiumMg": 1800,
+        "sugarG": 4
+      },
+      "priceHKD": {
+        "min": 65,
+        "max": 95
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "Lean beef and herbs, mostly a sodium issue.",
+      "whyItCanHelp": [
+        "Lean protein",
+        "Herbs"
+      ],
+      "watchOuts": [
+        "Salty broth"
+      ],
+      "tip": "Add extra herbs and bean sprouts; leave some broth.",
+      "allergens": [
+        "fish (fish sauce)"
+      ],
+      "dietNotes": [
+        "contains beef"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "clear-beef-noodle-soup"
+      ]
+    },
+    {
+      "id": "thai-green-curry",
+      "name": "Thai green curry with rice",
+      "nameZh": "泰式青咖喱飯",
+      "category": "Southeast Asian",
+      "servingSize": "1 plate",
+      "nutrition": {
+        "calories": 700,
+        "proteinG": 25,
+        "carbsG": 80,
+        "fatG": 30,
+        "fiberG": 4,
+        "sodiumMg": 1300,
+        "sugarG": 8
+      },
+      "priceHKD": {
+        "min": 65,
+        "max": 95
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "Coconut milk makes it rich; vegetables help.",
+      "whyItCanHelp": [
+        "Vegetables",
+        "Protein"
+      ],
+      "watchOuts": [
+        "Saturated fat from coconut milk"
+      ],
+      "tip": "Ask for more vegetables and less rice.",
+      "allergens": [
+        "fish (fish sauce)",
+        "shellfish (shrimp paste)"
+      ],
+      "dietNotes": [],
+      "healthierAlternativeRecipeIds": [
+        "red-lentil-curry"
+      ]
+    },
+    {
+      "id": "bibimbap",
+      "name": "Bibimbap",
+      "nameZh": "韓式拌飯",
+      "category": "Korean",
+      "servingSize": "1 bowl",
+      "nutrition": {
+        "calories": 600,
+        "proteinG": 25,
+        "carbsG": 85,
+        "fatG": 17,
+        "fiberG": 7,
+        "sodiumMg": 1000,
+        "sugarG": 9
+      },
+      "priceHKD": {
+        "min": 70,
+        "max": 110
+      },
+      "verdict": "strong",
+      "verdictLabel": "Good choice",
+      "summary": "Lots of vegetables with egg and rice.",
+      "whyItCanHelp": [
+        "Vegetables",
+        "Balanced"
+      ],
+      "watchOuts": [
+        "Gochujang sodium"
+      ],
+      "tip": "Use half the chilli paste.",
+      "allergens": [
+        "egg",
+        "soy",
+        "sesame",
+        "wheat"
+      ],
+      "dietNotes": [],
+      "healthierAlternativeRecipeIds": [
+        "home-bibimbap"
+      ]
+    },
+    {
+      "id": "korean-fried-chicken",
+      "name": "Korean fried chicken",
+      "nameZh": "韓式炸雞",
+      "category": "Korean",
+      "servingSize": "half portion",
+      "nutrition": {
+        "calories": 900,
+        "proteinG": 50,
+        "carbsG": 40,
+        "fatG": 58,
+        "fiberG": 1,
+        "sodiumMg": 2000,
+        "sugarG": 20
+      },
+      "priceHKD": {
+        "min": 110,
+        "max": 160
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Double-fried and sweet-glazed.",
+      "whyItCanHelp": [
+        "Protein"
+      ],
+      "watchOuts": [
+        "Deep-fried",
+        "Sugary glaze",
+        "Very high sodium"
+      ],
+      "tip": "Share among 3–4 people with pickled radish.",
+      "allergens": [
+        "wheat",
+        "soy",
+        "garlic"
+      ],
+      "dietNotes": [],
+      "healthierAlternativeRecipeIds": [
+        "baked-chicken-wings-light"
+      ]
+    },
+    {
+      "id": "chicken-curry-naan",
+      "name": "Chicken curry with naan",
+      "nameZh": "雞肉咖喱配烤餅",
+      "category": "South Asian",
+      "servingSize": "1 serving",
+      "nutrition": {
+        "calories": 850,
+        "proteinG": 35,
+        "carbsG": 80,
+        "fatG": 42,
+        "fiberG": 5,
+        "sodiumMg": 1500,
+        "sugarG": 8
+      },
+      "priceHKD": {
+        "min": 70,
+        "max": 110
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Creamy curries and buttery naan are heavy.",
+      "whyItCanHelp": [
+        "Protein, spices"
+      ],
+      "watchOuts": [
+        "Cream/ghee",
+        "Large refined-flour naan"
+      ],
+      "tip": "Choose tandoori chicken and dal with plain rice or roti.",
+      "allergens": [
+        "milk",
+        "wheat",
+        "tree nuts (some curries)"
+      ],
+      "dietNotes": [
+        "halal (most HK Indian restaurants)"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "chicken-tikka-skewers",
+        "red-lentil-curry"
+      ]
+    },
+    {
+      "id": "chicken-biryani",
+      "name": "Chicken biryani",
+      "nameZh": "雞肉香飯",
+      "category": "South Asian",
+      "servingSize": "1 plate",
+      "nutrition": {
+        "calories": 700,
+        "proteinG": 32,
+        "carbsG": 85,
+        "fatG": 24,
+        "fiberG": 3,
+        "sodiumMg": 1200,
+        "sugarG": 4
+      },
+      "priceHKD": {
+        "min": 60,
+        "max": 90
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "Filling rice dish; oil and ghee vary.",
+      "whyItCanHelp": [
+        "Protein",
+        "Spices"
+      ],
+      "watchOuts": [
+        "Large rice portion",
+        "Ghee"
+      ],
+      "tip": "Share and add raita and salad.",
+      "allergens": [
+        "milk",
+        "tree nuts"
+      ],
+      "dietNotes": [
+        "halal"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "chicken-tikka-skewers"
+      ]
+    },
+    {
+      "id": "shawarma-wrap",
+      "name": "Chicken shawarma wrap",
+      "nameZh": "雞肉沙威瑪卷",
+      "category": "Middle Eastern",
+      "servingSize": "1 wrap",
+      "nutrition": {
+        "calories": 600,
+        "proteinG": 32,
+        "carbsG": 55,
+        "fatG": 26,
+        "fiberG": 4,
+        "sodiumMg": 1400,
+        "sugarG": 5
+      },
+      "priceHKD": {
+        "min": 55,
+        "max": 80
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "Decent protein; garlic sauce adds fat.",
+      "whyItCanHelp": [
+        "Protein",
+        "Some vegetables"
+      ],
+      "watchOuts": [
+        "Creamy sauces"
+      ],
+      "tip": "Ask for extra salad and less sauce.",
+      "allergens": [
+        "wheat",
+        "sesame",
+        "milk"
+      ],
+      "dietNotes": [
+        "halal"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "chicken-tikka-skewers"
+      ]
+    },
+    {
+      "id": "spaghetti-bolognese",
+      "name": "Spaghetti bolognese",
+      "nameZh": "肉醬意粉",
+      "category": "Western",
+      "servingSize": "1 plate",
+      "nutrition": {
+        "calories": 650,
+        "proteinG": 28,
+        "carbsG": 80,
+        "fatG": 22,
+        "fiberG": 6,
+        "sodiumMg": 900,
+        "sugarG": 10
+      },
+      "priceHKD": {
+        "min": 60,
+        "max": 95
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "Reasonably balanced; watch portion size.",
+      "whyItCanHelp": [
+        "Protein",
+        "Tomato"
+      ],
+      "watchOuts": [
+        "Large pasta portion"
+      ],
+      "tip": "Ask for wholewheat pasta and a side salad.",
+      "allergens": [
+        "wheat",
+        "milk"
+      ],
+      "dietNotes": [
+        "contains beef"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "shrimp-zucchini-pasta"
+      ]
+    },
+    {
+      "id": "carbonara",
+      "name": "Creamy carbonara",
+      "nameZh": "忌廉煙肉意粉",
+      "category": "Western",
+      "servingSize": "1 plate",
+      "nutrition": {
+        "calories": 900,
+        "proteinG": 30,
+        "carbsG": 85,
+        "fatG": 48,
+        "fiberG": 4,
+        "sodiumMg": 1400,
+        "sugarG": 4
+      },
+      "priceHKD": {
+        "min": 65,
+        "max": 100
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Cream, cheese and bacon: high saturated fat.",
+      "whyItCanHelp": [
+        "Protein"
+      ],
+      "watchOuts": [
+        "Saturated fat",
+        "Processed meat"
+      ],
+      "tip": "Pick tomato or olive-oil based pasta.",
+      "allergens": [
+        "wheat",
+        "milk",
+        "egg"
+      ],
+      "dietNotes": [
+        "contains pork"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "shrimp-zucchini-pasta"
+      ]
+    },
+    {
+      "id": "fish-and-chips",
+      "name": "Fish and chips",
+      "nameZh": "炸魚薯條",
+      "category": "Western",
+      "servingSize": "1 portion",
+      "nutrition": {
+        "calories": 900,
+        "proteinG": 35,
+        "carbsG": 85,
+        "fatG": 48,
+        "fiberG": 6,
+        "sodiumMg": 1100,
+        "sugarG": 2
+      },
+      "priceHKD": {
+        "min": 70,
+        "max": 120
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Fish is good; batter and chips are deep-fried.",
+      "whyItCanHelp": [
+        "Protein"
+      ],
+      "watchOuts": [
+        "Deep-fried"
+      ],
+      "tip": "Choose grilled fish with salad.",
+      "allergens": [
+        "fish",
+        "wheat"
+      ],
+      "dietNotes": [],
+      "healthierAlternativeRecipeIds": [
+        "grilled-mackerel",
+        "baked-salmon-veg"
+      ]
+    },
+    {
+      "id": "taiwanese-chicken-cutlet",
+      "name": "Taiwanese fried chicken cutlet",
+      "nameZh": "台式炸雞排",
+      "category": "Street food",
+      "servingSize": "1 cutlet",
+      "nutrition": {
+        "calories": 650,
+        "proteinG": 40,
+        "carbsG": 35,
+        "fatG": 38,
+        "fiberG": 1,
+        "sodiumMg": 1300,
+        "sugarG": 4
+      },
+      "priceHKD": {
+        "min": 35,
+        "max": 50
+      },
+      "verdict": "limit",
+      "verdictLabel": "Limit often",
+      "summary": "Huge, deep-fried, heavily seasoned.",
+      "whyItCanHelp": [
+        "Protein"
+      ],
+      "watchOuts": [
+        "Deep-fried",
+        "Salty"
+      ],
+      "tip": "Share or choose grilled chicken.",
+      "allergens": [
+        "wheat",
+        "soy"
+      ],
+      "dietNotes": [],
+      "healthierAlternativeRecipeIds": [
+        "chicken-tikka-skewers"
+      ]
+    },
+    {
+      "id": "pan-fried-dumplings",
+      "name": "Pan-fried pork dumplings",
+      "nameZh": "煎餃",
+      "category": "Chinese",
+      "servingSize": "6 pieces",
+      "nutrition": {
+        "calories": 400,
+        "proteinG": 16,
+        "carbsG": 40,
+        "fatG": 20,
+        "fiberG": 2,
+        "sodiumMg": 900,
+        "sugarG": 2
+      },
+      "priceHKD": {
+        "min": 35,
+        "max": 55
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "Pan-frying adds oil compared with boiled dumplings.",
+      "whyItCanHelp": [
+        "Protein"
+      ],
+      "watchOuts": [
+        "Oil",
+        "Sodium"
+      ],
+      "tip": "Choose boiled (水餃) and add greens.",
+      "allergens": [
+        "wheat",
+        "soy"
+      ],
+      "dietNotes": [
+        "contains pork"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "homemade-wonton-soup"
+      ]
+    },
+    {
+      "id": "boiled-dumplings",
+      "name": "Boiled dumplings",
+      "nameZh": "水餃",
+      "category": "Chinese",
+      "servingSize": "10 pieces",
+      "nutrition": {
+        "calories": 450,
+        "proteinG": 20,
+        "carbsG": 55,
+        "fatG": 15,
+        "fiberG": 3,
+        "sodiumMg": 1000,
+        "sugarG": 2
+      },
+      "priceHKD": {
+        "min": 35,
+        "max": 55
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "Better than fried; fillings with vegetables are best.",
+      "whyItCanHelp": [
+        "Protein",
+        "Some vegetables"
+      ],
+      "watchOuts": [
+        "Refined wrapper",
+        "Dipping sauce sodium"
+      ],
+      "tip": "Choose vegetable-and-pork or vegetable fillings; dip lightly.",
+      "allergens": [
+        "wheat",
+        "soy"
+      ],
+      "dietNotes": [],
+      "healthierAlternativeRecipeIds": [
+        "homemade-wonton-soup"
+      ]
+    },
+    {
+      "id": "hot-pot",
+      "name": "Hot pot (per person)",
+      "nameZh": "打邊爐",
+      "category": "Chinese",
+      "servingSize": "1 person",
+      "nutrition": {
+        "calories": 800,
+        "proteinG": 45,
+        "carbsG": 50,
+        "fatG": 45,
+        "fiberG": 6,
+        "sodiumMg": 3000,
+        "sugarG": 8
+      },
+      "priceHKD": {
+        "min": 180,
+        "max": 350
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "Can be very healthy or very heavy depending on broth and dips.",
+      "whyItCanHelp": [
+        "Vegetables, tofu, lean meat options"
+      ],
+      "watchOuts": [
+        "Broth and sauces very salty",
+        "Fatty beef, processed balls"
+      ],
+      "tip": "Choose clear broth, lots of vegetables and tofu, lean meats; go light on satay dips.",
+      "allergens": [
+        "varies: soy, shellfish, peanut, sesame"
+      ],
+      "dietNotes": [],
+      "healthierAlternativeRecipeIds": [
+        "winter-melon-soup",
+        "mapo-tofu-light"
+      ]
+    },
+    {
+      "id": "white-rice",
+      "name": "White rice",
+      "nameZh": "白飯",
+      "category": "Staples",
+      "servingSize": "1 bowl (200g cooked)",
+      "nutrition": {
+        "calories": 260,
+        "proteinG": 5,
+        "carbsG": 57,
+        "fatG": 1,
+        "fiberG": 1,
+        "sodiumMg": 0,
+        "sugarG": 0
+      },
+      "priceHKD": {
+        "min": 5,
+        "max": 10
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "Fine as part of a meal; portion size matters most.",
+      "whyItCanHelp": [
+        "Energy"
+      ],
+      "watchOuts": [
+        "Low fibre",
+        "Fast blood-sugar rise"
+      ],
+      "tip": "Half white, half brown or mixed grains.",
+      "allergens": [],
+      "dietNotes": [
+        "vegan"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "chicken-brown-rice-bowl"
+      ]
+    },
+    {
+      "id": "brown-rice",
+      "name": "Brown rice",
+      "nameZh": "糙米飯",
+      "category": "Staples",
+      "servingSize": "1 bowl (200g cooked)",
+      "nutrition": {
+        "calories": 220,
+        "proteinG": 5,
+        "carbsG": 46,
+        "fatG": 2,
+        "fiberG": 4,
+        "sodiumMg": 0,
+        "sugarG": 0
+      },
+      "priceHKD": {
+        "min": 6,
+        "max": 12
+      },
+      "verdict": "strong",
+      "verdictLabel": "Good choice",
+      "summary": "More fibre and nutrients than white rice.",
+      "whyItCanHelp": [
+        "Fibre",
+        "Slower energy release"
+      ],
+      "watchOuts": [],
+      "tip": "Soak 30 min before cooking for a softer texture.",
+      "allergens": [],
+      "dietNotes": [
+        "vegan"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "chicken-brown-rice-bowl"
+      ]
+    },
+    {
+      "id": "oatmeal",
+      "name": "Oatmeal",
+      "nameZh": "燕麥粥",
+      "category": "Breakfast",
+      "servingSize": "1 bowl (40g oats + milk)",
+      "nutrition": {
+        "calories": 250,
+        "proteinG": 10,
+        "carbsG": 36,
+        "fatG": 7,
+        "fiberG": 5,
+        "sodiumMg": 100,
+        "sugarG": 10
+      },
+      "priceHKD": {
+        "min": 5,
+        "max": 15
+      },
+      "verdict": "strong",
+      "verdictLabel": "Good choice",
+      "summary": "Fibre-rich breakfast that keeps blood sugar steady.",
+      "whyItCanHelp": [
+        "Beta-glucan fibre",
+        "Filling"
+      ],
+      "watchOuts": [
+        "Instant sweetened packs add sugar"
+      ],
+      "tip": "Use plain rolled oats and fruit.",
+      "allergens": [
+        "oats may contain gluten",
+        "milk"
+      ],
+      "dietNotes": [
+        "vegetarian"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "overnight-oats"
+      ]
+    },
+    {
+      "id": "wholemeal-toast-pb",
+      "name": "Wholemeal toast with peanut butter",
+      "nameZh": "全麥多士配花生醬",
+      "category": "Breakfast",
+      "servingSize": "2 slices",
+      "nutrition": {
+        "calories": 320,
+        "proteinG": 12,
+        "carbsG": 32,
+        "fatG": 16,
+        "fiberG": 6,
+        "sodiumMg": 350,
+        "sugarG": 5
+      },
+      "priceHKD": {
+        "min": 5,
+        "max": 12
+      },
+      "verdict": "strong",
+      "verdictLabel": "Good choice",
+      "summary": "Good fibre and fats; just one thin layer of peanut butter.",
+      "whyItCanHelp": [
+        "Fibre",
+        "Protein"
+      ],
+      "watchOuts": [
+        "Peanut allergy",
+        "Calorie-dense spread"
+      ],
+      "tip": "Use natural peanut butter, no added sugar.",
+      "allergens": [
+        "wheat",
+        "peanut"
+      ],
+      "dietNotes": [
+        "vegan"
+      ],
+      "healthierAlternativeRecipeIds": []
+    },
+    {
+      "id": "grilled-chicken-breast",
+      "name": "Grilled chicken breast",
+      "nameZh": "烤雞胸",
+      "category": "Proteins",
+      "servingSize": "150g",
+      "nutrition": {
+        "calories": 250,
+        "proteinG": 46,
+        "carbsG": 0,
+        "fatG": 6,
+        "fiberG": 0,
+        "sodiumMg": 120,
+        "sugarG": 0
+      },
+      "priceHKD": {
+        "min": 25,
+        "max": 40
+      },
+      "verdict": "strong",
+      "verdictLabel": "Good choice",
+      "summary": "Lean protein staple.",
+      "whyItCanHelp": [
+        "Very high protein, low fat"
+      ],
+      "watchOuts": [],
+      "tip": "Marinate to keep it moist.",
+      "allergens": [],
+      "dietNotes": [
+        "halal (if certified)",
+        "pork-free"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "chicken-brown-rice-bowl"
+      ]
+    },
+    {
+      "id": "baked-salmon",
+      "name": "Baked salmon fillet",
+      "nameZh": "焗三文魚",
+      "category": "Proteins",
+      "servingSize": "150g",
+      "nutrition": {
+        "calories": 310,
+        "proteinG": 32,
+        "carbsG": 0,
+        "fatG": 20,
+        "fiberG": 0,
+        "sodiumMg": 90,
+        "sugarG": 0
+      },
+      "priceHKD": {
+        "min": 40,
+        "max": 60
+      },
+      "verdict": "strong",
+      "verdictLabel": "Good choice",
+      "summary": "Protein plus omega-3 fats.",
+      "whyItCanHelp": [
+        "Omega-3",
+        "Protein"
+      ],
+      "watchOuts": [],
+      "tip": "Two fish meals a week is a good target.",
+      "allergens": [
+        "fish"
+      ],
+      "dietNotes": [
+        "halal",
+        "pork-free"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "baked-salmon-veg"
+      ]
+    },
+    {
+      "id": "tofu",
+      "name": "Firm tofu",
+      "nameZh": "硬豆腐",
+      "category": "Proteins",
+      "servingSize": "150g",
+      "nutrition": {
+        "calories": 140,
+        "proteinG": 15,
+        "carbsG": 4,
+        "fatG": 8,
+        "fiberG": 1,
+        "sodiumMg": 10,
+        "sugarG": 1
+      },
+      "priceHKD": {
+        "min": 5,
+        "max": 10
+      },
+      "verdict": "strong",
+      "verdictLabel": "Good choice",
+      "summary": "Cheap plant protein with calcium.",
+      "whyItCanHelp": [
+        "Plant protein",
+        "Calcium"
+      ],
+      "watchOuts": [],
+      "tip": "Steam or stir-fry rather than deep-fry.",
+      "allergens": [
+        "soy"
+      ],
+      "dietNotes": [
+        "vegan"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "mapo-tofu-light"
+      ]
+    },
+    {
+      "id": "sirloin-steak",
+      "name": "Sirloin steak",
+      "nameZh": "西冷牛扒",
+      "category": "Western",
+      "servingSize": "250g",
+      "nutrition": {
+        "calories": 550,
+        "proteinG": 60,
+        "carbsG": 0,
+        "fatG": 33,
+        "fiberG": 0,
+        "sodiumMg": 150,
+        "sugarG": 0
+      },
+      "priceHKD": {
+        "min": 120,
+        "max": 250
+      },
+      "verdict": "situational",
+      "verdictLabel": "Sometimes / depends",
+      "summary": "Great protein and iron, but red meat is best a few times a week at most.",
+      "whyItCanHelp": [
+        "Protein, iron, B12"
+      ],
+      "watchOuts": [
+        "Saturated fat",
+        "Sauces add salt"
+      ],
+      "tip": "Pair with vegetables, not fries.",
+      "allergens": [],
+      "dietNotes": [
+        "contains beef"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "black-bean-beef-peppers"
+      ]
+    },
+    {
+      "id": "avocado-toast",
+      "name": "Avocado toast",
+      "nameZh": "牛油果多士",
+      "category": "Café",
+      "servingSize": "1 serving",
+      "nutrition": {
+        "calories": 350,
+        "proteinG": 10,
+        "carbsG": 32,
+        "fatG": 20,
+        "fiberG": 9,
+        "sodiumMg": 400,
+        "sugarG": 3
+      },
+      "priceHKD": {
+        "min": 60,
+        "max": 95
+      },
+      "verdict": "strong",
+      "verdictLabel": "Good choice",
+      "summary": "Healthy fats and fibre; add an egg for protein.",
+      "whyItCanHelp": [
+        "Fibre",
+        "Healthy fats"
+      ],
+      "watchOuts": [
+        "Café portions vary"
+      ],
+      "tip": "Add a poached egg.",
+      "allergens": [
+        "wheat"
+      ],
+      "dietNotes": [
+        "vegan"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "veggie-omelette"
+      ]
+    },
+    {
+      "id": "salad-box",
+      "name": "Salad box (light dressing)",
+      "nameZh": "沙律盒",
+      "category": "Convenience store",
+      "servingSize": "1 box",
+      "nutrition": {
+        "calories": 250,
+        "proteinG": 12,
+        "carbsG": 20,
+        "fatG": 13,
+        "fiberG": 6,
+        "sodiumMg": 500,
+        "sugarG": 6
+      },
+      "priceHKD": {
+        "min": 35,
+        "max": 60
+      },
+      "verdict": "strong",
+      "verdictLabel": "Good choice",
+      "summary": "Good vegetable boost; check the dressing.",
+      "whyItCanHelp": [
+        "Fibre and vitamins"
+      ],
+      "watchOuts": [
+        "Creamy dressings"
+      ],
+      "tip": "Use half the dressing; add a protein.",
+      "allergens": [
+        "varies"
+      ],
+      "dietNotes": [
+        "vegetarian"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "chickpea-salad"
+      ]
+    },
+    {
+      "id": "steamed-vegetables",
+      "name": "Steamed mixed vegetables",
+      "nameZh": "雜菜",
+      "category": "Staples",
+      "servingSize": "1 plate",
+      "nutrition": {
+        "calories": 80,
+        "proteinG": 4,
+        "carbsG": 12,
+        "fatG": 2,
+        "fiberG": 5,
+        "sodiumMg": 60,
+        "sugarG": 5
+      },
+      "priceHKD": {
+        "min": 15,
+        "max": 30
+      },
+      "verdict": "strong",
+      "verdictLabel": "Good choice",
+      "summary": "Aim for half your plate.",
+      "whyItCanHelp": [
+        "Fibre",
+        "Vitamins"
+      ],
+      "watchOuts": [],
+      "tip": "Season with garlic or ginger instead of sauces.",
+      "allergens": [],
+      "dietNotes": [
+        "vegan"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "garlic-choy-sum"
+      ]
+    },
+    {
+      "id": "sweet-potato",
+      "name": "Sweet potato",
+      "nameZh": "番薯",
+      "category": "Staples",
+      "servingSize": "1 medium",
+      "nutrition": {
+        "calories": 115,
+        "proteinG": 2,
+        "carbsG": 27,
+        "fatG": 0,
+        "fiberG": 4,
+        "sodiumMg": 40,
+        "sugarG": 6
+      },
+      "priceHKD": {
+        "min": 4,
+        "max": 8
+      },
+      "verdict": "strong",
+      "verdictLabel": "Good choice",
+      "summary": "Fibre-rich carb with vitamin A.",
+      "whyItCanHelp": [
+        "Fibre",
+        "Vitamin A"
+      ],
+      "watchOuts": [],
+      "tip": "Steam or bake instead of frying.",
+      "allergens": [],
+      "dietNotes": [
+        "vegan"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "steamed-sweet-potato"
+      ]
+    },
+    {
+      "id": "corn-on-cob",
+      "name": "Corn on the cob",
+      "nameZh": "粟米",
+      "category": "Street food",
+      "servingSize": "1 cob",
+      "nutrition": {
+        "calories": 90,
+        "proteinG": 3,
+        "carbsG": 19,
+        "fatG": 1,
+        "fiberG": 2,
+        "sodiumMg": 15,
+        "sugarG": 6
+      },
+      "priceHKD": {
+        "min": 10,
+        "max": 15
+      },
+      "verdict": "strong",
+      "verdictLabel": "Good choice",
+      "summary": "Simple wholegrain snack.",
+      "whyItCanHelp": [
+        "Fibre"
+      ],
+      "watchOuts": [
+        "Butter versions add fat"
+      ],
+      "tip": "Skip the butter.",
+      "allergens": [],
+      "dietNotes": [
+        "vegan"
+      ],
+      "healthierAlternativeRecipeIds": [
+        "steamed-sweet-potato"
+      ]
+    }
+  ]
+}

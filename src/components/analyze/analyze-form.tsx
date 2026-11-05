@@ -12,13 +12,13 @@ import { FadeIn } from "@/components/motion/apple-press";
 
 export function AnalyzeForm() {
   const { t, locale } = useI18n();
-  const defaultQ = locale === "zh-Hant" ? "炸雞" : "fried chicken";
+  const defaultQ = locale === "zh-Hant" ? "叉燒飯" : "char siu rice";
   const [q, setQ] = useState(defaultQ);
   const [submitted, setSubmitted] = useState(defaultQ);
   const result = useMemo(() => analyzeFood(submitted, locale), [submitted, locale]);
 
   useEffect(() => {
-    const next = locale === "zh-Hant" ? "炸雞" : "fried chicken";
+    const next = locale === "zh-Hant" ? "叉燒飯" : "char siu rice";
     setQ(next);
     setSubmitted(next);
   }, [locale]);
@@ -66,7 +66,7 @@ export function AnalyzeForm() {
       <div className="rounded-3xl border border-[var(--border)] bg-[var(--card)]/95 p-6 shadow-sm backdrop-blur-sm">
         <div className="flex flex-wrap items-center gap-3">
           <h2 className="font-[family-name:var(--font-display)] text-2xl text-[var(--forest)]">
-            {matched?.title || result.query || t.analyze.title}
+            {matched?.title || result.displayName || result.query || t.analyze.title}
           </h2>
           <Badge className={verdictColor}>{verdictLabel}</Badge>
         </div>

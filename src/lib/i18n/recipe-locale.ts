@@ -2,6 +2,7 @@ import type { Locale } from "./types";
 import type { Recipe } from "@/lib/data/types";
 import { getRecipeById } from "@/lib/data/recipes";
 import { translateAmount, translateIngredientName } from "./ingredient-locale";
+import { CATALOG_RECIPE_ZH } from "./catalog-recipe-locale";
 
 type RecipeCopy = {
   title: string;
@@ -15,6 +16,7 @@ type RecipeCopy = {
 };
 
 const zhRecipes: Record<string, RecipeCopy> = {
+  ...(CATALOG_RECIPE_ZH as unknown as Record<string, RecipeCopy>),
   "lentil-ginger-bowl": {
     title: "薑黃扁豆能量碗",
     summary: "溫熱紅扁豆搭配薑黃、菠菜與檸檬——飽足、平價，也較溫和於血壓管理。",

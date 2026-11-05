@@ -1,5 +1,6 @@
 import type { Recipe } from "./types";
 import { extraRecipes } from "./extra-recipes";
+import { CATALOG_RECIPES } from "./catalog-recipes";
 import { RECIPE_IMAGES } from "./recipe-images";
 
 export const CONSUMER_GROUPS = [
@@ -583,10 +584,17 @@ const baseRecipes: Recipe[] = [
   },
 ];
 
-export const recipes: Recipe[] = [...baseRecipes, ...extraRecipes].map((r) => ({
-  ...r,
-  imageUrl: r.imageUrl || RECIPE_IMAGES[r.id],
-}));
+const seen = new Set<string>();
+export const recipes: Recipe[] = [...baseRecipes, ...extraRecipes, ...CATALOG_RECIPES]
+  .filter((r) => {
+    if (seen.has(r.id)) return false;
+    seen.add(r.id);
+    return true;
+  })
+  .map((r) => ({
+    ...r,
+    imageUrl: r.imageUrl || RECIPE_IMAGES[r.id],
+  }));
 
 export function getRecipeById(id: string) {
   return recipes.find((r) => r.id === id);

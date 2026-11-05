@@ -133,7 +133,7 @@ export const en = {
     title: "Food & nutrient check",
     sub:
       "See calories, macros, sodium, portion tips, affordability, and healthier alternatives—including when takeout habits crowd out recovery without relying on risky shortcuts.",
-    placeholder: "e.g. lentil bowl, soda, salmon, pizza",
+    placeholder: "e.g. char siu rice, wonton noodles, fried chicken, bubble tea",
     analyze: "Analyze",
     whyHelp: "Why it can help",
     watchouts: "Watch-outs",
