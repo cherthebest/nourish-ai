@@ -17,7 +17,7 @@ import { useI18n } from "@/lib/i18n/provider";
 import { FadeIn } from "@/components/motion/apple-press";
 
 export function BmiForm() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const [age, setAge] = useState(35);
   const [sex, setSex] = useState<"female" | "male" | "other">("female");
   const [heightCm, setHeightCm] = useState(165);
@@ -32,7 +32,7 @@ export function BmiForm() {
   const category = bmi != null ? categorizeBmi(bmi) : null;
   const bmr = estimateBmr(weightKg, heightCm, age, sex);
   const tdee = estimateTdee(bmr, activity);
-  const moves = activitySuggestions({ age, bmi, medicalNotes });
+  const moves = activitySuggestions({ age, bmi, medicalNotes, locale });
 
   return (
     <FadeIn className="grid gap-8 lg:grid-cols-[1fr_1.1fr]">

@@ -23,152 +23,252 @@ function extractRecipeIds(chunks: RetrievedChunk[]): string[] {
     .filter((id, i, arr) => arr.indexOf(id) === i);
 }
 
-function firstSentences(text: string, n = 2): string {
-  return text
-    .split(/(?<=[。.!？?])\s+/)
-    .map((s) => s.trim())
-    .filter(Boolean)
-    .slice(0, n)
-    .join(text.includes("。") ? "" : " ");
+type Profile = {
+  goal?: string;
+  allergy?: string;
+  budget?: "low" | "mid" | "any";
+};
+
+function scanProfile(history: ChatMessage[], query: string): Profile {
+  const text = [...history.map((h) => h.content), query].join(" \n ").toLowerCase();
+  const profile: Profile = {};
+
+  if (/diabetes|blood sugar|血糖|糖尿病|胰島素/.test(text)) profile.goal = "diabetes";
+  else if (/blood pressure|hypertension|血壓|高血壓/.test(text)) profile.goal = "bp";
+  else if (/weight|lose weight|肥胖|減肥|瘦|體重/.test(text)) profile.goal = "weight";
+  else if (/aging|elderly|樂齡|長者|老人/.test(text)) profile.goal = "aging";
+  else if (/mood|stress|anxiety|情緒|壓力|焦慮|憂鬱/.test(text)) profile.goal = "mood";
+  else if (/heart|膽固醇|心脏|心臟/.test(text)) profile.goal = "heart";
+
+  if (/peanut|nut allergy|dairy|lactose|shellfish|egg allergy|大豆過敏|花生|堅果過敏|乳糖|海鮮過敏|雞蛋過敏|過敏/.test(text)) {
+    profile.allergy = "noted";
+  }
+  if (/no allergy|沒有過敏|无过敏|不過敏|没有过敏/.test(text)) profile.allergy = "none";
+
+  if (/budget|cheap|平價|便宜|預算|穷|窮|省錢|钱不多|錢不多|小預算|要平價/.test(text)) profile.budget = "low";
+  else if (/any budget|預算還好|不限預算|一般/.test(text) && /budget|預算|一般|normal/.test(text))
+    profile.budget = "any";
+
+  return profile;
 }
 
-function pickAdvice(query: string, locale: Locale): string[] {
+function recommendIds(profile: Profile): string[] {
+  let pool = [...recipes];
+  if (profile.goal === "diabetes")
+    pool = pool.filter((r) => r.groups.includes("diabetes-friendly") || r.tags.includes("high-fiber"));
+  else if (profile.goal === "bp")
+    pool = pool.filter((r) => r.groups.includes("blood-pressure") || r.tags.includes("low-sodium"));
+  else if (profile.goal === "weight") pool = pool.filter((r) => r.groups.includes("weight-management"));
+  else if (profile.goal === "aging") pool = pool.filter((r) => r.groups.includes("aging"));
+  else if (profile.goal === "mood") pool = pool.filter((r) => r.groups.includes("mental-health"));
+  else if (profile.goal === "heart") pool = pool.filter((r) => r.groups.includes("heart-health"));
+
+  if (profile.budget === "low") pool = pool.filter((r) => r.costPerServing <= 2.5);
+  if (profile.allergy === "noted") {
+    pool = pool.filter((r) => r.allergens.length === 0 || r.tags.includes("vegan"));
+  }
+  if (!pool.length) pool = recipes.filter((r) => r.tags.includes("budget"));
+  return pool.slice(0, 3).map((r) => r.id);
+}
+
+function keywordAnswer(query: string, locale: Locale): { text: string; recipeIds: string[] } | null {
   const q = query.toLowerCase();
   const zh = locale === "zh-Hant";
-  const tips: string[] = [];
 
-  if (/bmi|body mass|overweight|underweight|身體質量|過重|過輕/.test(q)) {
-    tips.push(
-      zh
-        ? "你可以先用網站裡的 BMI 工具看個大概數字。記得 BMI 只是篩檢，看不出肌肉量，別把它當成最終判決。"
-        : "You can start with the BMI tool on the site for a quick snapshot. BMI is only a screen—it doesn’t show muscle—so don’t treat it like a final verdict.",
-    );
-  }
-  if (/blood pressure|hypertension|sodium|dash|血壓|高血壓|鈉/.test(q)) {
-    tips.push(
-      zh
-        ? "若你在顧血壓，日常可先朝「少鹽、多鉀」走：豆類、綠葉菜、香蕉都友善；香草、薑蒜、柑橘比一直加鹽更好。若你有在吃藥，飲食是輔助，不要自行停藥。"
-        : "If blood pressure is on your mind, lean toward less salt and more potassium—beans, leafy greens, bananas help. Herbs, garlic, and citrus beat the salt shaker. If you’re on meds, food supports your plan—don’t stop prescriptions on your own.",
-    );
-  }
-  if (/obes|lose weight|weight loss|fat loss|calorie|減肥|瘦|體重|熱量/.test(q)) {
-    tips.push(
-      zh
-        ? "想穩穩照顧體重，優先選吃得飽的組合：蔬菜體積大、纖維多，再配蛋白質（蛋、豆、豆腐、魚）。豆子、燕麥、雞蛋通常也比較省。哪天吃多了，下一餐回來就好，不必等「下週一」。"
-        : "For steadier weight goals, build meals that actually fill you up—lots of vegetables, fiber, and a clear protein (eggs, beans, tofu, fish). Beans, oats, and eggs keep costs down. If one meal goes off track, just come back at the next one.",
-    );
-  }
-  if (/mental|mood|depress|anxi|stress|brain|情緒|壓力|憂鬱|焦慮/.test(q)) {
-    tips.push(
-      zh
-        ? "情緒緊繃時，規律吃飯本身就有幫助；魚、核桃、亞麻這類 Omega-3，加上全穀，很多人會覺得比較穩。飲食是輔助，若情緒很辛苦，還是值得找專業支持。"
-        : "When stress is high, regular meals already help. Omega-3 foods like fish, walnuts, or flax, plus whole grains, support steadier energy for many people. Food is a support—not a replacement for mental health care when you need it.",
-    );
-  }
-  if (/vegan|vegetarian|gain weight|muscle|純素|素食|增重|肌肉/.test(q)) {
-    tips.push(
-      zh
-        ? "純素也能吃得夠、甚至增重：堅果、種子、好油、芝麻醬、穀物、大豆、酪梨這些熱量密度較高。別只靠葉子菜；蛋白質記得分散在各餐。"
-        : "You can eat well on a vegan pattern—and even gain if that’s the goal—with nuts, seeds, oils, tahini, grains, soy, and avocado. Leaves alone won’t get you there; spread protein across the day.",
-    );
-  }
-  if (/halal|kosher|muslim|beef|pork|religion|allerg|清真|猶太|穆斯林|過敏|牛肉|豬肉/.test(q)) {
-    tips.push(
-      zh
-        ? "先把信仰與過敏條件放最前面。網站很多食譜已標清真、猶太潔食、純素或無堅果——安全永遠比「看起來營養」重要。"
-        : "Lead with faith and allergy needs. Plenty of recipes here are already marked halal, kosher, vegan, or nut-free—safety always beats a “superfood” that doesn’t fit you.",
-    );
-  }
-  if (/budget|cheap|afford|cost|expensive|economic|預算|便宜|平價|貴/.test(q)) {
-    tips.push(
-      zh
-        ? "預算緊也有路：扁豆、鷹嘴豆、雞蛋、燕麥、高麗菜、胡蘿蔔、冷凍蔬菜、香蕉、罐裝番茄都很務實。看食譜時可直接對「每份成本」。"
-        : "On a tighter budget, lean on lentils, chickpeas, eggs, oats, cabbage, carrots, frozen vegetables, bananas, and canned tomatoes. Check cost per serving on each recipe card.",
-    );
-  }
-  if (/meal plan|week|month|day plan|what should i eat|餐點|一週|一個月|今天吃|吃什麼/.test(q)) {
-    tips.push(
-      zh
-        ? "你可以先用這個節奏：每餐都有蛋白質和纖維；一週先批次做兩三頓晚餐，多的冷凍。想省事也可直接開「餐點規劃」產生一天或一週的草稿。"
-        : "A simple rhythm helps: protein and fiber at each meal, batch two or three dinners for the week, freeze extras. Or open Meal Plan and generate a day or week draft in one click.",
-    );
-  }
-  if (/exercise|workout|activity|walk|gym|運動|走路|健身/.test(q)) {
-    tips.push(
-      zh
-        ? "活動上，在身體狀況允許時，可先從每天走路開始，再慢慢加一點肌力。關節不適或體重較高可考慮游泳、騎車；年長一點可多練平衡。有病史先問過醫師再加強強度。"
-        : "For movement, start with walking if you’re cleared for it, then add light strength. Swimming or cycling is kinder on joints; older adults often benefit from balance work. Check with a clinician before pushing intensity if you have medical conditions.",
-    );
-  }
-  if (/hong kong|asia|cantonese|濕貨|街市|香港|粵|中式/.test(q)) {
-    tips.push(
-      zh
-        ? "在香港或華人廚房很常有的選擇：豆腐、蛋、菜心／白菜、番茄、黃瓜、魚、糙米或雜糧飯。蒸、煮、少油快炒通常比油炸友善；醬油可選低鈉，再用薑蒜辣椒提味。"
-        : "In a Hong Kong or broader Asian kitchen, tofu, eggs, greens, tomatoes, cucumber, fish, and mixed rice are easy anchors. Steam, boil, or lightly stir-fry more often than deep-fry, and lean on ginger, garlic, and chili instead of heavy sauces.",
-    );
-  }
+  const rules: { re: RegExp; en: string; zh: string; ids: string[] }[] = [
+    {
+      re: /diabetes|blood sugar|血糖|糖尿病|胰島素|胰岛素/,
+      en: "For blood sugar, keep meals steady: protein + fiber each time you eat, and go easy on sugary drinks. Beans, vegetables, oats, and baked proteins beat fried takeout. This isn’t medical advice—just practical food ideas.",
+      zh: "血糖方面，重點是讓每一餐穩定：有蛋白質、有纖維，少碰含糖飲料。豆類、蔬菜、燕麥、烘烤蛋白質通常比油炸外食友善。這不能取代醫師建議，只是幫你找日常吃法。",
+      ids: ["greek-salad-chickpea", "apple-cinnamon-porridge", "spinach-dal", "steamed-veg-tofu"],
+    },
+    {
+      re: /blood pressure|hypertension|血壓|高血压|高血壓|dash/,
+      en: "For blood pressure, cook with herbs and lemon instead of heavy salt, and lean on vegetables, beans, and potassium-rich foods. Tap a recipe below for low-sodium-friendly ideas.",
+      zh: "血壓方面，多用香草與檸檬取代重鹹，並多吃蔬菜、豆類與含鉀食物。下面幾道都偏這個方向，可直接點開。",
+      ids: ["dash-bean-salad", "miso-soup-tofu", "steamed-veg-tofu", "mushroom-barley-soup"],
+    },
+    {
+      re: /cholesterol|膽固醇|胆固醇/,
+      en: "For cholesterol-friendly eating, favor oats, beans, vegetables, and olive oil or nuts if safe for you. Bake more, deep-fry less.",
+      zh: "想顧膽固醇，可多選燕麥、豆類、蔬菜，以及橄欖油等不飽和脂肪（若你不過敏）。少油炸、多烘烤。",
+      ids: ["lentil-ginger-bowl", "oat-berry-breakfast", "spinach-dal", "dash-bean-salad"],
+    },
+    {
+      re: /constipat|便秘/,
+      en: "For constipation, gradually increase fiber with oats, beans, vegetables, and fruit, and drink water through the day.",
+      zh: "便秘時可慢慢增加纖維：燕麥、豆類、蔬菜、水果，並全天補水。一次暴增纖維反而可能不適。",
+      ids: ["apple-cinnamon-porridge", "dash-bean-salad", "mushroom-barley-soup"],
+    },
+    {
+      re: /anemia|iron|貧血|贫血|缺鐵|缺铁/,
+      en: "For iron-conscious eating, include eggs, legumes, leafy greens, and pair plant iron with vitamin C foods like tomato or citrus.",
+      zh: "想多注意鐵質，可吃蛋、豆類、深綠色葉菜，植物性鐵搭配番茄或柑橘類維生素 C 更佳。",
+      ids: ["veggie-egg-scramble", "spinach-dal", "tomato-egg-rice"],
+    },
+    {
+      re: /bubble tea|boba|珍珠|奶茶|手搖/,
+      en: "Bubble tea is usually dessert-level sugar. Keep it occasional—day to day, choose water or unsweetened tea.",
+      zh: "珍珠奶茶通常糖分很高，比較像甜點。日常改喝水或不加糖茶會穩很多；想喝就選少糖小杯。",
+      ids: ["apple-cinnamon-porridge", "miso-soup-tofu"],
+    },
+    {
+      re: /weight|lose weight|diet|減肥|减重|瘦身|肥胖|體重|体重/,
+      en: "For weight goals, build plates that fill you up: vegetables first, then protein, then a measured carb. Baking and steaming beat deep-frying. Here are practical starting recipes.",
+      zh: "體重目標先求吃得飽：蔬菜打底、再加蛋白質、碳水控制份量。烘烤清蒸比油炸好。下面這些可以先試。",
+      ids: ["turkey-lettuce-wraps", "tofu-veg-stirfry", "greek-salad-chickpea", "baked-chicken-veg"],
+    },
+    {
+      re: /stress|anxiety|mood|sleep|情緒|压力|壓力|焦慮|焦虑|失眠|憂鬱|抑郁/,
+      en: "When stress is high, steady meals help more than skipping food. Include protein, whole grains, and colorful plants—and keep caffeine and sugar from swinging too hard late day.",
+      zh: "壓力大時，穩定吃飯往往比空腹硬撐好。每餐有蛋白質、全穀與蔬菜，晚上少讓咖啡因與甜食拉太大波動。",
+      ids: ["salmon-greens", "oat-berry-breakfast", "yogurt-walnut-parfait", "banana-oat-pancakes"],
+    },
+    {
+      re: /aging|elderly|senior|樂齡|乐龄|長者|长者|老人|骨質|骨质疏松/,
+      en: "For healthy aging, protect protein at each meal, add colorful plants, and choose softer textures when appetite is low—congee, eggs, tofu, and fish are practical.",
+      zh: "樂齡飲食重點是每餐有蛋白質、多一點蔬菜水果；食慾差時可選好入口的粥、蛋、豆腐、魚。",
+      ids: ["congee-ginger-fish", "veggie-egg-scramble", "miso-soup-tofu", "steamed-veg-tofu"],
+    },
+    {
+      re: /budget|cheap|affordable|平價|便宜|省錢|穷|窮|錢不多|钱不多|窮鬼|穷鬼/,
+      en: "Budget plates that still nourish: lentils, eggs, oats, cabbage, tofu, and beans. Cook once, eat twice. Here are low-cost recipes you can open now.",
+      zh: "平價又能吃得像樣：扁豆、雞蛋、燕麥、高麗菜、豆腐、豆類。一次多煮一點分兩餐。下面都偏省。",
+      ids: ["lentil-ginger-bowl", "tomato-egg-rice", "spinach-dal", "chickpea-curry"],
+    },
+    {
+      re: /halal|muslim|清真|穆斯林|回教/,
+      en: "I can stick to halal-friendly tags—say if you also need dairy-free or nut-free. Meanwhile these recipes are marked halal-friendly in our library.",
+      zh: "我可以依清真友善標籤幫你挑。若還有乳製品或堅果限制也可以跟我說。下面這些在站內有清真友善標籤。",
+      ids: ["lentil-ginger-bowl", "chickpea-curry", "tomato-egg-rice", "spinach-dal"],
+    },
+    {
+      re: /vegan|vegetarian|純素|素食|蛋奶素/,
+      en: "Plant-forward picks with solid protein: lentils, chickpeas, tofu, and beans. Tell me if you need fully vegan (no eggs/dairy).",
+      zh: "植物性又有蛋白質的選擇：扁豆、鷹嘴豆、豆腐、豆類。若要全純素（無蛋奶）跟我說一聲。",
+      ids: ["lentil-ginger-bowl", "tofu-veg-stirfry", "chickpea-curry", "steamed-veg-tofu"],
+    },
+    {
+      re: /breakfast|早餐|早上吃/,
+      en: "Easy breakfasts with staying power: oats, eggs, yogurt with fruit, or banana oat pancakes—better than only pastry and coffee.",
+      zh: "比較有續航的早餐：燕麥、蛋、優格配水果，或香蕉燕麥鬆餅——比只吃麵包配咖啡穩。",
+      ids: ["oat-berry-breakfast", "veggie-egg-scramble", "apple-cinnamon-porridge", "banana-oat-pancakes"],
+    },
+    {
+      re: /lunch|dinner|晚餐|午餐|今晚吃|中午/,
+      en: "For lunch or dinner, build half vegetables, a palm of protein, and a measured carb. These recipes follow that pattern.",
+      zh: "午晚餐可以照「半盤菜、一份掌心蛋白、一份適量主食」來配。這些食譜大致這個方向。",
+      ids: ["baked-chicken-veg", "tofu-veg-stirfry", "shrimp-garlic-broccoli", "greek-salad-chickpea"],
+    },
+    {
+      re: /fried chicken|炸雞|炸鸡|垃圾食物|junk/,
+      en: "Fried chicken is an occasional treat. Day to day, bake chicken with vegetables or try turkey lettuce wraps for a lighter crunch.",
+      zh: "炸雞當偶爾享受就好。平常可改烤雞配蔬菜，或火雞生菜包——一樣有咬感但負擔小。",
+      ids: ["baked-chicken-veg", "turkey-lettuce-wraps", "tofu-veg-stirfry"],
+    },
+    {
+      re: /protein|蛋白質|蛋白质|增肌|肌肉/,
+      en: "Spread protein across the day—eggs, fish, tofu, beans, yogurt, or lean poultry. Pair with vegetables so the meal still feels complete.",
+      zh: "蛋白質建議分散在一天：蛋、魚、豆腐、豆類、優格或瘦禽肉，再配蔬菜會更完整。",
+      ids: ["salmon-greens", "veggie-egg-scramble", "turkey-lettuce-wraps", "tofu-veg-stirfry"],
+    },
+    {
+      re: /what.*(eat|cook)|不知道吃|吃什麼|吃什么|recommend|建議食譜|推荐|幫我配|帮我配|今晚|menu/,
+      en: "I can help pick meals—tell me your main goal (weight, blood pressure, blood sugar, energy), any allergies, and whether you need budget-friendly options.",
+      zh: "我可以幫你配餐——先告訴我主要目標（體重、血壓、血糖、精神），有沒有過敏，以及要不要偏平價。",
+      ids: [],
+    },
+  ];
 
-  return tips;
+  for (const rule of rules) {
+    if (rule.re.test(q)) return { text: zh ? rule.zh : rule.en, recipeIds: rule.ids };
+  }
+  return null;
 }
 
-function localAnswer(query: string, chunks: RetrievedChunk[], locale: Locale): string {
+function consultOrAnswer(
+  query: string,
+  history: ChatMessage[],
+  chunks: RetrievedChunk[],
+  locale: Locale,
+): { text: string; recipeIds: string[] } {
   const zh = locale === "zh-Hant";
-  const tips = pickAdvice(query, locale);
-  const recipeIds = extractRecipeIds(chunks);
-  const matchedRecipes = recipeIds
+  const profile = scanProfile(history, query);
+  const keyed = keywordAnswer(query, locale);
+
+  const wantsFood =
+    /eat|cook|meal|recipe|吃|餐|食譜|配|建議|recommend|what should|幫我|帮我/i.test(query) ||
+    history.some((h) => h.role === "user");
+
+  if (wantsFood && !profile.goal && !(keyed && keyed.recipeIds.length)) {
+    return {
+      text: zh
+        ? "好，我先問清楚一點，之後才能給你準的食譜。你現在最想照顧的是哪一件：體重、血壓、血糖，還是單純想吃得健康一點？"
+        : "Sure—quick check so I can recommend well. What’s your main focus right now: weight, blood pressure, blood sugar, or just eating healthier overall?",
+      recipeIds: [],
+    };
+  }
+
+  if (wantsFood && profile.goal && profile.allergy == null) {
+    return {
+      text: zh
+        ? "了解。有沒有食物過敏或信仰飲食限制（例如清真、純素、乳製品）？沒有的話跟我說「沒有過敏」就好。"
+        : "Got it. Any food allergies or faith-based limits (halal, vegan, dairy-free)? If none, just say “no allergies.”",
+      recipeIds: [],
+    };
+  }
+
+  if (wantsFood && profile.goal && profile.allergy != null && !profile.budget) {
+    return {
+      text: zh
+        ? "最後一個：預算希望偏省，還是一般即可？回我「要平價」或「一般」就行，我馬上給你可以點開看的食譜。"
+        : "Last one: budget-friendly or normal budget? Reply “budget” or “normal” and I’ll give you tap-ready recipes.",
+      recipeIds: [],
+    };
+  }
+
+  const ids =
+    (keyed && keyed.recipeIds.length ? keyed.recipeIds : null) ||
+    (profile.goal ? recommendIds(profile) : extractRecipeIds(chunks).slice(0, 3));
+
+  const localized = ids
     .map((id) => recipes.find((r) => r.id === id))
     .filter(Boolean)
     .map((r) => localizeRecipe(r!, locale))
-    .slice(0, 2);
+    .slice(0, 3);
 
-  const knowledgeBits = chunks
-    .filter((c) => !c.doc.id.startsWith("recipe-"))
-    .slice(0, 2)
-    .map((c) => firstSentences(c.doc.content, 2))
-    .filter(Boolean);
-
-  const parts: string[] = [];
-
-  if (tips.length) {
-    parts.push(tips.join(zh ? "" : " "));
-  } else if (knowledgeBits.length) {
-    parts.push(
-      zh
-        ? `就你剛提到的，我建議可以這樣想：${knowledgeBits.join("")}`
-        : `Based on what you wrote, here’s a practical take: ${knowledgeBits.join(" ")}`,
-    );
-  } else {
-    parts.push(
-      zh
-        ? "我明白你的問題。先從「蛋白質 + 蔬菜 + 不太鹹」的方向調整，通常最容易開始；你也可以告訴我預算、過敏或血壓／體重目標，我再幫你收窄。"
-        : "Got it. A simple place to start is protein + vegetables with less salt. Tell me your budget, allergies, or goals like blood pressure or weight, and I’ll narrow it down.",
-    );
-  }
-
-  if (matchedRecipes.length) {
-    if (zh) {
-      const names = matchedRecipes
-        .map(
-          (r) =>
-            `「${r.title}」（大約 $${r.costPerServing.toFixed(2)}/份）`,
-        )
-        .join("、");
-      parts.push(`若要立刻有得煮，可以看看${names}，點開就能看步驟與營養。`);
+  let text = keyed?.text || "";
+  if (!text) {
+    if (profile.goal === "bp") {
+      text = zh
+        ? "血壓友善的方向是少鹽、多鉀，多用香草與蔬菜。下面幾道都可以直接點開看步驟。"
+        : "For blood pressure, think less salt, more potassium, herbs, and vegetables. Here are dishes you can open in one tap.";
+    } else if (profile.goal === "diabetes") {
+      text = zh
+        ? "血糖友善通常靠「蛋白質＋纖維」、少含糖飲料。這些食譜偏這個方向，點一下就能看詳情。"
+        : "Blood-sugar friendlier plates usually pair protein with fiber and skip sugary drinks. Tap any recipe below.";
+    } else if (profile.goal === "weight") {
+      text = zh
+        ? "體重目標先求吃得飽又不太油：蔬菜體積、蛋白質、少油炸。這些可以先試。"
+        : "For weight goals, prioritize filling plates—vegetables, protein, less deep-frying. Start with these.";
     } else {
-      const names = matchedRecipes
-        .map((r) => `${r.title} (about $${r.costPerServing.toFixed(2)}/serving)`)
-        .join(" or ");
-      parts.push(`If you want something concrete to cook, try ${names}—tap through for steps and nutrition.`);
+      text = zh
+        ? "根據你剛說的，我建議先從這些日常餐著手，點開就能看食材與做法。"
+        : "Based on what you shared, start with these everyday meals—tap to see ingredients and steps.";
     }
   }
 
-  parts.push(
-    zh
-      ? "以上只是一般飲食建議，不能取代醫生或營養師的判斷。"
-      : "This is general food guidance, not a medical diagnosis or a substitute for your clinician.",
-  );
+  if (localized.length) {
+    text += zh
+      ? `推薦你看看：${localized.map((r) => `「${r.title}」`).join("、")}。直接點下面的名稱就能進去。`
+      : ` Try: ${localized.map((r) => r.title).join(", ")}. Tap a name below to open it.`;
+  }
 
-  return parts.join(zh ? "" : " ");
+  text += zh
+    ? "以上是一般飲食建議，不能取代醫生判斷。"
+    : " This is general food guidance, not medical advice.";
+
+  return { text, recipeIds: localized.map((r) => r.id) };
 }
 
 async function llmAnswer(
@@ -189,24 +289,22 @@ async function llmAnswer(
       },
       body: JSON.stringify({
         model: process.env.OPENAI_MODEL || "gpt-4o-mini",
-        temperature: 0.5,
+        temperature: 0.55,
         messages: [
           {
             role: "system",
-            content: `You are NourishAI, a warm, practical nutrition guide for everyday people.
-Answer in natural spoken language like a helpful human coach—not a textbook, not a search report.
-Never say RAG, retrieval, knowledge base, sources, citations, or “related guidance.”
-Do not use section headers like "Helpful guidance" / "相關指引" / bullet dumps of document titles.
-Use the internal notes below only to inform your answer; weave them into plain speech.
-Respect allergies, culture/religion, budget, and medical caveats. Never tell users to stop prescribed medication.
-Keep it concise (about 2–5 short paragraphs or short paragraphs in Chinese).
-End with one gentle line that this is educational, not medical advice.
-Respond in ${locale === "zh-Hant" ? "natural Traditional Chinese (繁體中文口語，但清楚專業)" : "natural US English, like a friendly American health coach"}.
+            content: `You are NourishAI, a warm human nutrition coach.
+Speak naturally. Answer the user's actual question.
+If details are missing for a meal recommendation, ask 1 clarifying question at a time (goal → allergies → budget), then recommend 2–3 concrete recipes by Chinese or English name matching the UI language.
+Never mention RAG, retrieval, knowledge base, or sources.
+Do not mix English into Traditional Chinese answers—fully Chinese when locale is zh-Hant.
+End with a brief educational disclaimer.
+Respond in ${locale === "zh-Hant" ? "fully Traditional Chinese only" : "natural US English"}.
 
-INTERNAL NOTES (do not mention these labels to the user):
+INTERNAL NOTES:
 ${context}`,
           },
-          ...history.slice(-6),
+          ...history.slice(-8),
           { role: "user", content: query },
         ],
       }),
@@ -228,32 +326,22 @@ export async function answerWithRag(
 ): Promise<RagResult> {
   const chunks = retrieve(query, 6);
   const context = buildContext(chunks);
-  const recipeIds = extractRecipeIds(chunks);
+  const local = consultOrAnswer(query, history, chunks, locale);
 
   const llm = await llmAnswer(query, history, context, locale);
   if (llm) {
     return {
       answer: llm,
-      sources: chunks.map((c) => ({
-        id: c.doc.id,
-        title: c.doc.title,
-        category: c.doc.category,
-        score: Number(c.score.toFixed(3)),
-      })),
-      recipeIds,
+      sources: [],
+      recipeIds: local.recipeIds.length ? local.recipeIds : extractRecipeIds(chunks).slice(0, 3),
       mode: "llm-rag",
     };
   }
 
   return {
-    answer: localAnswer(query, chunks, locale),
-    sources: chunks.map((c) => ({
-      id: c.doc.id,
-      title: c.doc.title,
-      category: c.doc.category,
-      score: Number(c.score.toFixed(3)),
-    })),
-    recipeIds,
+    answer: local.text,
+    sources: [],
+    recipeIds: local.recipeIds,
     mode: "local-rag",
   };
 }

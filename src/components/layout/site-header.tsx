@@ -8,6 +8,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
+import { CurrencySwitcher } from "@/components/layout/currency-switcher";
 import { useI18n } from "@/lib/i18n/provider";
 
 export function SiteHeader() {
@@ -70,6 +71,10 @@ export function SiteHeader() {
           </nav>
 
           <div className="flex items-center gap-2">
+            <CurrencySwitcher
+              tone={onHome ? "onDark" : "default"}
+              className="max-w-[7.5rem] sm:max-w-[9.5rem]"
+            />
             <LanguageSwitcher tone={onHome ? "onDark" : "default"} />
             <Button asChild size="sm" className="hidden sm:inline-flex">
               <Link href="/chat">{t.nav.openChat}</Link>

@@ -1,5 +1,21 @@
 import { recipes } from "./data/recipes";
+import { findFood } from "./data/foods";
 import type { NutrientProfile, Recipe } from "./data/types";
+import type { Locale } from "./i18n/types";
+import { localizeRecipe } from "./i18n/recipe-locale";
+import { dictionaries } from "./i18n/dictionaries";
+
+const ALLERGEN_ZH: Record<string, string> = {
+  peanuts: "花生",
+  "tree-nuts": "樹堅果",
+  dairy: "乳製品",
+  eggs: "雞蛋",
+  shellfish: "甲殼類海鮮",
+  fish: "魚",
+  soy: "大豆",
+  wheat: "小麥",
+  sesame: "芝麻",
+};
 
 export interface FoodAnalysis {
   query: string;
@@ -14,17 +30,15 @@ export interface FoodAnalysis {
   affordability: string | null;
 }
 
-const JUNK_HINTS =
-  /fried|deep.?fry|soda|cola|candy|biscuit|cookie|chips|nugget|burger|pizza|ice cream|hot dog|processed meat|sausage/i;
-
-export function analyzeFood(raw: string): FoodAnalysis {
+export function analyzeFood(raw: string, locale: Locale = "en"): FoodAnalysis {
+  const zh = locale === "zh-Hant";
   const query = raw.trim();
   if (!query) {
     return {
       query,
       matched: null,
       verdict: "unknown",
-      summary: "Enter a food or recipe name to analyze.",
+      summary: zh ? "請輸入食物或食譜名稱。" : "Enter a food or recipe name to analyze.",
       nutrients: null,
       pros: [],
       cons: [],
@@ -34,110 +48,138 @@ export function analyzeFood(raw: string): FoodAnalysis {
     };
   }
 
-  const q = query.toLowerCase();
-  const matched =
-    recipes.find((r) => r.title.toLowerCase().includes(q) || q.includes(r.title.toLowerCase())) ||
-    recipes.find((r) =>
-      r.ingredients.some((i) => q.includes(i.name.toLowerCase()) || i.name.toLowerCase().includes(q)),
-    ) ||
-    null;
-
-  if (matched) {
-    const n = matched.nutrients;
-    const pros = [
-      matched.whyHealthy.split(".")[0] + ".",
-      `Provides ${n.protein}g protein and ${n.fiber}g fiber per serving.`,
-      matched.tags.includes("budget")
-        ? `Budget-friendly at about $${matched.costPerServing.toFixed(2)}/serving.`
-        : `Cuisine: ${matched.cuisine}.`,
-    ];
-    const cons: string[] = [];
-    if (n.sodium > 500) cons.push("Sodium is relatively high — balance with lower-sodium meals.");
-    if (n.sugar > 15) cons.push("Sugar is moderate-high for a single item — watch add-ons.");
-    if (matched.allergens.length)
-      cons.push(`Contains allergens: ${matched.allergens.join(", ")}.`);
-    if (!cons.length) cons.push("Still depends on total daily calories and your medical context.");
-
-    const alternatives = (matched.alternatives || [])
-      .slice(0, 2)
-      .map((reason, i) => {
-        const alt = recipes[(recipes.indexOf(matched) + i + 1) % recipes.length];
-        return { title: alt.title, id: alt.id, reason };
+  const food = findFood(query);
+  if (food) {
+    const alts = (food.suggestRecipeIds || [])
+      .map((id) => recipes.find((r) => r.id === id))
+      .filter(Boolean)
+      .slice(0, 3)
+      .map((r) => {
+        const loc = localizeRecipe(r!, locale);
+        return {
+          title: loc.title,
+          id: loc.id,
+          reason: zh ? "更穩妥的日常替代／搭配" : "A steadier everyday option",
+        };
       });
 
     return {
       query,
-      matched,
+      matched: null,
+      verdict: food.verdict,
+      summary: zh ? food.summaryZh : food.summaryEn,
+      nutrients: food.nutrients || null,
+      pros: zh ? food.prosZh : food.prosEn,
+      cons: zh ? food.consZh : food.consEn,
+      alternatives: alts,
+      portionNote: zh ? food.portionZh : food.portionEn,
+      affordability: null,
+    };
+  }
+
+  const q = query.toLowerCase();
+  const matched =
+    recipes.find((r) => {
+      const loc = localizeRecipe(r, locale);
+      const titles = [r.title, loc.title].map((t) => t.toLowerCase());
+      return titles.some((t) => t.includes(q) || q.includes(t));
+    }) ||
+    recipes.find((r) => {
+      const loc = localizeRecipe(r, locale);
+      return [...r.ingredients, ...loc.ingredients].some(
+        (i) => q.includes(i.name.toLowerCase()) || i.name.toLowerCase().includes(q),
+      );
+    }) ||
+    null;
+
+  if (matched) {
+    const loc = localizeRecipe(matched, locale);
+    const n = matched.nutrients;
+    const pros = [
+      loc.whyHealthy.split(/[。.]/)[0] + (zh ? "。" : "."),
+      zh
+        ? `每份約含蛋白質 ${n.protein}g、纖維 ${n.fiber}g。`
+        : `Provides ${n.protein}g protein and ${n.fiber}g fiber per serving.`,
+    ];
+    const cons: string[] = [];
+    if (n.sodium > 500)
+      cons.push(zh ? "鈉偏高——請與低鈉餐平衡。" : "Sodium is relatively high — balance with lower-sodium meals.");
+    if (n.sugar > 15)
+      cons.push(zh ? "糖分中高——注意額外加糖。" : "Sugar is moderate-high — watch add-ons.");
+    if (matched.allergens.length)
+      cons.push(
+        zh
+          ? `含過敏原：${matched.allergens.map((a) => ALLERGEN_ZH[a] || a).join("、")}。`
+          : `Contains allergens: ${matched.allergens.join(", ")}.`,
+      );
+    if (!cons.length)
+      cons.push(
+        zh
+          ? "仍要看整天總熱量與個人健康狀況。"
+          : "Still depends on total daily calories and your medical context.",
+      );
+
+    const alternatives = (matched.alternatives || []).slice(0, 2).map((reason, i) => {
+      const alt = recipes[(recipes.indexOf(matched) + i + 1) % recipes.length];
+      const altLoc = localizeRecipe(alt, locale);
+      return { title: altLoc.title, id: alt.id, reason: zh ? "可參考的替換方向" : reason };
+    });
+
+    const groupLabels = matched.groups.map(
+      (g) => dictionaries[locale].groups[g]?.label ?? g.replace(/-/g, " "),
+    );
+
+    return {
+      query,
+      matched: loc,
       verdict:
         n.fiber >= 8 || (n.protein >= 15 && n.sodium < 400)
           ? "strong choice"
           : n.sodium > 600 || n.sugar > 20
             ? "limit often"
             : "situational",
-      summary: `${matched.title} fits goals around ${matched.groups.map((g) => g.replace(/-/g, " ")).join(", ")}.`,
+      summary: zh
+        ? `${loc.title}較適合：${groupLabels.join("、")}相關目標。`
+        : `${loc.title} fits goals around ${groupLabels.join(", ")}.`,
       nutrients: n,
       pros,
       cons,
       alternatives,
-      portionNote: `Plate proportion tip: treat this as ~${Math.round((n.calories / 2000) * 100)}% of a 2000 kcal reference day. Pair with vegetables if the dish is protein/carb heavy.`,
-      affordability: `About $${matched.costPerServing.toFixed(2)} per serving; total ingredient ballpark $${matched.ingredients.reduce((s, i) => s + (i.cost || 0), 0).toFixed(2)} for ${matched.servings} servings.`,
+      portionNote: zh
+        ? `份量提示：以 2000 大卡參考日估算，約佔 ${Math.round((n.calories / 2000) * 100)}%。若偏重蛋白質／碳水，請多配蔬菜。`
+        : `Plate tip: ~${Math.round((n.calories / 2000) * 100)}% of a 2000 kcal reference day. Pair with vegetables if needed.`,
+      affordability: zh
+        ? `約每份成本（以美元為基準）${matched.costPerServing.toFixed(2)}；頁面會依你選的貨幣顯示。`
+        : `About $${matched.costPerServing.toFixed(2)} per serving (USD base; shown in your selected currency).`,
     };
   }
 
-  if (JUNK_HINTS.test(query)) {
-    const alts = recipes
-      .filter((r) => r.tags.includes("high-fiber") || r.groups.includes("heart-health"))
-      .slice(0, 3)
-      .map((r) => ({
-        title: r.title,
-        id: r.id,
-        reason: "Higher fiber / lower processing than typical fried or sugary options",
-      }));
-    return {
-      query,
-      matched: null,
-      verdict: "limit often",
-      summary: `"${query}" often packs refined carbs, sodium, or fried fats that are easy to over-consume relative to nutrients.`,
-      nutrients: null,
-      pros: ["Can fit occasionally inside an otherwise balanced week."],
-      cons: [
-        "Usually energy-dense with less fiber/protein per calorie.",
-        "Frequent intake links with weight gain and blood-pressure strain.",
-      ],
-      alternatives: alts,
-      portionNote:
-        "If you choose it, shrink the portion, add a large salad or broth soup first, and skip sugary drinks.",
-      affordability:
-        "Takeout often costs more per nutrient than beans, eggs, or sheet-pan meals.",
-    };
-  }
-
-  // generic heuristic for free text
-  const healthyHints = /salad|bean|lentil|oat|fish|veg|fruit|yogurt|tofu|quinoa|soup|steam|grill|bake/i.test(
-    query,
-  );
   return {
     query,
     matched: null,
-    verdict: healthyHints ? "situational" : "unknown",
-    summary: healthyHints
-      ? `"${query}" sounds like it can be a solid base — check cooking method (baked/steamed > deep-fried) and sauces for sodium/sugar.`
-      : `We don't have a direct match for "${query}". Describe cooking method, portion, and sauces for a sharper read — or browse recipes.`,
+    verdict: "unknown",
+    summary: zh
+      ? `目前資料庫還沒有「${query}」的專屬條目。你可以換更常見名稱（例如：蘋果、雞蛋、白飯、炸雞、珍珠奶茶），或直接問對話助手。`
+      : `We don’t have a direct entry for “${query}” yet. Try a common name (apple, egg, rice, fried chicken, bubble tea) or ask the chat.`,
     nutrients: null,
-    pros: healthyHints
-      ? ["Plant/protein cues suggest better micronutrient density.", "Ask the chatbot for a clearer breakdown."]
-      : ["Ask the chatbot for related nutrition guidance."],
-    cons: [
-      "Without a label, sodium, oil, and sugar are unknown.",
-      "Allergies and cultural rules still apply.",
+    pros: [
+      zh ? "試著用更簡單的食物名稱再查一次。" : "Try a simpler food name.",
+      zh ? "也可以打開對話，用白話描述你想吃的東西。" : "Or describe it in chat in plain language.",
     ],
-    alternatives: recipes.slice(0, 3).map((r) => ({
-      title: r.title,
-      id: r.id,
-      reason: "Curated option with full nutrient profile",
-    })),
-    portionNote:
-      "Volume check: fill half the plate with non-starchy vegetables, a quarter protein, a quarter carbs.",
+    cons: [
+      zh ? "沒有標籤時，鈉、油、糖都不確定。" : "Without a label, sodium, oil, and sugar are unknown.",
+    ],
+    alternatives: recipes.slice(0, 3).map((r) => {
+      const loc = localizeRecipe(r, locale);
+      return {
+        title: loc.title,
+        id: r.id,
+        reason: zh ? "站內有完整營養資料的食譜" : "Recipe with a full nutrient profile",
+      };
+    }),
+    portionNote: zh
+      ? "盤面原則：一半非澱粉蔬菜、四分之一蛋白質、四分之一主食。"
+      : "Plate guide: half non-starchy vegetables, a quarter protein, a quarter carbs.",
     affordability: null,
   };
 }

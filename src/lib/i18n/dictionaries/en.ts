@@ -78,9 +78,9 @@ export const en = {
     panelSub: "Guided by nutrition notes & recipes",
     badge: "Ready to help",
     welcome:
-      "Hi—I’m NourishAI. Share your goals, allergies, budget, culture, or health context (like blood pressure). I’ll use our nutrition notes and recipes to suggest practical next steps.",
+      "Hi—I’m NourishAI. Tell me what you need in plain language (for example blood sugar, budget meals, or “I don’t know what to eat”). I’ll ask a couple of quick questions if needed, then recommend recipes you can open in one tap.",
     placeholder: "Ask about recipes, nutrients, BMI, budget, allergies…",
-    retrieving: "Pulling knowledge…",
+    retrieving: "Thinking…",
     send: "Send",
     error: "I couldn’t finish that answer. Check your connection and try a shorter question.",
     limits:
@@ -152,7 +152,7 @@ export const en = {
     week: "week",
     month: "month",
     focusGroup: "Focus goal",
-    budget: "Daily food budget (USD)",
+    budget: "Daily food budget",
     dietFilters: "Diet & culture filters",
     excludeAllergies: "Exclude allergies",
     regenerate: "Regenerate plan",

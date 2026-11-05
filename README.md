@@ -2,17 +2,19 @@
 
 **Live site:** [https://nourish-ai-olive.vercel.app](https://nourish-ai-olive.vercel.app)
 
-Conversational nutrition assistant for real-world eating problems: weight management, blood pressure, healthy aging, mood-supportive habits, allergies, faith-based diets, and tight budgets.
+Conversational nutrition assistant for real-world eating: weight goals, blood pressure, healthy aging, mood-supportive habits, allergies, faith-based diets, and tight budgets.
+
+Supports **English** and **繁體中文**, with currency that follows your location (HKD / TWD / CNY / USD / …).
 
 ## What you get
 
-- **Healthy recipes** tagged by consumer group, culture/diet, allergens, cost, and nutrients
-- **Ask Nourish chatbot** grounded in a curated nutrition knowledge base + recipes (retrieval under the hood; optional OpenAI for fluent generation)
-- **Food analysis** — is it a strong choice, situational, or best limited, with alternatives
+- **Healthy recipes** with photos, nutrients, per-serving cost in your currency, allergens, and culture/diet tags
+- **Chat coach** with step-by-step consult questions, keyword answers (diabetes, BP, budget…), and one-tap recipe links
+- **Food check** for everyday foods (apple, rice, fried chicken, bubble tea, hot pot…) with localized guidance
 - **Meal planner** for day / week / month with budget and allergy filters
-- **BMI & body analysis** with energy estimates and cautious activity suggestions
+- **BMI & body tools** with energy estimates and cautious activity tips
 
-Educational only — not medical advice. Suggestions can be wrong; allergies, prescriptions, and culture always win.
+Educational only — not medical advice.
 
 ## Run locally
 
@@ -23,32 +25,12 @@ npm run dev
 
 Open [http://127.0.0.1:43123](http://127.0.0.1:43123).
 
-### Public URL (temporary tunnel)
-
-From a machine where the app is already running on port `43123`:
-
-```bash
-npm run build && npm run start
-cloudflared tunnel --url http://127.0.0.1:43123
-```
-
-Cloudflare prints a `https://….trycloudflare.com` link anyone can open. Quick tunnels stop when that process (or the VM) stops.
-
-### Deploy permanently on Vercel (auto-updates)
+### Deploy on Vercel (auto-updates)
 
 Repo: [github.com/cherthebest/nourish-ai](https://github.com/cherthebest/nourish-ai)
 
-1. Open [vercel.com/new](https://vercel.com/new) and sign in with **GitHub**.
-2. Import **`cherthebest/nourish-ai`**.
-3. Leave Framework Preset as **Next.js**, click **Deploy**.
-4. After the first deploy succeeds, every push to `main` automatically updates the public site.
-
-No env vars are required for the built-in chatbot. Optionally add `OPENAI_API_KEY` in Vercel → Project → Settings → Environment Variables.
-
-### Optional LLM upgrade
-
-Copy `.env.example` to `.env.local` and set `OPENAI_API_KEY`. Without a key, the chatbot still answers from the built-in nutrition notes and recipes.
+Push to `main` updates the public site. Optional: set `OPENAI_API_KEY` for freer chat wording; without it, the built-in coach still answers.
 
 ## Stack
 
-Next.js (App Router), TypeScript, Tailwind CSS, Radix-based UI primitives.
+Next.js 15 (App Router), TypeScript, Tailwind CSS, Framer Motion, Radix UI primitives.

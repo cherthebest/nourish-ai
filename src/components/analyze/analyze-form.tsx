@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { analyzeFood } from "@/lib/food-analysis";
 import { Input } from "@/components/ui/input";
@@ -12,9 +12,16 @@ import { FadeIn } from "@/components/motion/apple-press";
 
 export function AnalyzeForm() {
   const { t, locale } = useI18n();
-  const [q, setQ] = useState("fried chicken");
-  const [submitted, setSubmitted] = useState("fried chicken");
-  const result = useMemo(() => analyzeFood(submitted), [submitted]);
+  const defaultQ = locale === "zh-Hant" ? "炸雞" : "fried chicken";
+  const [q, setQ] = useState(defaultQ);
+  const [submitted, setSubmitted] = useState(defaultQ);
+  const result = useMemo(() => analyzeFood(submitted, locale), [submitted, locale]);
+
+  useEffect(() => {
+    const next = locale === "zh-Hant" ? "炸雞" : "fried chicken";
+    setQ(next);
+    setSubmitted(next);
+  }, [locale]);
 
   const verdictLabel =
     result.verdict === "strong choice"
@@ -59,7 +66,7 @@ export function AnalyzeForm() {
       <div className="rounded-3xl border border-[var(--border)] bg-[var(--card)]/95 p-6 shadow-sm backdrop-blur-sm">
         <div className="flex flex-wrap items-center gap-3">
           <h2 className="font-[family-name:var(--font-display)] text-2xl text-[var(--forest)]">
-            {matched?.title || result.query || "Result"}
+            {matched?.title || result.query || t.analyze.title}
           </h2>
           <Badge className={verdictColor}>{verdictLabel}</Badge>
         </div>

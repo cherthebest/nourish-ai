@@ -49,7 +49,7 @@ export const zhHant = {
     },
     "blood-pressure": {
       label: "血壓友善",
-      blurb: "DASH 風格餐盤：少鈉、多鉀。",
+      blurb: "少鈉、多鉀的餐盤設計，偏血壓管理方向。",
     },
     aging: {
       label: "健康樂齡",
@@ -57,7 +57,7 @@ export const zhHant = {
     },
     "mental-health": {
       label: "情緒與心智",
-      blurb: "Omega-3、全穀與穩定能量，照顧心理安適。",
+      blurb: "優質脂肪、全穀與穩定能量，照顧心理安適。",
     },
     "diabetes-friendly": {
       label: "血糖友善",
@@ -80,9 +80,9 @@ export const zhHant = {
     panelSub: "參考營養筆記與食譜",
     badge: "隨時可問",
     welcome:
-      "你好——我是 NourishAI。告訴我你的目標、過敏、預算、文化或健康背景（例如血壓）。我會依營養筆記與食譜，提出務實下一步。",
+      "你好——我是 NourishAI。用白話告訴我你的需求（例如血糖、平價餐，或「不知道吃什麼」）。需要時我會先問兩句，再推薦可一鍵點開的食譜。",
     placeholder: "詢問食譜、營養素、BMI、預算、過敏…",
-    retrieving: "正在擷取知識…",
+    retrieving: "正在想…",
     send: "傳送",
     error: "無法完成回答。請檢查連線，或試著把問題寫短一點。",
     limits:
@@ -154,7 +154,7 @@ export const zhHant = {
     week: "一週",
     month: "一個月",
     focusGroup: "焦點目標",
-    budget: "每日食物預算（美元）",
+    budget: "每日食物預算",
     dietFilters: "飲食與文化篩選",
     excludeAllergies: "排除過敏原",
     regenerate: "重新產生計畫",

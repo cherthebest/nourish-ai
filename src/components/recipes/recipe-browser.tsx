@@ -7,28 +7,35 @@ import { RecipeCard } from "./recipe-card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useI18n } from "@/lib/i18n/provider";
+import { useCurrency } from "@/lib/i18n/currency-provider";
 import { localizeRecipe } from "@/lib/i18n/recipe-locale";
 import { FadeIn } from "@/components/motion/apple-press";
 
 export function RecipeBrowser() {
   const { t, locale } = useI18n();
+  const { money } = useCurrency();
   const searchParams = useSearchParams();
   const initialGroup = searchParams.get("group") || "all";
   const [group, setGroup] = useState(initialGroup);
   const [q, setQ] = useState("");
+  /** USD base — display converts via money() */
   const [maxCost, setMaxCost] = useState(10);
   const [tag, setTag] = useState("all");
 
-  const list = useMemo(
-    () =>
-      filterRecipes({
-        group,
-        q,
-        maxCost,
-        tag,
-      }).map((r) => localizeRecipe(r, locale)),
-    [group, q, maxCost, tag, locale],
-  );
+  const list = useMemo(() => {
+    const base = filterRecipes({
+      group,
+      q: "", // search after localization so 繁中 titles match
+      maxCost,
+      tag,
+    }).map((r) => localizeRecipe(r, locale));
+    const needle = q.trim().toLowerCase();
+    if (!needle) return base;
+    return base.filter((r) => {
+      const hay = `${r.title} ${r.summary} ${r.cuisine} ${r.ingredients.map((i) => i.name).join(" ")}`.toLowerCase();
+      return hay.includes(needle);
+    });
+  }, [group, q, maxCost, tag, locale]);
 
   return (
     <FadeIn className="space-y-8">
@@ -76,7 +83,7 @@ export function RecipeBrowser() {
         </div>
         <div className="space-y-2 md:col-span-4">
           <Label htmlFor="cost">
-            {t.recipes.maxCost}: ${maxCost.toFixed(2)}
+            {t.recipes.maxCost}: {money(maxCost)}
           </Label>
           <input
             id="cost"

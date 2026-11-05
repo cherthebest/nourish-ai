@@ -10,6 +10,7 @@ export interface PlanOptions {
   dietPrefs?: DietTag[];
   maxCostPerServing?: number;
   budgetPerDay?: number;
+  locale?: "en" | "zh-Hant";
 }
 
 export interface PlannedMeal {
@@ -93,12 +94,19 @@ export function buildMealPlan(opts: PlanOptions): PlanDay[] {
   const out: PlanDay[] = [];
   for (let i = 0; i < days; i++) {
     if (i % 4 === 0) used.clear();
+    const zh = opts.locale === "zh-Hant";
     const label =
       opts.horizon === "day"
-        ? "Today"
+        ? zh
+          ? "今天"
+          : "Today"
         : opts.horizon === "week"
-          ? ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"][i]
-          : `Day ${i + 1}`;
+          ? zh
+            ? ["週一", "週二", "週三", "週四", "週五", "週六", "週日"][i]
+            : ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"][i]
+          : zh
+            ? `第 ${i + 1} 天`
+            : `Day ${i + 1}`;
     const day = buildDay(label, pool.length ? pool : recipes, prefer, used);
     if (opts.budgetPerDay && day.totalCost > opts.budgetPerDay * 1.15) {
       // replace dinner with cheapest eligible

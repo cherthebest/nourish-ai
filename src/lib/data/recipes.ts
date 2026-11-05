@@ -1,4 +1,6 @@
 import type { Recipe } from "./types";
+import { extraRecipes } from "./extra-recipes";
+import { RECIPE_IMAGES } from "./recipe-images";
 
 export const CONSUMER_GROUPS = [
   {
@@ -38,7 +40,7 @@ export const CONSUMER_GROUPS = [
   },
 ];
 
-export const recipes: Recipe[] = [
+const baseRecipes: Recipe[] = [
   {
     id: "lentil-ginger-bowl",
     title: "Ginger lentil power bowl",
@@ -580,6 +582,11 @@ export const recipes: Recipe[] = [
     imageGradient: "from-amber-800 via-orange-500 to-yellow-300",
   },
 ];
+
+export const recipes: Recipe[] = [...baseRecipes, ...extraRecipes].map((r) => ({
+  ...r,
+  imageUrl: r.imageUrl || RECIPE_IMAGES[r.id],
+}));
 
 export function getRecipeById(id: string) {
   return recipes.find((r) => r.id === id);

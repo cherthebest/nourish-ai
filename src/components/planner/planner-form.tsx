@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { buildMealPlan, type PlanHorizon } from "@/lib/planner";
 import { CONSUMER_GROUPS } from "@/lib/data/recipes";
@@ -9,9 +9,10 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { formatCurrency } from "@/lib/utils";
 import { useI18n } from "@/lib/i18n/provider";
+import { useCurrency } from "@/lib/i18n/currency-provider";
 import { localizeRecipe } from "@/lib/i18n/recipe-locale";
+import { FX_FROM_USD } from "@/lib/currency";
 import { FadeIn } from "@/components/motion/apple-press";
 
 const ALLERGIES: Allergy[] = [
@@ -26,16 +27,37 @@ const ALLERGIES: Allergy[] = [
   "sesame",
 ];
 
+const ALLERGEN_LABEL: Record<Allergy, { en: string; zh: string }> = {
+  peanuts: { en: "peanuts", zh: "花生" },
+  "tree-nuts": { en: "tree nuts", zh: "樹堅果" },
+  dairy: { en: "dairy", zh: "乳製品" },
+  eggs: { en: "eggs", zh: "雞蛋" },
+  shellfish: { en: "shellfish", zh: "甲殼類海鮮" },
+  fish: { en: "fish", zh: "魚" },
+  soy: { en: "soy", zh: "大豆" },
+  wheat: { en: "wheat", zh: "小麥" },
+  sesame: { en: "sesame", zh: "芝麻" },
+};
+
 const DIETS: DietTag[] = ["halal", "kosher", "vegetarian", "vegan", "gluten-free", "dairy-free"];
 
 export function PlannerForm() {
   const { t, locale } = useI18n();
+  const { money, currency } = useCurrency();
   const [horizon, setHorizon] = useState<PlanHorizon>("week");
   const [group, setGroup] = useState("weight-management");
+  /** Display-currency amount (approx. $12 USD default). */
   const [budget, setBudget] = useState(12);
   const [allergies, setAllergies] = useState<Allergy[]>([]);
   const [diets, setDiets] = useState<DietTag[]>(["halal"]);
   const [token, setToken] = useState(0);
+
+  useEffect(() => {
+    setBudget(Math.round(12 * (FX_FROM_USD[currency] || 1)));
+  }, [currency]);
+
+  // Budget input is in the selected currency; recipe costs are stored in USD.
+  const budgetUsd = budget / (FX_FROM_USD[currency] || 1);
 
   const plan = useMemo(
     () =>
@@ -44,7 +66,8 @@ export function PlannerForm() {
         groups: [group],
         allergies,
         dietPrefs: diets,
-        budgetPerDay: budget,
+        budgetPerDay: budgetUsd,
+        locale,
       }).map((day) => ({
         ...day,
         meals: day.meals.map((m) => ({
@@ -53,7 +76,7 @@ export function PlannerForm() {
         })),
       })),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [horizon, group, budget, allergies, diets, token, locale],
+    [horizon, group, budgetUsd, allergies, diets, token, locale],
   );
 
   const visible = horizon === "month" ? plan.slice(0, 7) : plan;
@@ -109,7 +132,9 @@ export function PlannerForm() {
             </select>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="budget">{t.planner.budget}</Label>
+            <Label htmlFor="budget">
+              {locale === "zh-Hant" ? `每日食物預算（${currency}）` : `Daily food budget (${currency})`}
+            </Label>
             <Input
               id="budget"
               type="number"
@@ -154,7 +179,7 @@ export function PlannerForm() {
                       : "bg-[var(--muted)] text-[var(--forest)]"
                   }`}
                 >
-                  {a}
+                  {locale === "zh-Hant" ? ALLERGEN_LABEL[a].zh : ALLERGEN_LABEL[a].en}
                 </button>
               ))}
             </div>
@@ -180,7 +205,7 @@ export function PlannerForm() {
                 {day.dayLabel}
               </h3>
               <Badge>
-                {formatCurrency(day.totalCost)} · {day.totalCalories} {t.common.kcal}
+                {money(day.totalCost)} · {day.totalCalories} {t.common.kcal}
               </Badge>
             </div>
             <ul className="mt-4 space-y-3">

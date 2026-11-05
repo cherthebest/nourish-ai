@@ -3,6 +3,7 @@ import { Fraunces, Manrope, Noto_Sans_TC } from "next/font/google";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { I18nProvider } from "@/lib/i18n/provider";
+import { CurrencyProvider } from "@/lib/i18n/currency-provider";
 import "./globals.css";
 
 const display = Fraunces({
@@ -41,9 +42,11 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col font-sans">
         <I18nProvider>
-          <SiteHeader />
-          <main className="flex-1">{children}</main>
-          <SiteFooter />
+          <CurrencyProvider>
+            <SiteHeader />
+            <main className="flex-1">{children}</main>
+            <SiteFooter />
+          </CurrencyProvider>
         </I18nProvider>
       </body>
     </html>

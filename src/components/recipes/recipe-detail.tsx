@@ -1,27 +1,52 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Clock, Coins, Users } from "lucide-react";
 import type { Recipe } from "@/lib/data/types";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { formatCurrency } from "@/lib/utils";
 import { useI18n } from "@/lib/i18n/provider";
+import { useCurrency } from "@/lib/i18n/currency-provider";
 import { localizeRecipe } from "@/lib/i18n/recipe-locale";
 import { FadeIn } from "@/components/motion/apple-press";
 
+const ALLERGEN_ZH: Record<string, string> = {
+  peanuts: "花生",
+  "tree-nuts": "樹堅果",
+  dairy: "乳製品",
+  eggs: "雞蛋",
+  shellfish: "甲殼類海鮮",
+  fish: "魚",
+  soy: "大豆",
+  wheat: "小麥",
+  sesame: "芝麻",
+};
+
 export function RecipeDetail({ recipe: base }: { recipe: Recipe }) {
   const { t, locale } = useI18n();
+  const { money } = useCurrency();
   const recipe = localizeRecipe(base, locale);
   const n = recipe.nutrients;
+  const zh = locale === "zh-Hant";
 
   return (
     <div className="pb-20">
-      <div className={`relative h-64 bg-gradient-to-br ${recipe.imageGradient} md:h-80`}>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.35),transparent_50%)]" />
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[var(--background)] to-transparent p-5 md:p-8">
+      <div className={`relative h-64 overflow-hidden bg-gradient-to-br ${recipe.imageGradient} md:h-80`}>
+        {recipe.imageUrl ? (
+          <Image
+            src={recipe.imageUrl}
+            alt={recipe.title}
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+        ) : null}
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-black/10 to-black/20" />
+        <div className="absolute inset-x-0 bottom-0 p-5 md:p-8">
           <div className="mx-auto max-w-6xl">
-            <p className="text-sm font-medium text-[var(--forest)]/70">{recipe.cuisine}</p>
+            <p className="text-sm font-medium text-[var(--forest)]/80">{recipe.cuisine}</p>
             <h1 className="font-[family-name:var(--font-display)] text-4xl text-[var(--forest)] md:text-5xl">
               {recipe.title}
             </h1>
@@ -43,7 +68,7 @@ export function RecipeDetail({ recipe: base }: { recipe: Recipe }) {
             </span>
             <span className="inline-flex items-center gap-1.5">
               <Coins className="h-4 w-4" />
-              {formatCurrency(recipe.costPerServing)} {t.recipes.perServing}
+              {money(recipe.costPerServing)} {t.recipes.perServing}
             </span>
           </div>
 
@@ -79,7 +104,7 @@ export function RecipeDetail({ recipe: base }: { recipe: Recipe }) {
                     <span className="font-medium text-[var(--forest)]">{ing.amount}</span> {ing.name}
                   </span>
                   {ing.cost != null && (
-                    <span className="text-[var(--muted-foreground)]">~{formatCurrency(ing.cost)}</span>
+                    <span className="text-[var(--muted-foreground)]">~{money(ing.cost)}</span>
                   )}
                 </li>
               ))}
@@ -131,10 +156,12 @@ export function RecipeDetail({ recipe: base }: { recipe: Recipe }) {
             <h2 className="font-semibold text-[var(--forest)]">{t.recipes.allergensAvailability}</h2>
             <p className="mt-2 text-sm text-[var(--muted-foreground)]">
               {t.recipes.allergens}:{" "}
-              {recipe.allergens.length ? recipe.allergens.join(", ") : t.recipes.noneListed}
+              {recipe.allergens.length
+                ? recipe.allergens.map((a) => (zh ? ALLERGEN_ZH[a] || a : a)).join(zh ? "、" : ", ")
+                : t.recipes.noneListed}
             </p>
             <p className="mt-2 text-sm text-[var(--muted-foreground)]">
-              {t.recipes.regions}: {recipe.regionAvailability.join("; ")}
+              {t.recipes.regions}: {recipe.regionAvailability.join(zh ? "；" : "; ")}
             </p>
           </div>
 

@@ -1,6 +1,7 @@
 import type { Locale } from "./types";
 import type { Recipe } from "@/lib/data/types";
 import { getRecipeById } from "@/lib/data/recipes";
+import { translateAmount, translateIngredientName } from "./ingredient-locale";
 
 type RecipeCopy = {
   title: string;
@@ -35,7 +36,7 @@ const zhRecipes: Record<string, RecipeCopy> = {
     cuisine: "全球早餐",
     regionAvailability: ["超市", "多數城市"],
     whyHealthy:
-      "燕麥的 β-葡聚醣有助膽固醇與飽足。莓果多酚與認知健康相關。優格蛋白質有助樂齡肌肉維持。乳糖不耐可用豆漿／椰奶優格。",
+      "燕麥的可溶性纖維有助膽固醇與飽足。莓果植化素與認知健康相關。優格蛋白質有助樂齡肌肉維持。乳糖不耐可用豆漿／椰奶優格。",
     alternatives: ["乳糖不耐改用植物優格", "新鮮莓果貴時用冷凍", "預設無堅果，較適合學校便當"],
     steps: [
       "混合燕麥、優格、奇亞、肉桂與少許水或奶。",
@@ -45,11 +46,11 @@ const zhRecipes: Record<string, RecipeCopy> = {
   },
   "salmon-greens": {
     title: "香草檸檬烤鮭魚配綠蔬",
-    summary: "富含 Omega-3 的鮭魚搭配蒜香綠蔬——情緒與心臟的常備搭配。",
+    summary: "富含優質脂肪酸的鮭魚搭配蒜香綠蔬——情緒與心臟的常備搭配。",
     cuisine: "地中海",
     regionAvailability: ["沿海市場", "全球冷凍區"],
     whyHealthy:
-      "EPA/DHA Omega-3 支持情緒、腦部老化與心律。烘烤比油炸更低鈉。搭配蔬菜補充鉀。預算有限可用沙丁魚，或以亞麻＋豆腐取得植物 Omega-3。",
+      "鮭魚的優質脂肪有助情緒、腦部老化與心律。烘烤比油炸更低鈉。搭配蔬菜補充鉀。預算有限可用沙丁魚，或以亞麻＋豆腐取得植物性優質脂肪。",
     alternatives: ["罐頭鮭魚或沙丁魚大幅降成本", "買不到鮭魚可用鱒魚或鯖魚", "魚過敏：核桃＋亞麻豆腐炒"],
     steps: [
       "烤箱預熱 200°C。鮭魚放在烘焙紙上。",
@@ -72,12 +73,12 @@ const zhRecipes: Record<string, RecipeCopy> = {
     ],
   },
   "dash-bean-salad": {
-    title: "DASH 三豆柑橘沙拉",
+    title: "三豆柑橘沙拉（血壓友善）",
     summary: "免煮沙拉，為血壓目標設計——高鉀、方便外帶。",
-    cuisine: "美式 DASH",
+    cuisine: "美式家常",
     regionAvailability: ["幾乎各地都有罐頭豆"],
     whyHealthy:
-      "符合 DASH：豆類、蔬果、不飽和脂肪、控制鈉。高鉀支持血管張力。非常適合忙碌週的備餐。",
+      "豆類、蔬果、不飽和脂肪、控制鈉——偏血壓管理方向。高鉀支持血管張力。非常適合忙碌週的備餐。",
     alternatives: ["其中一種豆可改冷凍毛豆", "萊姆＋香菜做成墨西哥風味"],
     steps: [
       "徹底沖洗豆子以降低鈉。",
@@ -105,7 +106,7 @@ const zhRecipes: Record<string, RecipeCopy> = {
     cuisine: "地中海點心",
     regionAvailability: ["取得容易"],
     whyHealthy:
-      "核桃提供 ALA Omega-3。蛋白質＋脂肪組合穩定食慾。堅果過敏可改南瓜籽。",
+      "核桃提供植物性優質脂肪。蛋白質＋脂肪組合穩定食慾。堅果過敏可改南瓜籽。",
     alternatives: ["堅果過敏用南瓜籽", "無乳製品用大豆優格"],
     steps: ["優格、香蕉片與切碎核桃分層。", "灑肉桂。慢慢吃——核桃熱量密度本來就高。"],
   },
@@ -177,12 +178,134 @@ const zhRecipes: Record<string, RecipeCopy> = {
       "靜置 5 分鐘，擠檸檬汁。",
     ],
   },
+  "tomato-egg-rice": {
+    title: "番茄炒蛋蓋飯",
+    summary: "粵式家常經典——快速、平價，配飯與蔬菜更均衡。",
+    cuisine: "粵式家常",
+    regionAvailability: ["香港、台灣、新加坡及多數亞洲市場"],
+    whyHealthy: "雞蛋蛋白質搭配蔬菜與控制份量的飯，比油膩外食更穩妥。",
+    alternatives: ["可加菠菜", "低碳水可用花椰菜米"],
+    steps: ["蛋炒至嫩熟盛起。", "番茄煮出汁，略調味。", "倒回蛋略拌，淋飯上撒蔥花。"],
+    ingredients: [
+      { name: "雞蛋", amount: "3 顆" },
+      { name: "番茄", amount: "2 顆" },
+      { name: "白飯", amount: "2 碗" },
+      { name: "青蔥", amount: "2 支" },
+      { name: "油", amount: "1 湯匙" },
+    ],
+  },
+  "congee-ginger-fish": {
+    title: "薑絲魚片粥",
+    summary: "溫和魚粥——適合消化力弱、樂齡或食慾不佳的日子。",
+    cuisine: "中式",
+    regionAvailability: ["街市與亞洲超市"],
+    whyHealthy: "好入口、補水、瘦肉蛋白——食慾低時很實用。",
+    alternatives: ["可改雞肉粥", "魚過敏改豆腐粥"],
+    steps: ["米加水熬至綿稠。", "接近完成加薑片與薄魚片煮熟。", "撒蔥花；血壓需注意則少鹽。"],
+  },
+  "steamed-veg-tofu": {
+    title: "清蒸豆腐青菜",
+    summary: "清蒸豆腐配綠蔬——對血糖與心臟友善的高體積餐。",
+    cuisine: "東亞",
+    regionAvailability: ["豆腐與青菜容易取得"],
+    whyHealthy: "高體積、熱量可控、植物蛋白，不需油炸。",
+    alternatives: ["可改天貝", "低鈉可用椰子胺基"],
+    steps: ["豆腐與青菜蒸至剛好。", "蒜蓉加少許醬油與油淋上。"],
+  },
+  "avocado-toast-egg": {
+    title: "酪梨吐司配蛋",
+    summary: "忙碌早晨的快速早餐——健康脂肪加蛋白質。",
+    cuisine: "咖啡館經典",
+    regionAvailability: ["多數城市"],
+    whyHealthy: "纖維＋蛋白質＋不飽和脂肪，比甜麵包早餐更有飽足感。",
+    alternatives: ["無麩質可用米餅", "純素可改鷹嘴豆泥"],
+    steps: ["烤吐司，壓酪梨加檸檬。", "放上嫩蛋與胡椒。"],
+  },
+  "greek-salad-chickpea": {
+    title: "鷹嘴豆希臘風沙拉",
+    summary: "免煮午餐：鷹嘴豆、黃瓜、番茄——有助血糖穩定。",
+    cuisine: "地中海",
+    regionAvailability: ["全球乾貨"],
+    whyHealthy: "纖維與植物蛋白有助緩和血糖波動，幾乎不用開火。",
+    alternatives: ["可接受乳製品再加菲達起司", "可換白豆"],
+    steps: ["切蔬菜，與鷹嘴豆、油、檸檬、奧勒岡、胡椒拌勻。"],
+  },
+  "banana-oat-pancakes": {
+    title: "香蕉燕麥鬆餅",
+    summary: "用燕麥與香蕉做的鬆餅——週末也能有纖維。",
+    cuisine: "家常早餐",
+    regionAvailability: ["燕麥與香蕉易得"],
+    whyHealthy: "比餐廳鬆餅更多纖維與蛋白質；甜味主要來自香蕉。",
+    alternatives: ["純素可用亞麻蛋", "配莓果代替糖漿"],
+    steps: ["燕麥、香蕉、蛋、肉桂攪打。", "少油平底鍋煎成小片。"],
+  },
+  "turkey-lettuce-wraps": {
+    title: "火雞生菜包",
+    summary: "體重與血糖友善的清爽包——高蛋白、低油炸。",
+    cuisine: "融合料理",
+    regionAvailability: ["火雞肉糜或雞肉糜易得"],
+    whyHealthy: "以生菜取代油炸餅皮，蛋白質清楚、負擔較低。",
+    alternatives: ["素食可改豆腐碎", "生菜貴可用高麗菜葉"],
+    steps: ["炒香洋蔥蒜與肉至熟。", "略調味，舀入生菜。"],
+  },
+  "spinach-dal": {
+    title: "菠菜扁豆咖哩",
+    summary: "一鍋扁豆配菠菜——平價、有鐵質與纖維。",
+    cuisine: "南亞",
+    regionAvailability: ["扁豆與菠菜全球易得"],
+    whyHealthy: "植物蛋白與纖維，搭配高鉀綠葉，非常適合日常主食。",
+    alternatives: ["配糙米", "加檸檬有助鐵吸收"],
+    steps: ["炒香料與辛香料。", "加扁豆與水燉軟。", "拌入菠菜。"],
+  },
+  "grilled-veg-couscous": {
+    title: "烤蔬菜库斯库斯碗",
+    summary: "家庭晚餐的彩色碗——無麩質可改藜麥。",
+    cuisine: "地中海",
+    regionAvailability: ["多數城市有库斯库斯"],
+    whyHealthy: "蔬菜為主、油脂可控——比奶油外食碗更好。",
+    alternatives: ["無麩質改藜麥", "加鷹嘴豆補蛋白"],
+    steps: ["烤或煎蔬菜。", "库斯库斯以檸檬與油拌鬆，鋪上蔬菜。"],
+  },
+  "apple-cinnamon-porridge": {
+    title: "蘋果肉桂燕麥粥",
+    summary: "溫熱燕麥配蘋果——顧血糖意識與舒適感的早餐。",
+    cuisine: "全球早餐",
+    regionAvailability: ["燕麥與蘋果易得"],
+    whyHealthy: "燕麥與蘋果纖維，比含糖穀片更能穩定能量。",
+    alternatives: ["不過敏可加花生醬", "可用莓果代替蘋果"],
+    steps: ["燕麥、蘋果丁與肉桂煮至綿稠。"],
+  },
+  "shrimp-garlic-broccoli": {
+    title: "蒜香蝦仁青花菜",
+    summary: "快速平底鍋晚餐——瘦海鮮蛋白；甲殼過敏請避開。",
+    cuisine: "家常快炒",
+    regionAvailability: ["冷凍蝦全球常見"],
+    whyHealthy: "高蛋白、大量蔬菜、烹煮快——比油炸海鮮好。",
+    alternatives: ["海鮮過敏改雞柳", "可加辣椒"],
+    steps: ["蒜爆香，下蝦與青花菜炒熟。", "多加胡椒，少鹽。"],
+  },
+  "mushroom-barley-soup": {
+    title: "蘑菇大麥湯",
+    summary: "涼爽夜晚的暖胃湯——高纖、平價，適合批次煮。",
+    cuisine: "歐式家常",
+    regionAvailability: ["大麥與蘑菇易得"],
+    whyHealthy: "清湯為主，大麥可溶性纖維——有飽足感又不太油。",
+    alternatives: ["無麩質可改糙米"],
+    steps: ["炒蔬菜與蘑菇。", "加大麥與高湯燉軟。"],
+  },
 };
 
 export function localizeRecipe(recipe: Recipe, locale: Locale): Recipe {
   if (locale === "en") return recipe;
   const copy = zhRecipes[recipe.id];
-  if (!copy) return recipe;
+  const ingredients = recipe.ingredients.map((ing, i) => ({
+    ...ing,
+    name: copy?.ingredients?.[i]?.name ?? translateIngredientName(ing.name),
+    amount: copy?.ingredients?.[i]?.amount ?? translateAmount(ing.amount),
+  }));
+  if (!copy) {
+    return { ...recipe, ingredients };
+  }
   return {
     ...recipe,
     title: copy.title,
@@ -192,11 +315,7 @@ export function localizeRecipe(recipe: Recipe, locale: Locale): Recipe {
     whyHealthy: copy.whyHealthy,
     steps: copy.steps,
     alternatives: copy.alternatives ?? recipe.alternatives,
-    ingredients: recipe.ingredients.map((ing, i) => ({
-      ...ing,
-      name: copy.ingredients?.[i]?.name ?? ing.name,
-      amount: copy.ingredients?.[i]?.amount ?? ing.amount,
-    })),
+    ingredients,
   };
 }
 

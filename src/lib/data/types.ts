@@ -64,6 +64,8 @@ export interface Recipe {
   whyHealthy: string;
   alternatives?: string[];
   imageGradient: string;
+  /** Public image URL (Unsplash etc.) */
+  imageUrl?: string;
 }
 
 export interface KnowledgeDoc {
