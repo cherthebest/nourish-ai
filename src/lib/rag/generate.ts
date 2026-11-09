@@ -109,8 +109,8 @@ function recommendIds(profile: Profile, seed: number): string[] {
     pool = pool.filter((r) => r.tags.includes("vegetarian") || r.tags.includes("vegan"));
   else if (profile.culture === "hk")
     pool = pool.filter((r) =>
-      /fish|congee|tofu|egg|wonton|chicken|rice|choy|pork|melon|ginger|mapo|noodle/i.test(
-        `${r.id} ${r.title} ${r.cuisine}`,
+      /steamed-fish|congee|wonton|choy-sum|tomato-egg|mapo|pork-congee|chicken-shiitake|winter-melon|pak-choi|fried-rice|poached-chicken|ginger/i.test(
+        r.id,
       ),
     );
   else if (profile.culture === "south-asian")
