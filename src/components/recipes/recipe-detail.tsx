@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Clock, Coins, Users } from "lucide-react";
+import { Clock, Coins, ExternalLink, Users } from "lucide-react";
 import type { Recipe } from "@/lib/data/types";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useI18n } from "@/lib/i18n/provider";
 import { useCurrency } from "@/lib/i18n/currency-provider";
 import { localizeRecipe } from "@/lib/i18n/recipe-locale";
+import { storesForCurrency } from "@/lib/ingredient-stores";
 import { FadeIn } from "@/components/motion/apple-press";
 
 const ALLERGEN_ZH: Record<string, string> = {
@@ -25,10 +26,11 @@ const ALLERGEN_ZH: Record<string, string> = {
 
 export function RecipeDetail({ recipe: base }: { recipe: Recipe }) {
   const { t, locale } = useI18n();
-  const { money } = useCurrency();
+  const { money, currency } = useCurrency();
   const recipe = localizeRecipe(base, locale);
   const n = recipe.nutrients;
   const zh = locale === "zh-Hant";
+  const stores = storesForCurrency(currency);
 
   return (
     <div className="pb-20">
@@ -94,20 +96,55 @@ export function RecipeDetail({ recipe: base }: { recipe: Recipe }) {
             <h2 className="font-[family-name:var(--font-display)] text-2xl text-[var(--forest)]">
               {t.recipes.ingredients}
             </h2>
+            <p className="mt-1 text-xs text-[var(--muted-foreground)]">
+              {zh
+                ? "點食材名稱可到常見超市搜尋（連結僅供參考，價格以店家為準）。"
+                : "Tap an ingredient to search common grocery sites (informational links; prices vary)."}
+            </p>
             <ul className="mt-4 space-y-2">
-              {recipe.ingredients.map((ing) => (
-                <li
-                  key={ing.name}
-                  className="flex items-center justify-between rounded-xl border border-[var(--border)] bg-[var(--card)] px-4 py-3 text-sm transition hover:bg-[var(--muted)]"
-                >
-                  <span>
-                    <span className="font-medium text-[var(--forest)]">{ing.amount}</span> {ing.name}
-                  </span>
-                  {ing.cost != null && (
-                    <span className="text-[var(--muted-foreground)]">~{money(ing.cost)}</span>
-                  )}
-                </li>
-              ))}
+              {recipe.ingredients.map((ing) => {
+                const primary = stores[0];
+                const searchName = zh ? ing.name : ing.name;
+                return (
+                  <li
+                    key={ing.name}
+                    className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-[var(--border)] bg-[var(--card)] px-4 py-3 text-sm transition hover:bg-[var(--muted)]"
+                  >
+                    <span>
+                      <span className="font-medium text-[var(--forest)]">{ing.amount}</span> {ing.name}
+                    </span>
+                    <span className="flex flex-wrap items-center gap-2">
+                      {ing.cost != null && (
+                        <span className="text-[var(--muted-foreground)]">~{money(ing.cost)}</span>
+                      )}
+                      {primary && (
+                        <a
+                          href={primary.url(searchName)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-xs font-medium text-[var(--primary)] hover:underline"
+                        >
+                          {zh ? primary.labelZh : primary.labelEn}
+                          <ExternalLink className="h-3 w-3" />
+                        </a>
+                      )}
+                    </span>
+                    <span className="flex w-full flex-wrap gap-2 border-t border-[var(--border)]/60 pt-2">
+                      {stores.slice(1).map((s) => (
+                        <a
+                          key={s.id}
+                          href={s.url(searchName)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[11px] text-[var(--muted-foreground)] hover:text-[var(--primary)] hover:underline"
+                        >
+                          {zh ? s.labelZh : s.labelEn}
+                        </a>
+                      ))}
+                    </span>
+                  </li>
+                );
+              })}
             </ul>
           </section>
 
@@ -117,7 +154,7 @@ export function RecipeDetail({ recipe: base }: { recipe: Recipe }) {
             </h2>
             <ol className="mt-4 space-y-3">
               {recipe.steps.map((step, i) => (
-                <li key={step} className="flex gap-3 text-[var(--muted-foreground)]">
+                <li key={`${i}-${step.slice(0, 12)}`} className="flex gap-3 text-[var(--muted-foreground)]">
                   <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[var(--primary)] text-sm font-semibold text-white">
                     {i + 1}
                   </span>

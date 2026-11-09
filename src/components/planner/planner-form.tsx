@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { buildMealPlan, type PlanHorizon } from "@/lib/planner";
 import { CONSUMER_GROUPS } from "@/lib/data/recipes";
@@ -45,19 +45,23 @@ export function PlannerForm() {
   const { t, locale } = useI18n();
   const { money, currency } = useCurrency();
   const [horizon, setHorizon] = useState<PlanHorizon>("week");
-  const [group, setGroup] = useState("weight-management");
-  /** Display-currency amount (approx. $12 USD default). */
-  const [budget, setBudget] = useState(12);
+  const [group, setGroup] = useState("general");
+  /** Display-currency daily budget. */
+  const [budget, setBudget] = useState(0);
+  const budgetReady = useRef(false);
   const [allergies, setAllergies] = useState<Allergy[]>([]);
-  const [diets, setDiets] = useState<DietTag[]>(["halal"]);
+  /** Empty = no culture filter forced (friendlier default). */
+  const [diets, setDiets] = useState<DietTag[]>([]);
   const [token, setToken] = useState(0);
 
   useEffect(() => {
+    // Keep ~USD 12 equivalent when currency changes so HKD/JPY budgets stay realistic.
     setBudget(Math.round(12 * (FX_FROM_USD[currency] || 1)));
+    budgetReady.current = true;
   }, [currency]);
 
-  // Budget input is in the selected currency; recipe costs are stored in USD.
   const budgetUsd = budget / (FX_FROM_USD[currency] || 1);
+  const minBudget = Math.max(1, Math.round(3 * (FX_FROM_USD[currency] || 1)));
 
   const plan = useMemo(
     () =>
@@ -81,6 +85,9 @@ export function PlannerForm() {
 
   const visible = horizon === "month" ? plan.slice(0, 7) : plan;
   const monthNote = horizon === "month";
+  const avgCost =
+    visible.reduce((s, d) => s + d.totalCost, 0) / Math.max(1, visible.length);
+  const overBudget = avgCost > budgetUsd * 1.05;
 
   function toggleAllergy(a: Allergy) {
     setAllergies((prev) => (prev.includes(a) ? prev.filter((x) => x !== a) : [...prev, a]));
@@ -133,21 +140,40 @@ export function PlannerForm() {
           </div>
           <div className="space-y-2">
             <Label htmlFor="budget">
-              {locale === "zh-Hant" ? `每日食物預算（${currency}）` : `Daily food budget (${currency})`}
+              {locale === "zh-Hant"
+                ? `每日食物預算（${currency}）`
+                : `Daily food budget (${currency})`}
             </Label>
             <Input
               id="budget"
               type="number"
-              min={4}
-              step="0.5"
-              value={budget}
+              min={minBudget}
+              step={currency === "JPY" || currency === "KRW" || currency === "VND" ? 100 : 1}
+              value={budget || ""}
               onChange={(e) => setBudget(Number(e.target.value))}
             />
+            <p className="text-xs text-[var(--muted-foreground)]">
+              {locale === "zh-Hant"
+                ? `目前計畫平均約 ${money(avgCost)}／日（約等於 ${budgetUsd.toFixed(1)} 美元基準）。`
+                : `Plan averages about ${money(avgCost)} / day (≈ $${budgetUsd.toFixed(1)} USD base).`}
+            </p>
+            {overBudget && (
+              <p className="text-xs text-amber-800">
+                {locale === "zh-Hant"
+                  ? "有些日子略超預算——可再調低預算、改選平價標籤，或放寬目標族群。"
+                  : "Some days run a bit over—lower the budget, enable “budget” recipes, or widen the goal."}
+              </p>
+            )}
           </div>
         </div>
         <div className="space-y-4">
           <div>
             <Label>{t.planner.dietFilters}</Label>
+            <p className="mt-1 text-xs text-[var(--muted-foreground)]">
+              {locale === "zh-Hant"
+                ? "預設不強制任何信仰／文化標籤。需要清真、猶太潔食或素食時再點選。"
+                : "Nothing forced by default. Tap only the faith/culture tags you need."}
+            </p>
             <div className="mt-2 flex flex-wrap gap-2">
               {DIETS.map((d) => (
                 <button

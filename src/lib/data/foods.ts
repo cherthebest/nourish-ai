@@ -704,12 +704,33 @@ function mergeFoods(primary: FoodItem[], extra: FoodItem[]): FoodItem[] {
 
 export const FOODS: FoodItem[] = mergeFoods(CATALOG_FOODS as FoodItem[], EXTRA_FOODS);
 
+/** Extra search terms people type that should hit a food id. */
+const VOCAB_ALIASES: Record<string, string[]> = {
+  "char-siu-rice": ["叉燒飯", "叉烧饭", "叉燒", "烧味", "siu yuk fan", "charsiu"],
+  "wonton-noodle-soup": ["雲吞", "云吞", "馄饨面", "餛飩麵", "wonton noodle"],
+  "cart-noodles": ["車仔", "车仔面", "嗱喳麵", "雜扒麵"],
+  "two-dish-rice": ["兩餸", "两餸饭", "碟頭飯", "碟头饭", "饭盒"],
+  "hk-milk-tea": ["港式奶茶", "絲襪奶茶", "丝袜奶茶", "奶茶"],
+  "bubble-tea": ["珍奶", "波霸奶茶", "珍珠", "手搖", "手摇"],
+  "hot-pot": ["火鍋", "打邊爐", "涮涮鍋", "麻辣鍋", "火锅"],
+  "fried-chicken": ["炸雞", "炸鸡", "韓炸", "炸雞翼"],
+  "beef-chow-fun": ["牛河", "乾炒牛河", "干炒牛河", "炒河粉"],
+  "congee-century-egg-pork": ["皮蛋粥", "瘦肉粥", "及第粥", "粥"],
+  "pineapple-bun-butter": ["菠蘿油", "菠萝油", "菠蘿包"],
+  "set-breakfast": ["常餐", "早餐常餐", "茶餐廳早餐"],
+  "water-unsweetened-tea": ["水", "白開水", "無糖茶", "清茶", "喝水"],
+  cola: ["可樂", "可乐", "汽水", "可樂"],
+  "white-rice": ["白飯", "米饭", "飯", "rice"],
+};
+
 function normalizeQuery(raw: string) {
   return raw
     .trim()
     .toLowerCase()
-    .replace(/[，。！？、\s]+/g, "")
-    .replace(/台/g, "臺");
+    .replace(/[，。！？、\s\-_/]+/g, "")
+    .replace(/台/g, "臺")
+    .replace(/麪/g, "麵")
+    .replace(/面/g, "麵");
 }
 
 export function findFood(query: string): FoodItem | null {
@@ -717,6 +738,14 @@ export function findFood(query: string): FoodItem | null {
   if (!raw) return null;
   const q = raw.toLowerCase();
   const qn = normalizeQuery(raw);
+
+  // 0) curated vocab shortcuts
+  for (const [id, terms] of Object.entries(VOCAB_ALIASES)) {
+    if (terms.some((t) => normalizeQuery(t) === qn || q.includes(t.toLowerCase()) || raw.includes(t))) {
+      const hit = FOODS.find((f) => f.id === id);
+      if (hit) return hit;
+    }
+  }
 
   // 1) exact alias / name match
   const exact =
@@ -728,11 +757,12 @@ export function findFood(query: string): FoodItem | null {
   let best: FoodItem | null = null;
   let bestLen = 0;
   for (const f of FOODS) {
-    for (const a of f.aliases) {
+    const terms = [...f.aliases, ...(VOCAB_ALIASES[f.id] || [])];
+    for (const a of terms) {
       const al = a.toLowerCase();
       const an = normalizeQuery(a);
       if (!al) continue;
-      if (q.includes(al) || al.includes(q) || (an && (qn.includes(an) || an.includes(qn)))) {
+      if (q.includes(al) || al.includes(q) || (an && qn && (qn.includes(an) || an.includes(qn)))) {
         if (a.length > bestLen) {
           best = f;
           bestLen = a.length;

@@ -297,6 +297,25 @@ const zhRecipes: Record<string, RecipeCopy> = {
   },
 };
 
+function translateCuisine(cuisine: string): string {
+  const map: Record<string, string> = {
+    "Home / HK everyday": "港式／家常",
+    "Cantonese home cooking": "粵式家常",
+    Chinese: "中式",
+    "Middle Eastern–inspired": "中東靈感",
+    Mediterranean: "地中海",
+    "Global breakfast": "全球早餐",
+    "Café classic": "咖啡館經典",
+    "Home breakfast": "家常早餐",
+    Fusion: "融合料理",
+    "South Asian": "南亞",
+    "European home": "歐式家常",
+    "East Asian": "東亞",
+    "American DASH": "美式血壓友善",
+  };
+  return map[cuisine] || cuisine.replace("Home / HK everyday", "港式／家常");
+}
+
 export function localizeRecipe(recipe: Recipe, locale: Locale): Recipe {
   if (locale === "en") return recipe;
   const copy = zhRecipes[recipe.id];
@@ -306,13 +325,18 @@ export function localizeRecipe(recipe: Recipe, locale: Locale): Recipe {
     amount: copy?.ingredients?.[i]?.amount ?? translateAmount(ing.amount),
   }));
   if (!copy) {
-    return { ...recipe, ingredients };
+    return {
+      ...recipe,
+      cuisine: translateCuisine(recipe.cuisine),
+      ingredients,
+      steps: recipe.steps, // keep EN only if no locale entry; prefer adding zh entries
+    };
   }
   return {
     ...recipe,
     title: copy.title,
     summary: copy.summary,
-    cuisine: copy.cuisine,
+    cuisine: copy.cuisine || translateCuisine(recipe.cuisine),
     regionAvailability: copy.regionAvailability,
     whyHealthy: copy.whyHealthy,
     steps: copy.steps,

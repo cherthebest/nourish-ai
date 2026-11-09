@@ -381,8 +381,24 @@ const UNIT_ZH: Array<[RegExp, string]> = [
   [/\binch(?:es)?\b/gi, "吋"],
 ];
 
+/** Extra phrase replacements for long catalog ingredient lines. */
+const PHRASE_ZH: Array<[RegExp, string]> = [
+  [/whole fish or .*fillets?.*/i, "整魚或魚柳"],
+  [/ginger,?\s*julienned/i, "薑絲"],
+  [/spring onions?/i, "青蔥"],
+  [/light soy sauce.*/i, "生抽（或無麩質大豆醬油）"],
+  [/vegetable oil/i, "植物油"],
+  [/coriander to finish/i, "香菜（收尾）"],
+  [/to taste/i, "適量"],
+  [/optional/i, "可選"],
+];
+
 export function translateIngredientName(name: string): string {
-  const key = name.trim().toLowerCase();
+  let working = name.trim();
+  for (const [re, zh] of PHRASE_ZH) {
+    if (re.test(working)) return zh;
+  }
+  const key = working.toLowerCase();
   if (NAME_ZH[key]) return NAME_ZH[key];
   // try without parenthetical notes
   const bare = key.replace(/\s*\(.*?\)\s*/g, "").trim();
@@ -396,7 +412,7 @@ export function translateIngredientName(name: string): string {
       bestLen = en.length;
     }
   }
-  return best || name;
+  return best || working;
 }
 
 export function translateAmount(amount: string): string {
